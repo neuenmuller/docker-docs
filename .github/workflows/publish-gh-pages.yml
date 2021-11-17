@@ -1,0 +1,26 @@
+name: publish to github pages
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    tags-ignore:
+      - '**'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker build --build-arg JEKYLL_ENV=production --target=deploy-source --output=./_site .
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github-token: ${{ github.token }}
+          publish_dir: ./_site
+          cname: aqua.sarisia.cc
+          user_name: 'Minato Aqua'
+          user_email: '91774192+mntaqua@users.noreply.github.com'
+      - uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
