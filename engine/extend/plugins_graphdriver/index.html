@@ -1,0 +1,641 @@
+<!-- Page generated 2021-11-17 12:16:07 +0000-->
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WL2QLG5');</script>
+<title>Write a graph driver plugin | Docker Documentation</title>
+  <meta name="description" content="How to manage image and container filesystems with external plugins" />
+  <meta name="keywords" content="Examples, Usage, storage, image, docker, data, graph, plugin, api">
+  <link rel="canonical" href="https://docs.docker.com/engine/extend/plugins_graphdriver/" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <meta name="msapplication-TileImage" content="/favicons/docs@2x.ico">
+  <meta property="og:image" content="/favicons/docs@2x.ico"/>
+  <meta name="theme-color" content="#2496ed" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- hide elements that are only shown without JavaScript enabled -->
+  <script>document.documentElement.classList.add('js')</script>
+  <style>html.js .no-js { display: none !important; }</style><script defer src="/js/theme-switcher.js"></script>
+  <script defer src="/js/anchorlinks.js"></script>
+  <script defer src="/js/jquery.js"></script>
+  <script defer src="/js/bootstrap.min.js"></script>
+  <script defer src="/js/docs.js"></script><script defer src="/js/search.js"></script><link rel="preload" as="font" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Book.woff2"    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/glyphicons-halflings-regular.woff2"       type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/fontawesome-webfont.woff2?v=4.7.0"        type="font/woff2" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css" id="pagestyle">
+
+  <!-- SEO stuff -->
+  <meta name="twitter:title" itemprop="title name" content="Write a graph driver plugin"/>
+  <meta name="twitter:description" property="og:description" itemprop="description" content="" />
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:domain" content="docs.docker.com"/>
+  <meta name="twitter:site" content="@docker_docs"/>
+  <meta name="twitter:url" content="https://twitter.com/docker_docs"/>
+  <meta name="twitter:image:src" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta name="twitter:image:alt" content="Docker Documentation"/>
+  <meta property="og:title" content="Write a graph driver plugin" />
+  <meta property="og:description" content="How to manage image and container filesystems with external plugins" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:updated_time" itemprop="dateUpdated" content="2021-11-17T12:16:07+00:00"/>
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://docs.docker.com/engine/extend/plugins_graphdriver/" />
+  <meta property="og:site_name" content="Docker Documentation" />
+  <meta property="article:published_time" itemprop="datePublished" content="2021-11-17T12:16:07+00:00"/>
+  <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Write a graph driver plugin","description":"How to manage image and container filesystems with external plugins","url":"https://docs.docker.com/engine/extend/plugins_graphdriver/"}</script>
+  <!-- END SEO STUFF -->
+</head>
+<body class="colums">
+    <header>
+        <nav class="nav-secondary navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/">
+                <img class="logo" src="/images/docker-docs-logo.svg" alt="Docker Docs" title="Docker Docs" width="160" height="28" />
+            </a>
+        </div>
+        <div class="navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <div class="logo-mobile">
+    <a href="/">
+        <img src="/images/docker-icon.svg" alt="Docker Docs" title="Docker Docs" width="30" height="30" />
+    </a>
+</div>
+<div class="search-form" id="search-div">
+    <form class="search-form form-inline" id="searchForm" action="/search/" method="get">
+        <label for="st-search-input" class="sr-only">Search</label>
+        <input class="search-field form-control ds-input" id="st-search-input" name="q" placeholder="Search the docs" type="search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
+        <div id="autocompleteResults"></div>
+        <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
+    </form>
+</div>
+<div class="sidebar-toggle">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="nav-container hidden-sm hidden-xs">
+    <div>
+        <ul class="nav navbar-nav"><li><a href="/" id="home">Home</a></li><li><a href="/get-started/overview/" id="guides">Guides</a></li><li><a href="/desktop/" id="manuals">Manuals</a></li><li><a href="/reference/" id="reference">Reference</a></li><li><a href="/samples/" id="samples">Samples</a></li></ul>
+    </div>
+    <div class="ctrl-right">
+        <a href="javascript:void(0)" id="menu-toggle" aria-label="Current page's menu toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
+    </div>
+</div>
+</div>
+    </div>
+</nav>
+
+    </header>
+    <div class="wrapper right-open">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-body">
+                    <main class="col-content content">
+                        <section class="section"><blockquote><p>The functionality described on this page is marked as Experimental, and as such, may change before it becomes generally available.</p>
+</blockquote><p><em class="reading-time">Estimated reading time: 8 minutes</em></p><!-- This file is maintained within the docker/cli GitHub
+     repository at https://github.com/docker/cli/. Make all
+     pull requests against that repo. If you see this file in
+     another repository, consider it read-only there, as it will
+     periodically be overwritten by the definitive file. Pull
+     requests which include edits to this file in other repositories
+     will be rejected.
+-->
+
+<h1 id="graphdriver-plugins">Graphdriver plugins</h1>
+
+<h2 id="changelog">Changelog</h2>
+
+<h3 id="1130">1.13.0</h3>
+
+<ul>
+  <li>Support v2 plugins</li>
+</ul>
+
+<h1 id="docker-graph-driver-plugins">Docker graph driver plugins</h1>
+
+<p>Docker graph driver plugins enable admins to use an external/out-of-process
+graph driver for use with Docker engine. This is an alternative to using the
+built-in storage drivers, such as aufs/overlay/devicemapper/btrfs.</p>
+
+<p>You need to install and enable the plugin and then restart the Docker daemon
+before using the plugin. See the following example for the correct ordering
+of steps.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker plugin install cpuguy83/docker-overlay2-graphdriver-plugin <span class="c"># this command also enables the driver</span>
+<span class="gp">&lt;output suppressed&gt;</span>
+<span class="gp">$</span> pkill dockerd
+<span class="gp">$</span> dockerd <span class="nt">--experimental</span> <span class="nt">-s</span> cpuguy83/docker-overlay2-graphdriver-plugin
+</code></pre></div></div>
+
+<h1 id="write-a-graph-driver-plugin">Write a graph driver plugin</h1>
+
+<p>See the <a href="/engine/extend/">plugin documentation</a> for detailed information
+on the underlying plugin protocol.</p>
+
+<h2 id="graph-driver-plugin-protocol">Graph Driver plugin protocol</h2>
+
+<p>If a plugin registers itself as a <code class="highlighter-rouge">GraphDriver</code> when activated, then it is
+expected to provide the rootfs for containers as well as image layer storage.</p>
+
+<h3 id="graphdriverinit">/GraphDriver.Init</h3>
+
+<p><strong>Request</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Home"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/graph/home/path"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Opts"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"UIDMaps"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"GIDMaps"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Initialize the graph driver plugin with a home directory and array of options.
+These are passed through from the user, but the plugin is not required to parse
+or honor them.</p>
+
+<p>The request also includes a list of UID and GID mappings, structed as follows:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ContainerID"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"HostID"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Size"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>Response</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Err"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Respond with a non-empty string error if an error occurred.</p>
+
+<h3 id="graphdrivercapabilities">/GraphDriver.Capabilities</h3>
+
+<p><strong>Request</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Get behavioral characteristics of the graph driver. If a plugin does not handle
+this request, the engine will use default values for all capabilities.</p>
+
+<p><strong>Response</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ReproducesExactDiffs"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Respond with values of capabilities:</p>
+
+<ul>
+  <li><strong>ReproducesExactDiffs</strong> Defaults to false. Flags that this driver is capable
+of reproducing exactly equivalent diffs for read-only filesystem layers.</li>
+</ul>
+
+<h3 id="graphdrivercreate">/GraphDriver.Create</h3>
+
+<p><strong>Request</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46fe8644f2572fd1e505364f7581e0c9dbc7f14640bd1fb6ce97714fb6fc5187"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Parent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2cd9c322cb78a55e8212aa3ea8425a4180236d7106938ec921d0935a4b8ca142"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"MountLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"StorageOpt"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Create a new, empty, read-only filesystem layer with the specified
+<code class="highlighter-rouge">ID</code>, <code class="highlighter-rouge">Parent</code> and <code class="highlighter-rouge">MountLabel</code>. If <code class="highlighter-rouge">Parent</code> is an empty string, there is no
+parent layer. <code class="highlighter-rouge">StorageOpt</code> is map of strings which indicate storage options.</p>
+
+<p><strong>Response</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Err"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Respond with a non-empty string error if an error occurred.</p>
+
+<h3 id="graphdrivercreatereadwrite">/GraphDriver.CreateReadWrite</h3>
+
+<p><strong>Request</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46fe8644f2572fd1e505364f7581e0c9dbc7f14640bd1fb6ce97714fb6fc5187"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Parent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2cd9c322cb78a55e8212aa3ea8425a4180236d7106938ec921d0935a4b8ca142"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"MountLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"StorageOpt"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Similar to <code class="highlighter-rouge">/GraphDriver.Create</code> but creates a read-write filesystem layer.</p>
+
+<h3 id="graphdriverremove">/GraphDriver.Remove</h3>
+
+<p><strong>Request</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46fe8644f2572fd1e505364f7581e0c9dbc7f14640bd1fb6ce97714fb6fc5187"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Remove the filesystem layer with this given <code class="highlighter-rouge">ID</code>.</p>
+
+<p><strong>Response</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Err"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Respond with a non-empty string error if an error occurred.</p>
+
+<h3 id="graphdriverget">/GraphDriver.Get</h3>
+
+<p><strong>Request</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46fe8644f2572fd1e505364f7581e0c9dbc7f14640bd1fb6ce97714fb6fc5187"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"MountLabel"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Get the mountpoint for the layered filesystem referred to by the given <code class="highlighter-rouge">ID</code>.</p>
+
+<p><strong>Response</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Dir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/var/mygraph/46fe8644f2572fd1e505364f7581e0c9dbc7f14640bd1fb6ce97714fb6fc5187"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Err"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Respond with the absolute path to the mounted layered filesystem.
+Respond with a non-empty string error if an error occurred.</p>
+
+<h3 id="graphdriverput">/GraphDriver.Put</h3>
+
+<p><strong>Request</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46fe8644f2572fd1e505364f7581e0c9dbc7f14640bd1fb6ce97714fb6fc5187"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Release the system resources for the specified <code class="highlighter-rouge">ID</code>, such as unmounting the
+filesystem layer.</p>
+
+<p><strong>Response</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Err"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Respond with a non-empty string error if an error occurred.</p>
+
+<h3 id="graphdriverexists">/GraphDriver.Exists</h3>
+
+<p><strong>Request</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46fe8644f2572fd1e505364f7581e0c9dbc7f14640bd1fb6ce97714fb6fc5187"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Determine if a filesystem layer with the specified <code class="highlighter-rouge">ID</code> exists.</p>
+
+<p><strong>Response</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Exists"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Respond with a boolean for whether or not the filesystem layer with the specified
+<code class="highlighter-rouge">ID</code> exists.</p>
+
+<h3 id="graphdriverstatus">/GraphDriver.Status</h3>
+
+<p><strong>Request</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Get low-level diagnostic information about the graph driver.</p>
+
+<p><strong>Response</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Status"</span><span class="p">:</span><span class="w"> </span><span class="p">[[]]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Respond with a 2-D array with key/value pairs for the underlying status
+information.</p>
+
+<h3 id="graphdrivergetmetadata">/GraphDriver.GetMetadata</h3>
+
+<p><strong>Request</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46fe8644f2572fd1e505364f7581e0c9dbc7f14640bd1fb6ce97714fb6fc5187"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Get low-level diagnostic information about the layered filesystem with the
+with the specified <code class="highlighter-rouge">ID</code></p>
+
+<p><strong>Response</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+  </span><span class="s2">"Err"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Respond with a set of key/value pairs containing the low-level diagnostic
+information about the layered filesystem.
+Respond with a non-empty string error if an error occurred.</p>
+
+<h3 id="graphdrivercleanup">/GraphDriver.Cleanup</h3>
+
+<p><strong>Request</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Perform necessary tasks to release resources help by the plugin, such as
+unmounting all the layered file systems.</p>
+
+<p><strong>Response</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Err"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Respond with a non-empty string error if an error occurred.</p>
+
+<h3 id="graphdriverdiff">/GraphDriver.Diff</h3>
+
+<p><strong>Request</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46fe8644f2572fd1e505364f7581e0c9dbc7f14640bd1fb6ce97714fb6fc5187"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Parent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2cd9c322cb78a55e8212aa3ea8425a4180236d7106938ec921d0935a4b8ca142"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Get an archive of the changes between the filesystem layers specified by the <code class="highlighter-rouge">ID</code>
+and <code class="highlighter-rouge">Parent</code>. <code class="highlighter-rouge">Parent</code> may be an empty string, in which case there is no parent.</p>
+
+<p><strong>Response</strong>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+{{ TAR STREAM }}
+
+</code></pre></div></div>
+
+<h3 id="graphdriverchanges">/GraphDriver.Changes</h3>
+
+<p><strong>Request</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46fe8644f2572fd1e505364f7581e0c9dbc7f14640bd1fb6ce97714fb6fc5187"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Parent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2cd9c322cb78a55e8212aa3ea8425a4180236d7106938ec921d0935a4b8ca142"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Get a list of changes between the filesystem layers specified by the <code class="highlighter-rouge">ID</code> and
+<code class="highlighter-rouge">Parent</code>. If <code class="highlighter-rouge">Parent</code> is an empty string, there is no parent.</p>
+
+<p><strong>Response</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Changes"</span><span class="p">:</span><span class="w"> </span><span class="p">[{}],</span><span class="w">
+  </span><span class="s2">"Err"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Respond with a list of changes. The structure of a change is:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="s2">"Path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/some/path"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Kind"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Where the <code class="highlighter-rouge">Path</code> is the filesystem path within the layered filesystem that is
+changed and <code class="highlighter-rouge">Kind</code> is an integer specifying the type of change that occurred:</p>
+
+<ul>
+  <li>0 - Modified</li>
+  <li>1 - Added</li>
+  <li>2 - Deleted</li>
+</ul>
+
+<p>Respond with a non-empty string error if an error occurred.</p>
+
+<h3 id="graphdriverapplydiff">/GraphDriver.ApplyDiff</h3>
+
+<p><strong>Request</strong>:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+{{ TAR STREAM }}
+
+</code></pre></div></div>
+
+<p>Extract the changeset from the given diff into the layer with the specified <code class="highlighter-rouge">ID</code>
+and <code class="highlighter-rouge">Parent</code></p>
+
+<p><strong>Query Parameters</strong>:</p>
+
+<ul>
+  <li>id (required)- the <code class="highlighter-rouge">ID</code> of the new filesystem layer to extract the diff to</li>
+  <li>parent (required)- the <code class="highlighter-rouge">Parent</code> of the given <code class="highlighter-rouge">ID</code></li>
+</ul>
+
+<p><strong>Response</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Size"</span><span class="p">:</span><span class="w"> </span><span class="mi">512366</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Err"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Respond with the size of the new layer in bytes.
+Respond with a non-empty string error if an error occurred.</p>
+
+<h3 id="graphdriverdiffsize">/GraphDriver.DiffSize</h3>
+
+<p><strong>Request</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"ID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"46fe8644f2572fd1e505364f7581e0c9dbc7f14640bd1fb6ce97714fb6fc5187"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Parent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2cd9c322cb78a55e8212aa3ea8425a4180236d7106938ec921d0935a4b8ca142"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Calculate the changes between the specified <code class="highlighter-rouge">ID</code></p>
+
+<p><strong>Response</strong>:</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"Size"</span><span class="p">:</span><span class="w"> </span><span class="mi">512366</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"Err"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Respond with the size changes between the specified <code class="highlighter-rouge">ID</code> and <code class="highlighter-rouge">Parent</code>
+Respond with a non-empty string error if an error occurred.</p>
+<span class="glyphicon glyphicon-tags" style="padding-right: 10px"></span><span style="vertical-align: 2px"><a href="/search/?q=Examples">Examples</a>, <a href="/search/?q=Usage">Usage</a>, <a href="/search/?q=storage">storage</a>, <a href="/search/?q=image">image</a>, <a href="/search/?q=docker">docker</a>, <a href="/search/?q=data">data</a>, <a href="/search/?q=graph">graph</a>, <a href="/search/?q=plugin">plugin</a>, <a href="/search/?q=api">api</a></span><div class="ratings-div"><div id="pd_rating_holder_8453675"></div></div></section>
+                    </main>
+                    <nav class="col-nav">
+                        <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+                            <div id="navbar" class="nav-sidebar">
+                                <ul class="nav hidden-md hidden-lg"></ul>
+                                <ul class="nav" id="jsTOCLeftNav"></ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="col-toc">
+                        <div class="sidebar hidden-xs hidden-sm">
+                            <div class="toc-nav">
+                                <div class="feedback-links">
+                                    <ul><li><a href="https://github.com/docker/docker.github.io/edit/master/engine/extend/plugins_graphdriver.md"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this page</a></li><li><a href="https://github.com/docker/docker.github.io/issues/new?body=File: [engine/extend/plugins_graphdriver.md](https://docs.docker.com/engine/extend/plugins_graphdriver/)" class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>
+                                        <li><div class="toggle-mode">
+  <div class="icon">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+  </div>
+  <div class="toggle-switch">
+      <label class="switch">
+          <input type="checkbox" id="switch-style">
+          <span class="slider round"></span>
+      </label>
+  </div>
+  <div class="icon">
+      <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </div>
+</div>
+</li>
+                                    </ul>
+                                </div><div id="side-toc-title">On this page:</div>
+<ul id="my_toc" class="inline_toc">
+  <li><a href="#changelog" class="nomunge">Changelog</a>
+    <ul>
+      <li><a href="#1130" class="nomunge">1.13.0</a></li>
+    </ul>
+  </li>
+  <li><a href="#graph-driver-plugin-protocol" class="nomunge">Graph Driver plugin protocol</a>
+    <ul>
+      <li><a href="#graphdriverinit" class="nomunge">/GraphDriver.Init</a></li>
+      <li><a href="#graphdrivercapabilities" class="nomunge">/GraphDriver.Capabilities</a></li>
+      <li><a href="#graphdrivercreate" class="nomunge">/GraphDriver.Create</a></li>
+      <li><a href="#graphdrivercreatereadwrite" class="nomunge">/GraphDriver.CreateReadWrite</a></li>
+      <li><a href="#graphdriverremove" class="nomunge">/GraphDriver.Remove</a></li>
+      <li><a href="#graphdriverget" class="nomunge">/GraphDriver.Get</a></li>
+      <li><a href="#graphdriverput" class="nomunge">/GraphDriver.Put</a></li>
+      <li><a href="#graphdriverexists" class="nomunge">/GraphDriver.Exists</a></li>
+      <li><a href="#graphdriverstatus" class="nomunge">/GraphDriver.Status</a></li>
+      <li><a href="#graphdrivergetmetadata" class="nomunge">/GraphDriver.GetMetadata</a></li>
+      <li><a href="#graphdrivercleanup" class="nomunge">/GraphDriver.Cleanup</a></li>
+      <li><a href="#graphdriverdiff" class="nomunge">/GraphDriver.Diff</a></li>
+      <li><a href="#graphdriverchanges" class="nomunge">/GraphDriver.Changes</a></li>
+      <li><a href="#graphdriverapplydiff" class="nomunge">/GraphDriver.ApplyDiff</a></li>
+      <li><a href="#graphdriverdiffsize" class="nomunge">/GraphDriver.DiffSize</a></li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+          
+    <div class="container">
+        <div class="top_footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/why-docker">Why Docker?</a></b></li>
+                        <li><a href="https://www.docker.com/what-container">What is a Container?</a></li>
+                        <li><a href="https://docker.events.cube365.net/dockercon/">DockerCon</a></li>
+                        <li><b><a href="https://www.docker.com/products/overview">Products</a></b></li>
+                        <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+                        <li><a href="https://www.docker.com/products/docker-hub">Docker Hub</a></li>
+                        <li><a href="https://www.docker.com/roadmap">Docker Product Roadmap</a></li>
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Features</a></b></li>
+                        <li><a href="https://www.docker.com/products/container-runtime">Container Runtime</a></li>
+                        <li><a href="https://www.docker.com/products/developer-tools">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Developers</a></b></li>
+                        <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+                        <li><a href="https://www.docker.com/docker-community">Community</a></li>
+                        <li><a href="https://www.docker.com/open-source">Open Source</a></li>
+                        <li><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Pricing</a></b></li>
+                        <li><a href="https://www.docker.com/pricing/faq">FAQs</a></li>
+                        <li><a href="https://www.docker.com/partners/programs">Docker Verified Publisher Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/company" target="_blank" rel="noopener">Company</a></b></li>
+                        <li><a href="https://www.docker.com/company">About Us</a></li>
+                        <li><a href="https://www.docker.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+                        <li><a href="https://www.docker.com/customers">Customers</a></li>
+                        <li><a href="https://www.docker.com/partners">Partners</a></li>
+                        <li><a href="https://www.docker.com/company/newsroom">Newsroom</a></li>
+                        <li><a href="https://www.docker.com/careers">Careers</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <nav class="footer_sub_nav">
+                    <ul class="menu">
+                        <li><a href="http://status.docker.com/">Status</a></li>
+                        <li><a href="https://www.docker.com/legal">Legal</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="bottom_footer">
+            <div class="footer-copyright col-xs-12 col-md-8">
+                <p class="copyright">
+                    Copyright &copy; 2013-2021 Docker Inc. All rights reserved. </p>
+            </div>
+            <div class="footer_social_nav">
+                <ul class="nav-social">
+                    <li class="fa fa-twitter"><a href="http://twitter.com/docker">Twitter</a></li>
+                    <li class="fa fa-youtube"><a href="http://www.youtube.com/user/dockerrun">Youtube</a></li>
+                    <li class="fa fa-github"><a href="https://github.com/docker">GitHub</a></li>
+                    <li class="fa fa-linkedin"><a href="https://www.linkedin.com/company/docker">Linkedin</a></li>
+                    <li class="fa fa-facebook"><a href="https://www.facebook.com/docker.run">Facebook</a></li>
+                    <li class="fa fa-slideshare"><a href="https://www.slideshare.net/docker">Slideshare</a></li>
+                    <li class="fa fa-reddit"><a href="https://www.reddit.com/r/docker">Reddit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </footer>
+    <script>const pageURL = "/engine/extend/plugins_graphdriver/";</script><script>
+    let PDRTJS_settings_8453675 = {
+        "id": "8453675",
+        "unique_id": "engine/extend/plugins_graphdriver.md",
+        "title": "Write a graph driver plugin",
+        "font_family": "Open Sans, sans serif",
+        "font_color": "b9c2cc",
+        "font_align": "center",
+        "permalink": "https://github.com/docker/docker.github.io/blob/master/engine/extend/plugins_graphdriver.md"
+    };
+    (function (d, c, j) {
+        if (!document.getElementById(j)) {
+            let pd=d.createElement(c),s;pd.id=j;pd.src='https://polldaddy.com/js/rating/rating.js';s=document.getElementsByTagName(c)[0];s.parentNode.insertBefore(pd, s);
+        }
+    }(document, 'script', 'pd-rating-js'));
+</script></body>
+</html>

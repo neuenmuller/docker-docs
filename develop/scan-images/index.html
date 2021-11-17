@@ -1,0 +1,424 @@
+<!-- Page generated 2021-11-17 12:16:07 +0000-->
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WL2QLG5');</script>
+<title>Best practices for scanning images | Docker Documentation</title>
+  <meta name="description" content="Scan images best practices guide" />
+  <meta name="keywords" content="docker scan, scan, images, snyk, vulnerability">
+  <link rel="canonical" href="https://docs.docker.com/develop/scan-images/" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <meta name="msapplication-TileImage" content="/favicons/docs@2x.ico">
+  <meta property="og:image" content="/favicons/docs@2x.ico"/>
+  <meta name="theme-color" content="#2496ed" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- hide elements that are only shown without JavaScript enabled -->
+  <script>document.documentElement.classList.add('js')</script>
+  <style>html.js .no-js { display: none !important; }</style><script defer src="/js/theme-switcher.js"></script>
+  <script defer src="/js/anchorlinks.js"></script>
+  <script defer src="/js/jquery.js"></script>
+  <script defer src="/js/bootstrap.min.js"></script>
+  <script defer src="/js/docs.js"></script><script defer src="/js/search.js"></script><link rel="preload" as="font" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Book.woff2"    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/glyphicons-halflings-regular.woff2"       type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/fontawesome-webfont.woff2?v=4.7.0"        type="font/woff2" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css" id="pagestyle">
+
+  <!-- SEO stuff -->
+  <meta name="twitter:title" itemprop="title name" content="Best practices for scanning images"/>
+  <meta name="twitter:description" property="og:description" itemprop="description" content="" />
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:domain" content="docs.docker.com"/>
+  <meta name="twitter:site" content="@docker_docs"/>
+  <meta name="twitter:url" content="https://twitter.com/docker_docs"/>
+  <meta name="twitter:image:src" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta name="twitter:image:alt" content="Docker Documentation"/>
+  <meta property="og:title" content="Best practices for scanning images" />
+  <meta property="og:description" content="Scan images best practices guide" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:updated_time" itemprop="dateUpdated" content="2021-11-17T12:16:07+00:00"/>
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://docs.docker.com/develop/scan-images/" />
+  <meta property="og:site_name" content="Docker Documentation" />
+  <meta property="article:published_time" itemprop="datePublished" content="2021-11-17T12:16:07+00:00"/>
+  <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Best practices for scanning images","description":"Scan images best practices guide","url":"https://docs.docker.com/develop/scan-images/"}</script>
+  <!-- END SEO STUFF -->
+</head>
+<body class="colums">
+    <header>
+        <nav class="nav-secondary navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/">
+                <img class="logo" src="/images/docker-docs-logo.svg" alt="Docker Docs" title="Docker Docs" width="160" height="28" />
+            </a>
+        </div>
+        <div class="navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <div class="logo-mobile">
+    <a href="/">
+        <img src="/images/docker-icon.svg" alt="Docker Docs" title="Docker Docs" width="30" height="30" />
+    </a>
+</div>
+<div class="search-form" id="search-div">
+    <form class="search-form form-inline" id="searchForm" action="/search/" method="get">
+        <label for="st-search-input" class="sr-only">Search</label>
+        <input class="search-field form-control ds-input" id="st-search-input" name="q" placeholder="Search the docs" type="search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
+        <div id="autocompleteResults"></div>
+        <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
+    </form>
+</div>
+<div class="sidebar-toggle">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="nav-container hidden-sm hidden-xs">
+    <div>
+        <ul class="nav navbar-nav"><li><a href="/" id="home">Home</a></li><li><a href="/get-started/overview/" id="guides">Guides</a></li><li><a href="/desktop/" id="manuals">Manuals</a></li><li><a href="/reference/" id="reference">Reference</a></li><li><a href="/samples/" id="samples">Samples</a></li></ul>
+    </div>
+    <div class="ctrl-right">
+        <a href="javascript:void(0)" id="menu-toggle" aria-label="Current page's menu toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
+    </div>
+</div>
+<div class="row hidden-sm hidden-xs">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="/" title="Docker docs homepage"><i class="fa fa-home"></i></a></li>
+            <li><a href="/get-started/overview/">Guides</a></li><li><a href="/develop/">Develop with Docker</a></li><li><a href="/develop/scan-images/">Scan images</a></li></ol>
+    </nav>
+</div></div>
+    </div>
+</nav>
+
+    </header>
+    <div class="wrapper right-open">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-body">
+                    <main class="col-content content">
+                        <section class="section"><h1>Best practices for scanning images</h1><p><em class="reading-time">Estimated reading time: 8 minutes</em></p><div class="docker-upgrade-cta" role="alert">
+  <div class="docker-upgrade-cta__heading">
+This feature requires a paid Docker subscription
+  </div>
+  <p>Did you know that Docker subscribers receive 200 Snyk vulnerability scans as part of their subscription? Click <a href="https://snyk.co/udvnv">here</a> to activate your free monthly scans. Upgrade your existing subscription to start scanning your images for vulnerabilities.</p>
+ <a class="btn btn-primary" role="button" href="https://www.docker.com/pricing?utm_source=docker&amp;utm_medium=webreferral&amp;utm_campaign=docs_driven_upgrade_scan" target="_blank"> Upgrade now </a>
+</div>
+
+<p>This page contains recommendations and best practices for scanning and building secure images.</p>
+
+<p>Docker and Snyk have partnered together to bring security natively into the development workflow by providing a simple and streamlined approach for developers to build and deploy secure containers. Container security spans multiple teams - developers, security, and operations. Additionally, there are multiple layers of security that apply to containers:</p>
+
+<ul>
+  <li>The container image and the software running inside</li>
+  <li>The interaction between a container, the host operating system, and other containers on the same host</li>
+  <li>The host operating system</li>
+  <li>Container networking and storage</li>
+</ul>
+
+<p>Including the vulnerability scanning options into the Docker platform extends the existing, familiar process of vulnerability detection, and allows for remediation of vulnerabilities earlier in the development process. The process of simple and continuous checks, for example, by checking images in the background using <a href="https://snyk.io/advisor/docker" target="_blank" rel="noopener" class="_">Snyk Advisor</a>, can lead to fewer vulnerabilities checked into Docker Hub. This can result in a shorter CI cycle and a more reliable deployment into production.</p>
+
+<p><img src="/develop/scan-images/images/dev-security-journey.png" alt="Developer's security journey" width="700px" /></p>
+
+<h2 id="scanning-images">Scanning images</h2>
+
+<p>You can trigger scans automatically by pushing an image to Docker Hub. You can achieve this either through the <code class="highlighter-rouge">docker scan</code> command in the CLI, or through Docker Hub.</p>
+
+<h3 id="scan-using-the-cli">Scan using the CLI</h3>
+
+<p>After you’ve built an image and before you push your image to Docker Hub, run the <code class="highlighter-rouge">docker scan</code> command. For detailed instructions on how to scan images using the CLI, see <a href="/engine/scan/">docker scan</a>.</p>
+
+<p><img src="/develop/scan-images/images/docker-scan-cli.png" alt="Docker Scan CL" width="700px" /></p>
+
+<h3 id="scan-using-docker-hub">Scan using Docker Hub</h3>
+
+<p>You can trigger scans, view, and inspect vulnerabilities through Docker Hub. For detailed information, see <a href="/docker-hub/vulnerability-scanning/">Hub Vulnerability Scanning</a>.</p>
+
+<blockquote>
+  <p><strong>Note</strong></p>
+
+  <p>Docker Hub Vulnerability Scanning is available for developers subscribed to a Docker Pro, Team, or a Business tier. For more information about the pricing plans, see <a href="https://www.docker.com/pricing?utm_source=docker&amp;utm_medium=webreferral&amp;utm_campaign=docs_driven_upgrade" target="_blank" rel="noopener" class="_">Docker Pricing</a>.</p>
+</blockquote>
+
+<p><img src="/develop/scan-images/images/hub-hvs.png" alt="Hub Vulnerability scanning" width="700px" /></p>
+
+<h3 id="view-the-scan-summary-in-docker-desktop">View the scan summary in Docker Desktop</h3>
+
+<p>Docker Desktop provides you a snapshot of your vulnerabilities status on the Docker Dashboard. Hover over the image and click <strong>View in Hub</strong> to view a detailed vulnerability report in Docker Hub.</p>
+
+<p><img src="/develop/scan-images/images/hvs-scan-summary.png" alt="Hub Vulnerability scan summary" width="700px" /></p>
+
+<h2 id="best-practices">Best practices</h2>
+
+<p>As a developer, you can take a few simple steps to improve the security of your container. This includes:</p>
+
+<ol>
+  <li>Choosing the right base image from a trusted source and keeping it small</li>
+  <li>Using multi-stage builds</li>
+  <li>Rebuilding images</li>
+  <li>Scanning images during development</li>
+  <li>Scanning images during production</li>
+</ol>
+
+<p>Now, let’s take a detailed look at each of these best practices:</p>
+
+<h3 id="choose-the-right-base-image">Choose the right base image</h3>
+
+<p>The first step towards achieving a secure image is to choose the right base image. When choosing an image, ensure it is built from a trusted source and keep it small.</p>
+
+<p>Docker Hub has more than 8.3 million repositories. Some of these images are <a href="/docker-hub/official_images/">Official Images</a>, which are published by Docker as a curated set of Docker open source and drop-in solution repositories. Docker also offers images that are published by <a href="/docker-hub/publish/">Verified Publishers</a>. These high-quality images are published and maintained by the organizations partnering with Docker, with Docker verifying the authenticity of the content in their repositories. When you pick your base image, look out for the <strong>Official Image</strong> and <strong>Verified Publisher</strong> badges.</p>
+
+<p><img src="/develop/scan-images/images/hub-official-images.png" alt="Docker Hub Official and Verified Publisher images" width="700px" /></p>
+
+<p>When building your own image from a Dockerfile, ensure you choose a minimal base image that matches your requirements. A smaller base image not just offers portability and fast downloads, but also shrinks the size of your image and minimizes the number of vulnerabilities introduced through the dependencies.</p>
+
+<p>We also recommend that you use two types of base images: the first image for development and unit testing and the second one for testing during the latest stages of development and production. In the later stages of development, your image may not even require some build tools such as compilers, build systems, or any debugging tools. A small image with minimal dependencies can considerably lower the attack surface.</p>
+
+<h3 id="use-multi-stage-builds">Use multi-stage builds</h3>
+
+<p>Multi-stage builds are designed to create an optimized Dockerfile that is easy to read and maintain. With a multi-stage build, you can use multiple images and selectively copy only the artifacts needed from a particular image.</p>
+
+<p>You can use multiple <code class="highlighter-rouge">FROM</code> statements in your Dockerfile, and you can use a different base image for each <code class="highlighter-rouge">FROM</code>. You can also selectively copy artifacts from one stage to another, leaving behind things you don’t need in the final image. This can result in a concise final image.</p>
+
+<p>This method of creating a tiny image does not only significantly reduce complexity, but also the change of implementing vulnerable artifacts in your image. Therefore, instead of images that are built on images, that again are built on other images, multi-stage builds allow you to ‘cherry pick’ your artifacts without inheriting the vulnerabilities from the base images on which they rely on.</p>
+
+<p>For detailed information on how to configure multi-stage builds, see <a href="/develop/develop-images/multistage-build/">multi-stage builds</a>.</p>
+
+<h3 id="rebuild-images">Rebuild images</h3>
+
+<p>A Docker image is built  from a Dockerfile. A Dockerfile contains a set of instructions which allows you to automate the steps you would normally (manually) take to create an image. Additionally, it can include some imported libraries and install custom software. These appear as instructions in the Dockerfile.</p>
+
+<p>Building your image is a snapshot of that image, at that moment in time. When you depend on a base image without a tag, you’ll get a different base image every time you rebuild. Also, when you install packages using a package installer, rebuilding can change the image drastically. For example, a Dockerfile containing the following entries can potentially have a different binary with every rebuild.</p>
+
+<div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> ubuntu:latest</span>
+<span class="k">RUN </span>apt-get <span class="nt">-y</span> update <span class="o">&amp;&amp;</span> apt-get install <span class="nt">-y</span> python
+</code></pre></div></div>
+
+<p>We recommend that you rebuild your Docker image regularly to prevent known vulnerabilities that have been addressed. When rebuilding, use the option <code class="highlighter-rouge">--no-cache</code> to avoid cache hits and to ensure a fresh download.</p>
+
+<p>For example:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker build <span class="nt">--no-cache</span> <span class="nt">-t</span> myImage:myTag myPath/
+</code></pre></div></div>
+
+<p>Consider the following best practices when rebuilding an image:</p>
+
+<ul>
+  <li>Each container should have only one responsibility.</li>
+  <li>Containers should be immutable, lightweight, and fast.</li>
+  <li>Don’t store data in your container. Use a shared data store instead.</li>
+  <li>Containers should be easy to destroy and rebuild.</li>
+  <li>Use a small base image (such as Linux Alpine).  Smaller images are easier to distribute.</li>
+  <li>Avoid installing unnecessary packages. This keeps the image clean and safe.</li>
+  <li>Avoid cache hits when building.</li>
+  <li>Auto-scan your image before deploying to avoid pushing vulnerable containers to production.</li>
+  <li>Scan your images daily both during development and production for vulnerabilities Based on that, automate the rebuild of images if necessary.</li>
+</ul>
+
+<p>For detailed best practices and methods for building efficient images, see <a href="/develop/develop-images/dockerfile_best-practices/">Dockerfile best practices</a>.</p>
+
+<h3 id="scan-images-during-development">Scan images during development</h3>
+
+<p>Creating an image from a Dockerfile and even rebuilding an image can introduce new vulnerabilities in your system. Scanning your Docker images during development should be part of your workflow to catch vulnerabilities earlier in your development. You should scan images at all stages of the development cycle, and ideally consider automating scans. For example, consider configuring automated scans during the build process, before pushing the image to Docker Hub (or any other registry), and finally before pushing it to a production environment.</p>
+
+<h3 id="scan-images-during-production">Scan images during production</h3>
+
+<p>Actively checking your container can save you a lot of hassle when a new vulnerability is discovered, which otherwise can put your production system at risk.</p>
+
+<p>Periodically scanning your Docker image is possible by using the Snyk monitor capabilities for containers. Snyk creates a snapshot of the image’s dependencies for continuous monitoring. Additionally, you should also activate runtime monitoring. Scanning for unused modules and packages inside your runtime gives insight into how to shrink images. Removing unused components prevents unnecessary vulnerabilities from entering both system and application libraries. This also makes an image more easily maintainable.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Building secure images is a continuous process. Consider the recommendations and best practices highlighted in this guide to plan and build efficient, scalable, and secure images.</p>
+
+<p>Let’s recap what we’ve learnt in this guide:</p>
+
+<ul>
+  <li>Start with a base image that you trust. Remember the Official image and Verified Publisher badges when you choose your base images.</li>
+  <li>Secure your code and its dependencies.</li>
+  <li>Select a minimal base image which contains only the required packages.</li>
+  <li>Use multi-stage builds to optimize your image.</li>
+  <li>Ensure you carefully monitor and manage the tools and dependencies you add to your image.</li>
+  <li>Ensure you scan images at multiple stages during your development lifecycle.</li>
+  <li>Check your images frequently for vulnerabilities.</li>
+</ul>
+
+<h2 id="further-reading">Further reading</h2>
+
+<p>You can also take a look at the following articles from Snyk:</p>
+
+<ul>
+  <li><a href="https://snyk.io/learn/container-security/" target="_blank" rel="noopener" class="_">Container Security Guide</a></li>
+  <li><a href="https://goto.docker.com/rs/929-FJL-178/images/cheat-sheet-docker-desktop-vulnerability-scanning-CLI.pdf" target="_blank" rel="noopener" class="_">Docker Vulnerability Scanning Cheat Sheet</a></li>
+</ul>
+<span class="glyphicon glyphicon-tags" style="padding-right: 10px"></span><span style="vertical-align: 2px"><a href="/search/?q=docker scan">docker scan</a>, <a href="/search/?q=scan">scan</a>, <a href="/search/?q=images">images</a>, <a href="/search/?q=snyk">snyk</a>, <a href="/search/?q=vulnerability">vulnerability</a></span><div class="ratings-div"><div id="pd_rating_holder_8453675"></div></div></section>
+                    </main>
+                    <nav class="col-nav">
+                        <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+                            <div id="navbar" class="nav-sidebar">
+                                <ul class="nav hidden-md hidden-lg"></ul>
+                                <ul class="nav" id="jsTOCLeftNav"></ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="col-toc">
+                        <div class="sidebar hidden-xs hidden-sm">
+                            <div class="toc-nav">
+                                <div class="feedback-links">
+                                    <ul><li><a href="https://github.com/docker/docker.github.io/edit/master/develop/scan-images/index.md"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this page</a></li><li><a href="https://github.com/docker/docker.github.io/issues/new?body=File: [develop/scan-images/index.md](https://docs.docker.com/develop/scan-images/)" class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>
+                                        <li><div class="toggle-mode">
+  <div class="icon">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+  </div>
+  <div class="toggle-switch">
+      <label class="switch">
+          <input type="checkbox" id="switch-style">
+          <span class="slider round"></span>
+      </label>
+  </div>
+  <div class="icon">
+      <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </div>
+</div>
+</li>
+                                    </ul>
+                                </div><div id="side-toc-title">On this page:</div>
+<ul id="my_toc" class="inline_toc">
+  <li><a href="#scanning-images" class="nomunge">Scanning images</a>
+    <ul>
+      <li><a href="#scan-using-the-cli" class="nomunge">Scan using the CLI</a></li>
+      <li><a href="#scan-using-docker-hub" class="nomunge">Scan using Docker Hub</a></li>
+      <li><a href="#view-the-scan-summary-in-docker-desktop" class="nomunge">View the scan summary in Docker Desktop</a></li>
+    </ul>
+  </li>
+  <li><a href="#best-practices" class="nomunge">Best practices</a>
+    <ul>
+      <li><a href="#choose-the-right-base-image" class="nomunge">Choose the right base image</a></li>
+      <li><a href="#use-multi-stage-builds" class="nomunge">Use multi-stage builds</a></li>
+      <li><a href="#rebuild-images" class="nomunge">Rebuild images</a></li>
+      <li><a href="#scan-images-during-development" class="nomunge">Scan images during development</a></li>
+      <li><a href="#scan-images-during-production" class="nomunge">Scan images during production</a></li>
+    </ul>
+  </li>
+  <li><a href="#conclusion" class="nomunge">Conclusion</a></li>
+  <li><a href="#further-reading" class="nomunge">Further reading</a></li>
+</ul>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+          
+    <div class="container">
+        <div class="top_footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/why-docker">Why Docker?</a></b></li>
+                        <li><a href="https://www.docker.com/what-container">What is a Container?</a></li>
+                        <li><a href="https://docker.events.cube365.net/dockercon/">DockerCon</a></li>
+                        <li><b><a href="https://www.docker.com/products/overview">Products</a></b></li>
+                        <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+                        <li><a href="https://www.docker.com/products/docker-hub">Docker Hub</a></li>
+                        <li><a href="https://www.docker.com/roadmap">Docker Product Roadmap</a></li>
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Features</a></b></li>
+                        <li><a href="https://www.docker.com/products/container-runtime">Container Runtime</a></li>
+                        <li><a href="https://www.docker.com/products/developer-tools">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Developers</a></b></li>
+                        <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+                        <li><a href="https://www.docker.com/docker-community">Community</a></li>
+                        <li><a href="https://www.docker.com/open-source">Open Source</a></li>
+                        <li><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Pricing</a></b></li>
+                        <li><a href="https://www.docker.com/pricing/faq">FAQs</a></li>
+                        <li><a href="https://www.docker.com/partners/programs">Docker Verified Publisher Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/company" target="_blank" rel="noopener">Company</a></b></li>
+                        <li><a href="https://www.docker.com/company">About Us</a></li>
+                        <li><a href="https://www.docker.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+                        <li><a href="https://www.docker.com/customers">Customers</a></li>
+                        <li><a href="https://www.docker.com/partners">Partners</a></li>
+                        <li><a href="https://www.docker.com/company/newsroom">Newsroom</a></li>
+                        <li><a href="https://www.docker.com/careers">Careers</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <nav class="footer_sub_nav">
+                    <ul class="menu">
+                        <li><a href="http://status.docker.com/">Status</a></li>
+                        <li><a href="https://www.docker.com/legal">Legal</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="bottom_footer">
+            <div class="footer-copyright col-xs-12 col-md-8">
+                <p class="copyright">
+                    Copyright &copy; 2013-2021 Docker Inc. All rights reserved. </p>
+            </div>
+            <div class="footer_social_nav">
+                <ul class="nav-social">
+                    <li class="fa fa-twitter"><a href="http://twitter.com/docker">Twitter</a></li>
+                    <li class="fa fa-youtube"><a href="http://www.youtube.com/user/dockerrun">Youtube</a></li>
+                    <li class="fa fa-github"><a href="https://github.com/docker">GitHub</a></li>
+                    <li class="fa fa-linkedin"><a href="https://www.linkedin.com/company/docker">Linkedin</a></li>
+                    <li class="fa fa-facebook"><a href="https://www.facebook.com/docker.run">Facebook</a></li>
+                    <li class="fa fa-slideshare"><a href="https://www.slideshare.net/docker">Slideshare</a></li>
+                    <li class="fa fa-reddit"><a href="https://www.reddit.com/r/docker">Reddit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </footer>
+    <script>const pageURL = "/develop/scan-images/";</script><script>
+    let PDRTJS_settings_8453675 = {
+        "id": "8453675",
+        "unique_id": "develop/scan-images/index.md",
+        "title": "Best practices for scanning images",
+        "font_family": "Open Sans, sans serif",
+        "font_color": "b9c2cc",
+        "font_align": "center",
+        "permalink": "https://github.com/docker/docker.github.io/blob/master/develop/scan-images/index.md"
+    };
+    (function (d, c, j) {
+        if (!document.getElementById(j)) {
+            let pd=d.createElement(c),s;pd.id=j;pd.src='https://polldaddy.com/js/rating/rating.js';s=document.getElementsByTagName(c)[0];s.parentNode.insertBefore(pd, s);
+        }
+    }(document, 'script', 'pd-rating-js'));
+</script></body>
+</html>

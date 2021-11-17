@@ -1,0 +1,898 @@
+<!-- Page generated 2021-11-17 12:16:07 +0000-->
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WL2QLG5');</script>
+<title>Docker for Windows release notes | Docker Documentation</title>
+  <meta name="description" content="Docker Desktop for Windows Release notes" />
+  <meta name="keywords" content="Docker Desktop for Windows, release notes">
+  <link rel="canonical" href="https://docs.docker.com/desktop/windows/release-notes/" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <meta name="msapplication-TileImage" content="/favicons/docs@2x.ico">
+  <meta property="og:image" content="/favicons/docs@2x.ico"/>
+  <meta name="theme-color" content="#2496ed" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- hide elements that are only shown without JavaScript enabled -->
+  <script>document.documentElement.classList.add('js')</script>
+  <style>html.js .no-js { display: none !important; }</style><script defer src="/js/theme-switcher.js"></script>
+  <script defer src="/js/anchorlinks.js"></script>
+  <script defer src="/js/jquery.js"></script>
+  <script defer src="/js/bootstrap.min.js"></script>
+  <script defer src="/js/docs.js"></script><script defer src="/js/search.js"></script><link rel="preload" as="font" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Book.woff2"    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/glyphicons-halflings-regular.woff2"       type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/fontawesome-webfont.woff2?v=4.7.0"        type="font/woff2" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css" id="pagestyle">
+
+  <!-- SEO stuff -->
+  <meta name="twitter:title" itemprop="title name" content="Docker for Windows release notes"/>
+  <meta name="twitter:description" property="og:description" itemprop="description" content="" />
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:domain" content="docs.docker.com"/>
+  <meta name="twitter:site" content="@docker_docs"/>
+  <meta name="twitter:url" content="https://twitter.com/docker_docs"/>
+  <meta name="twitter:image:src" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta name="twitter:image:alt" content="Docker Documentation"/>
+  <meta property="og:title" content="Docker for Windows release notes" />
+  <meta property="og:description" content="Docker Desktop for Windows Release notes" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:updated_time" itemprop="dateUpdated" content="2021-11-17T12:16:07+00:00"/>
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://docs.docker.com/desktop/windows/release-notes/" />
+  <meta property="og:site_name" content="Docker Documentation" />
+  <meta property="article:published_time" itemprop="datePublished" content="2021-11-17T12:16:07+00:00"/>
+  <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Docker for Windows release notes","description":"Docker Desktop for Windows Release notes","url":"https://docs.docker.com/desktop/windows/release-notes/"}</script>
+  <!-- END SEO STUFF -->
+</head>
+<body class="colums">
+    <header>
+        <nav class="nav-secondary navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/">
+                <img class="logo" src="/images/docker-docs-logo.svg" alt="Docker Docs" title="Docker Docs" width="160" height="28" />
+            </a>
+        </div>
+        <div class="navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <div class="logo-mobile">
+    <a href="/">
+        <img src="/images/docker-icon.svg" alt="Docker Docs" title="Docker Docs" width="30" height="30" />
+    </a>
+</div>
+<div class="search-form" id="search-div">
+    <form class="search-form form-inline" id="searchForm" action="/search/" method="get">
+        <label for="st-search-input" class="sr-only">Search</label>
+        <input class="search-field form-control ds-input" id="st-search-input" name="q" placeholder="Search the docs" type="search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
+        <div id="autocompleteResults"></div>
+        <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
+    </form>
+</div>
+<div class="sidebar-toggle">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="nav-container hidden-sm hidden-xs">
+    <div>
+        <ul class="nav navbar-nav"><li><a href="/" id="home">Home</a></li><li><a href="/get-started/overview/" id="guides">Guides</a></li><li><a href="/desktop/" id="manuals">Manuals</a></li><li><a href="/reference/" id="reference">Reference</a></li><li><a href="/samples/" id="samples">Samples</a></li></ul>
+    </div>
+    <div class="ctrl-right">
+        <a href="javascript:void(0)" id="menu-toggle" aria-label="Current page's menu toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
+    </div>
+</div>
+<div class="row hidden-sm hidden-xs">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="/" title="Docker docs homepage"><i class="fa fa-home"></i></a></li>
+            <li><a href="/desktop/">Manuals</a></li><li><a href="/desktop/">Docker Desktop</a></li><li><a href="/desktop/windows/install/">Windows</a></li><li><a href="/desktop/windows/release-notes/">Release notes</a></li></ol>
+    </nav>
+</div></div>
+    </div>
+</nav>
+
+    </header>
+    <div class="wrapper right-open">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-body">
+                    <main class="col-content content">
+                        <section class="section"><h1>Docker for Windows release notes</h1><p><em class="reading-time">Estimated reading time: 27 minutes</em></p><p>This page contains information about the new features, improvements, known issues, and bug fixes in Docker Desktop releases.</p>
+
+<h2 id="docker-desktop-400">Docker Desktop 4.0.0</h2>
+<p>2021-08-31</p>
+
+<blockquote>
+  <p>Download Docker Desktop</p>
+
+  <p><a href="https://desktop.docker.com/win/stable/amd64/Docker%20Desktop%20Installer.exe?utm_source=docker&amp;utm_medium=webreferral&amp;utm_campaign=docs-driven-download-win-amd64" class="button primary-btn">For Windows</a></p>
+</blockquote>
+
+<h3 id="new">New</h3>
+
+<p>Docker has <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="*blank" rel="noopener" class="*" id="dkr_docs_relnotes_btl">announced</a> updates and extensions to the product subscriptions to increase productivity, collaboration, and added security for our developers and businesses.</p>
+
+<p>The updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement">Docker Subscription Service Agreement</a> includes a change to the terms for <strong>Docker Desktop</strong>.</p>
+
+<ul>
+  <li>Docker Desktop <strong>remains free</strong> for small businesses (fewer than 250 employees AND less than $10 million in annual revenue), personal use, education, and non-commercial open source projects.</li>
+  <li>It requires a paid subscription (<strong>Pro, Team, or Business</strong>), for as little as $5 a month, for professional use in larger enterprises.</li>
+  <li>The effective date of these terms is August 31, 2021. There is a grace period until January 31, 2022 for those that will require a paid subscription to use Docker Desktop.</li>
+  <li>The Docker Pro and Docker Team subscriptions now <strong>include commercial use</strong> of Docker Desktop.</li>
+  <li>The existing Docker Free subscription has been renamed <strong>Docker Personal</strong>.</li>
+  <li>
+    <p><strong>No changes</strong> to Docker Engine or any other upstream <strong>open source</strong> Docker or Moby project.</p>
+
+    <p>To understand how these changes affect you, read the <a href="https://www.docker.com/pricing/faq" target="*blank" rel="noopener" class="*" id="dkr_docs_relnotes_btl">FAQs</a>. For more information, see <a href="/subscription/">Docker subscription overview</a>.</p>
+  </li>
+</ul>
+
+<h3 id="upgrades">Upgrades</h3>
+
+<ul>
+  <li><a href="https://github.com/docker/compose-cli/releases/tag/v2.0.0-rc.2">Compose V2 RC2</a>
+    <ul>
+      <li>Fixed project name to be case-insensitive for <code class="highlighter-rouge">compose down</code>. See <a href="https://github.com/docker/compose-cli/issues/2023">docker/compose-cli#2023</a></li>
+      <li>Fixed non-normalized project name.</li>
+      <li>Fixed port merging on partial reference.</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.21.4">Kubernetes 1.21.4</a></li>
+</ul>
+
+<h3 id="bug-fixes-and-minor-changes">Bug fixes and minor changes</h3>
+
+<ul>
+  <li>Fixed a bug where the CLI tools would not be available in WSL 2 distros.</li>
+  <li>Fixed a bug when switching from Linux to Windows containers due to access rights on <code class="highlighter-rouge">panic.log</code>. <a href="https://github.com/docker/for-win/issues/11899">for-win#11899</a></li>
+</ul>
+
+<h2 id="docker-desktop-360">Docker Desktop 3.6.0</h2>
+<p>2021-08-11</p>
+
+<blockquote>
+  <p>Download Docker Desktop</p>
+
+  <!-- This text will be included in topics containing Docker Desktop download URLs -->
+  <p><span class="no-js">We’ve updated the <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Subscription Service Agreement</a>. Please <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">read the announcement</a> and <a href="https://www.docker.com/pricing/faq" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">FAQs</a> to learn how companies using Docker Desktop may be affected. By downloading Docker Desktop, you agree to these updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_">terms</a>, the <a href="https://www.docker.com/legal/data-processing-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Data Processing Agreement</a>, and the <a href="https://www.docker.com/legal/docker-privacy-policy" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Data Privacy Policy</a>.</span></p>
+
+  <p><a href="https://desktop.docker.com/win/stable/amd64/67351/Docker Desktop Installer.exe" class="accept-eula">For Windows</a></p>
+</blockquote>
+
+<h3 id="new-1">New</h3>
+
+<ul>
+  <li><strong>Dev Environments</strong>: You can now create a Dev Environment from your local Git repository. For more information, see <a href="/desktop/dev-environments/#start-a-dev-environment-from-a-local-folder">Start a Dev Environment from a local folder</a>.</li>
+  <li><strong>Volume Management</strong>: You can now sort volumes by the name, the date created, and the size of the volume. You can also search for specific volumes using the <strong>Search</strong> field. For more information, see <a href="/desktop/dashboard/#explore-volumes">Explore volumes</a>.</li>
+</ul>
+
+<h3 id="upgrades-1">Upgrades</h3>
+
+<ul>
+  <li><a href="https://github.com/docker/compose-cli/releases/tag/v2.0.0-rc.1">Compose V2 RC1</a>
+    <ul>
+      <li>Docker compose command line completion.</li>
+      <li>Allow setting 0 scale/replicas.</li>
+      <li>Detect new container on logs —follow.</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/golang/go/releases/tag/go1.16.7">Go 1.16.7</a></li>
+  <li><a href="/engine/release-notes/#20108">Docker Engine 20.10.8</a></li>
+  <li><a href="https://github.com/containerd/containerd/releases/tag/v1.4.9">containerd v1.4.9</a></li>
+  <li><a href="https://github.com/opencontainers/runc/releases/tag/v1.0.1">runc v1.0.1</a></li>
+  <li><a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.21.3">Kubernetes 1.21.3</a></li>
+  <li><a href="https://hub.docker.com/layers/docker/for-desktop-kernel/5.10.47-0b705d955f5e283f62583c4e227d64a7924c138f/images/sha256-a4c79bc185ec9eba48dcc802a8881b9d97e532b3f803d23e5b8d4951588f4d51?context=repo">Linux kernel 5.10.47</a></li>
+</ul>
+
+<h3 id="bug-fixes-and-minor-changes-1">Bug fixes and minor changes</h3>
+
+<ul>
+  <li>Update kernel configuration to fix a performance regression in <a href="#docker-desktop-300">Docker Desktop 3.0.0</a>
+that caused publishing container ports to take 10 times longer than on older
+versions. For more information, see <a href="https://github.com/linuxkit/linuxkit/pull/3701">linuxkit/linuxkit#3701</a>
+and <a href="https://github.com/docker/for-mac/issues/5668">docker/for-mac#5668</a>.</li>
+  <li>Fixed a bug where the DNS server would fail after receiving an unexpectedly large datagram.</li>
+  <li>Fixed spurious traces on iptables updates.</li>
+  <li>Fixed slowness when adding multiple ports forwarding option.</li>
+  <li>Fixed bug where the WSL 2 synchonization code creates dangling symlinks if the WSL 2 home directory if it is the same as the Windows home directory. Fixes <a href="https://github.com/docker/for-win/issues/11668">docker/for-win#11668</a>.</li>
+  <li>Fixed <code class="highlighter-rouge">docker context ls</code> after upgrade from 3.5.x when the Linux WSL 2 home directory is the same as the Windows home directory.</li>
+  <li>Fixed the permissions on <code class="highlighter-rouge">%PROGRAMDATA%\Docker</code> to avoid a potential Windows containers compromise. See <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37841" target="_blank" rel="noopener" class="_">CVE-2021-37841</a>. Thanks to <a href="http://it.linkedin.com/in/alessiodallapiazza">Alessio Dalla Piazza</a> for discovering the issue and to @kevpar for helpful discussion.</li>
+  <li>Fixed bug where the Linux home directory under WSL 2 was set to the Windows home directory e.g. <code class="highlighter-rouge">/mnt/c/Users/...</code>.</li>
+  <li>Fixed bug where Desktop would fail to start if it could not parse CLI contexts. Fixes <a href="https://github.com/docker/for-win/issues/11601">docker/for-win#11601</a>.</li>
+  <li>Fixed an issue related to log display inside a container <a href="https://github.com/docker/for-win/issues/11251">docker/for-win#11251</a>.</li>
+  <li>Fixed failures of the Windows Background Intelligent Transfer Service preventing Docker Desktop to start. <a href="https://github.com/docker/for-win/issues/11273">docker/for-win#11273</a></li>
+</ul>
+
+<h2 id="docker-desktop-352">Docker Desktop 3.5.2</h2>
+<p>2021-07-08</p>
+
+<blockquote>
+  <p>Download Docker Desktop</p>
+
+  <!-- This text will be included in topics containing Docker Desktop download URLs -->
+  <p><span class="no-js">We’ve updated the <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Subscription Service Agreement</a>. Please <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">read the announcement</a> and <a href="https://www.docker.com/pricing/faq" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">FAQs</a> to learn how companies using Docker Desktop may be affected. By downloading Docker Desktop, you agree to these updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_">terms</a>, the <a href="https://www.docker.com/legal/data-processing-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Data Processing Agreement</a>, and the <a href="https://www.docker.com/legal/docker-privacy-policy" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Data Privacy Policy</a>.</span></p>
+
+  <p><a href="https://desktop.docker.com/win/stable/amd64/66501/Docker%20Desktop%20Installer.exe" class="accept-eula">For Windows</a></p>
+</blockquote>
+
+<h3 id="new-2">New</h3>
+
+<p><strong>Dev Environments Preview</strong>: Dev Environments enable you to seamlessly collaborate with your team members without moving between Git branches to get your code onto your team members’ machines. When using Dev Environments, you can share your in-progress work with your team members in just one click, and without having to deal with any merge conflicts. For more information and for instructions on how to use Dev Environments, see <a href="/desktop/dev-environments/">Development Environments Preview</a>.</p>
+
+<h3 id="upgrades-2">Upgrades</h3>
+
+<ul>
+  <li><a href="https://github.com/docker/compose-cli/releases/tag/v2.0.0-beta.6">Compose V2 beta 6</a>
+    <ul>
+      <li><code class="highlighter-rouge">compose run</code> and <code class="highlighter-rouge">compose exec</code> commands use separate streams for stdout and stderr. See <a href="https://github.com/docker/compose-cli/issues/1873">docker/compose-cli#1873</a>.</li>
+      <li><code class="highlighter-rouge">compose run</code> and <code class="highlighter-rouge">compose exec</code> commands support detach keys. Fixes <a href="https://github.com/docker/compose-cli/issues/1709">docker/compose-cli#1709</a>.</li>
+      <li>Fixed <code class="highlighter-rouge">--force</code> and <code class="highlighter-rouge">--volumes</code> flags on <code class="highlighter-rouge">compose rm</code> command. See <a href="https://github.com/docker/compose-cli/issues/1844">docker/compose-cli#1844</a>.</li>
+      <li>Fixed network’s IPAM configuration. Service can define a fixed IP. Fixes for <a href="https://github.com/docker/compose-cli/issues/1678">docker/compose-cli#1678</a> and <a href="https://github.com/docker/compose-cli/issues/1816">docker/compose-cli#1816</a></li>
+    </ul>
+  </li>
+  <li>Dev Environments
+    <ul>
+      <li>Support VS Code Insiders. See <a href="https://github.com/docker/dev-environments/issues/3">dev-environments#3</a></li>
+      <li>Allow users to specify a branch when cloning a project. See <a href="https://github.com/docker/dev-environments/issues/11">dev-environments#11</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="bug-fixes-and-minor-changes-2">Bug fixes and minor changes</h3>
+
+<ul>
+  <li>Dev Environments: Fixed a blank screen in some create and remove scenarios. Fixes <a href="https://github.com/docker/dev-environments/issues/4">dev-environments#4</a></li>
+  <li>Dev Environments: Fixed error handling when removing an environment. Fixes <a href="https://github.com/docker/dev-environments/issues/8">dev-environments#8</a></li>
+  <li>Dev Environments: The <strong>Start</strong>, <strong>Stop</strong>, and <strong>Share</strong> buttons are disabled while an environment is being created or removed.</li>
+  <li>Do not automatically switch CLI contexts on application start or when switching between Windows and Linux containers. Fixes <a href="https://github.com/docker/for-mac/issues/5787">docker/for-mac#5787</a> and <a href="https://github.com/docker/for-win/issues/11530">docker/for-win#11530</a>.</li>
+  <li>Fixed spurious traces on iptables updates.</li>
+  <li>Fixed a delay when adding a multiple port forwarding option.</li>
+</ul>
+
+<h2 id="docker-desktop-351">Docker Desktop 3.5.1</h2>
+<p>2021-06-25</p>
+
+<blockquote>
+  <p>Download Docker Desktop</p>
+
+  <!-- This text will be included in topics containing Docker Desktop download URLs -->
+  <p><span class="no-js">We’ve updated the <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Subscription Service Agreement</a>. Please <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">read the announcement</a> and <a href="https://www.docker.com/pricing/faq" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">FAQs</a> to learn how companies using Docker Desktop may be affected. By downloading Docker Desktop, you agree to these updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_">terms</a>, the <a href="https://www.docker.com/legal/data-processing-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Data Processing Agreement</a>, and the <a href="https://www.docker.com/legal/docker-privacy-policy" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Data Privacy Policy</a>.</span></p>
+
+  <p><a href="https://desktop.docker.com/win/stable/amd64/66090/Docker%20Desktop%20Installer.exe" class="accept-eula">For Windows</a></p>
+</blockquote>
+
+<h3 id="new-3">New</h3>
+
+<p><strong>Dev Environments Preview</strong>: Dev Environments enable you to seamlessly collaborate with your team members without moving between Git branches to get your code onto your team members’ machines. When using Dev Environments, you can share your in-progress work with your team members in just one click, and without having to deal with any merge conflicts. For more information and for instructions on how to use Dev Environments, see <a href="/desktop/dev-environments/">Development Environments Preview</a>.</p>
+
+<p><strong>Compose V2 beta</strong>: Docker Desktop now includes the beta version of Compose V2, which supports the <code class="highlighter-rouge">docker compose</code> command as part of the Docker CLI. For more information, see <a href="/compose/cli-command/">Compose V2 beta</a>. While <code class="highlighter-rouge">docker-compose</code> is still supported and maintained, Compose V2 implementation relies directly on the compose-go bindings which are maintained as part of the specification. The compose command in the Docker CLI supports most of the <code class="highlighter-rouge">docker-compose</code> commands and flags. It is expected to be a drop-in replacement for <code class="highlighter-rouge">docker-compose</code>. There are a few remaining flags that have yet to be implemented, see the <a href="/compose/cli-command-compatibility/">docker-compose compatibility list</a> for more information about the flags that are supported in the new compose command. If you run into any problems with Compose V2, you can easily switch back to Compose v1 by either by making changes in Docker Desktop <strong>Experimental</strong> Settings, or by running the command <code class="highlighter-rouge">docker-compose disable-v2</code>. Let us know your feedback on the new ‘compose’ command by creating an issue in the <a href="https://github.com/docker/compose-cli/issues">Compose-CLI</a> GitHub repository.</p>
+
+<h3 id="bug-fixes-and-minor-changes-3">Bug fixes and minor changes</h3>
+
+<ul>
+  <li>Fixed a bug where users could not install Docker Desktop when the path to the temp folder contained dots. Fixes <a href="https://github.com/docker/for-win/issues/11514">docker/for-win#11514</a></li>
+  <li>Fixed a link to the policy that provides details on how Docker handles the uploaded diagnostics data. Fixes <a href="https://github.com/docker/for-mac/issues/5741">docker/for-mac#5741</a></li>
+</ul>
+
+<h2 id="docker-desktop-350">Docker Desktop 3.5.0</h2>
+<p>2021-06-23</p>
+
+<blockquote>
+  <p>Download Docker Desktop</p>
+
+  <!-- This text will be included in topics containing Docker Desktop download URLs -->
+  <p><span class="no-js">We’ve updated the <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Subscription Service Agreement</a>. Please <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">read the announcement</a> and <a href="https://www.docker.com/pricing/faq" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">FAQs</a> to learn how companies using Docker Desktop may be affected. By downloading Docker Desktop, you agree to these updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_">terms</a>, the <a href="https://www.docker.com/legal/data-processing-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Data Processing Agreement</a>, and the <a href="https://www.docker.com/legal/docker-privacy-policy" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Data Privacy Policy</a>.</span></p>
+
+  <p><a href="https://desktop.docker.com/win/stable/amd64/66024/Docker%20Desktop%20Installer.exe" class="accept-eula">For Windows</a></p>
+</blockquote>
+
+<h3 id="new-4">New</h3>
+
+<p><strong>Dev Environments Preview</strong>: Dev Environments enable you to seamlessly collaborate with your team members without moving between Git branches to get your code onto your team members’ machines. When using Dev Environments, you can share your in-progress work with your team members in just one click, and without having to deal with any merge conflicts. For more information and for instructions on how to use Dev Environments, see <a href="/desktop/dev-environments/">Development Environments Preview</a>.</p>
+
+<p><strong>Compose V2 beta</strong>: Docker Desktop now includes the beta version of Compose V2, which supports the <code class="highlighter-rouge">docker compose</code> command as part of the Docker CLI. For more information, see <a href="/compose/cli-command/">Compose V2 beta</a>. While <code class="highlighter-rouge">docker-compose</code> is still supported and maintained, Compose V2 implementation relies directly on the compose-go bindings which are maintained as part of the specification. The compose command in the Docker CLI supports most of the <code class="highlighter-rouge">docker-compose</code> commands and flags. It is expected to be a drop-in replacement for <code class="highlighter-rouge">docker-compose</code>. There are a few remaining flags that have yet to be implemented, see the <a href="/compose/cli-command-compatibility/">docker-compose compatibility list</a> for more information about the flags that are supported in the new compose command. If you run into any problems with Compose V2, you can easily switch back to Compose v1 by either by making changes in Docker Desktop <strong>Experimental</strong> Settings, or by running the command <code class="highlighter-rouge">docker-compose disable-v2</code>. Let us know your feedback on the new ‘compose’ command by creating an issue in the <a href="https://github.com/docker/compose-cli/issues">Compose-CLI</a> GitHub repository.</p>
+
+<h3 id="upgrades-3">Upgrades</h3>
+
+<ul>
+  <li><a href="https://github.com/docker/compose-cli/releases/tag/v2.0.0-beta.4">Compose V2 beta</a>
+    <ul>
+      <li>Fixed a bug where a container cannot be started when a file is bind-mounted into a nested mountpoint. Fixes <a href="https://github.com/docker/compose-cli/issues/1795">docker/compose-cli#1795</a>.</li>
+      <li>Added support for container links and external links.</li>
+      <li>Introduced the <code class="highlighter-rouge">docker compose logs --since --until</code> option.</li>
+      <li><code class="highlighter-rouge">docker compose config --profiles</code> now lists all defined profiles.</li>
+    </ul>
+  </li>
+  <li>From <a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.21.1">Kubernetes 1.21.1</a> to <a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.21.2">Kubernetes 1.21.2</a></li>
+</ul>
+
+<h3 id="bug-fixes-and-minor-changes-4">Bug fixes and minor changes</h3>
+
+<ul>
+  <li><strong>Volume Management</strong>
+    <ul>
+      <li>Users can now remove a file or directory inside a volume using the the Docker Dashboard.</li>
+      <li>The <strong>Volumes</strong> view in Docker Dashboard displays the last modified time and the size of the contents inside a volume.</li>
+      <li>Users can save the files and directories inside a volume from Docker Dashboard.</li>
+    </ul>
+  </li>
+  <li>Fixed an issue that caused credStore timeout errors when running the <code class="highlighter-rouge">docker login</code> command. Fixes <a href="https://github.com/docker/for-win/issues/11472">docker/for-win#11472</a></li>
+  <li>Docker Desktop now allows the WSL 2 integration agent to start even when <code class="highlighter-rouge">/etc/wsl.conf</code> is malformed.</li>
+  <li>Fixed an issue with the Docker Compose app not being stopped or removed when started by multiple configuration files. <a href="https://github.com/docker/for-win/issues/11445">docker/for-win#11445</a></li>
+  <li>Fixed a bug where Docker Desktop fails to restart after a power failure because the Hyper-V VM restarted prematurely.</li>
+  <li>The default <code class="highlighter-rouge">docker</code> CLI <code class="highlighter-rouge">context</code> is now <code class="highlighter-rouge">desktop-linux</code> in Linux containers mode and <code class="highlighter-rouge">desktop-windows</code> when in Windows containers mode.</li>
+  <li>Show the Docker Desktop Feedback popup only when clicking Docker menu.</li>
+</ul>
+
+<h2 id="docker-desktop-340">Docker Desktop 3.4.0</h2>
+<p>2021-06-09</p>
+
+<blockquote>
+  <p>Download Docker Desktop</p>
+
+  <!-- This text will be included in topics containing Docker Desktop download URLs -->
+  <p><span class="no-js">We’ve updated the <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Subscription Service Agreement</a>. Please <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">read the announcement</a> and <a href="https://www.docker.com/pricing/faq" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">FAQs</a> to learn how companies using Docker Desktop may be affected. By downloading Docker Desktop, you agree to these updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_">terms</a>, the <a href="https://www.docker.com/legal/data-processing-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Data Processing Agreement</a>, and the <a href="https://www.docker.com/legal/docker-privacy-policy" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Data Privacy Policy</a>.</span></p>
+
+  <p><a href="https://desktop.docker.com/win/stable/amd64/65384/Docker%20Desktop%20Installer.exe" class="accept-eula">For Windows</a></p>
+</blockquote>
+
+<h3 id="new-5">New</h3>
+
+<p><strong>Volume Management</strong>: Docker Desktop users can now create and delete volumes using the Docker Dashboard and also see which volumes are being used. For more information, see <a href="/desktop/dashboard/#explore-volumes">Explore volumes</a>.</p>
+
+<p><strong>Compose V2 beta</strong>: Docker Desktop now includes the beta version of Compose V2, which supports the <code class="highlighter-rouge">docker compose</code> command as part of the Docker CLI. For more information, see <a href="/compose/cli-command/">Compose V2 beta</a>. While <code class="highlighter-rouge">docker-compose</code> is still supported and maintained, Compose V2 implementation relies directly on the compose-go bindings which are maintained as part of the specification. The compose command in the Docker CLI supports most of the <code class="highlighter-rouge">docker-compose</code> commands and flags. It is expected to be a drop-in replacement for <code class="highlighter-rouge">docker-compose</code>. There are a few remaining flags that have yet to be implemented, see the <a href="/compose/cli-command-compatibility/">docker-compose compatibility list</a> for more information about the flags that are supported in the new compose command. If you run into any problems with Compose V2, you can easily switch back to Compose v1 by either by making changes in Docker Desktop <strong>Experimental</strong> Settings, or by running the command <code class="highlighter-rouge">docker-compose disable-v2</code>. Let us know your feedback on the new ‘compose’ command by creating an issue in the <a href="https://github.com/docker/compose-cli/issues">Compose-CLI</a> GitHub repository.</p>
+
+<p><strong>Skip Docker Desktop updates</strong>: All users can now skip an update when they are prompted to install individual Docker Desktop releases. For more information, see <a href="/desktop/windows/install/#updates">Docker Desktop updates</a>.</p>
+
+<h3 id="deprecation">Deprecation</h3>
+
+<ul>
+  <li>Docker Desktop no longer installs Notary, <code class="highlighter-rouge">docker trust</code> should be used for image signing.</li>
+</ul>
+
+<h3 id="upgrades-4">Upgrades</h3>
+
+<ul>
+  <li><a href="/engine/release-notes/#20107">Docker Engine 20.10.7</a></li>
+  <li><a href="https://github.com/docker/compose/releases/tag/1.29.2">Docker Compose 1.29.2</a></li>
+  <li><a href="https://github.com/docker/hub-tool/releases/tag/v0.4.1">Docker Hub Tool v0.4.1</a></li>
+  <li><a href="https://github.com/docker/compose-cli/releases/tag/v1.0.16">Compose CLI v1.0.16</a></li>
+  <li><a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.21.1">Kubernetes 1.21.1</a></li>
+  <li><a href="https://github.com/containerd/containerd/releases/tag/v1.4.6">containerd v1.4.6</a></li>
+  <li><a href="https://github.com/opencontainers/runc/releases/tag/v1.0.0-rc95">runc v1.0.0-rc95</a></li>
+  <li><a href="https://github.com/golang/go/releases/tag/go1.16.5">Go 1.16.5</a></li>
+</ul>
+
+<h3 id="bug-fixes-and-minor-changes-5">Bug fixes and minor changes</h3>
+
+<ul>
+  <li>Fixed error showing stderr log in the UI. Fixes <a href="https://github.com/docker/for-win/issues/11251">docker/for-win#11251</a>.</li>
+  <li>Automatically reclaim space after deleting containers by deleting volumes and removing build cache.</li>
+  <li>Docker Compose applications with file names other than <code class="highlighter-rouge">docker-compose.yml</code> can now be removed from Docker Desktop. Fixes <a href="https://github.com/docker/for-win/issues/11046">docker/for-win#11046</a></li>
+  <li>Fixed version number missing in update dialog window.</li>
+  <li>Fixed an issue where the diagnostics were sometimes not uploaded correctly from the <strong>Support</strong> dialog.</li>
+  <li>Fixed DNS entries for <code class="highlighter-rouge">*.docker.internal</code> and Kubernetes cluster reset after the VM IP changes.</li>
+  <li>Fixed a corrupted internal cache which was preventing Docker Desktop from starting. Fixes <a href="https://github.com/docker/for-win/issues/8748">docker/for-win#8748</a>.</li>
+  <li>Fixed an issue where <code class="highlighter-rouge">docker info</code> sometimes took longer to respond. Fixes <a href="https://github.com/docker/for-win/issues/10675">docker/for-win#10675</a></li>
+</ul>
+
+<h2 id="docker-desktop-333">Docker Desktop 3.3.3</h2>
+<p>2021-05-06</p>
+
+<blockquote>
+  <p>Download Docker Desktop</p>
+
+  <!-- This text will be included in topics containing Docker Desktop download URLs -->
+  <p><span class="no-js">We’ve updated the <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Subscription Service Agreement</a>. Please <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">read the announcement</a> and <a href="https://www.docker.com/pricing/faq" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">FAQs</a> to learn how companies using Docker Desktop may be affected. By downloading Docker Desktop, you agree to these updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_">terms</a>, the <a href="https://www.docker.com/legal/data-processing-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Data Processing Agreement</a>, and the <a href="https://www.docker.com/legal/docker-privacy-policy" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Data Privacy Policy</a>.</span></p>
+
+  <p><a href="https://desktop.docker.com/win/stable/amd64/64133/Docker%20Desktop%20Installer.exe" class="accept-eula">For Windows</a></p>
+</blockquote>
+
+<h3 id="upgrades-5">Upgrades</h3>
+
+<ul>
+  <li><a href="https://github.com/snyk/snyk/releases/tag/v1.563.0">Snyk v1.563.0</a></li>
+  <li><a href="https://github.com/docker/scan-cli-plugin/releases/tag/v0.8.0">Docker Scan v0.8.0</a></li>
+</ul>
+
+<h3 id="bug-fixes-and-minor-changes-6">Bug fixes and minor changes</h3>
+
+<ul>
+  <li>Fixed the diagnostics failing to upload from the Troubleshoot screen.</li>
+</ul>
+
+<h2 id="docker-desktop-332">Docker Desktop 3.3.2</h2>
+<p>2021-05-03</p>
+
+<blockquote>
+  <p>Download Docker Desktop</p>
+
+  <!-- This text will be included in topics containing Docker Desktop download URLs -->
+  <p><span class="no-js">We’ve updated the <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Subscription Service Agreement</a>. Please <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">read the announcement</a> and <a href="https://www.docker.com/pricing/faq" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">FAQs</a> to learn how companies using Docker Desktop may be affected. By downloading Docker Desktop, you agree to these updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_">terms</a>, the <a href="https://www.docker.com/legal/data-processing-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Data Processing Agreement</a>, and the <a href="https://www.docker.com/legal/docker-privacy-policy" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Data Privacy Policy</a>.</span></p>
+
+  <p><a href="https://desktop.docker.com/win/stable/amd64/63878/Docker%20Desktop%20Installer.exe" class="accept-eula">For Windows</a></p>
+</blockquote>
+
+<h3 id="upgrades-6">Upgrades</h3>
+
+<ul>
+  <li><a href="https://github.com/docker/compose-cli/tree/v1.0.14">Compose CLI v1.0.14</a></li>
+  <li><a href="https://golang.org/doc/go1.16">Go 1.16.3</a></li>
+  <li><a href="https://github.com/docker/compose/releases/tag/1.29.1">Docker Compose 1.29.1</a></li>
+  <li><a href="/engine/release-notes/#20106">Docker Engine 20.10.6</a></li>
+</ul>
+
+<h3 id="bug-fixes-and-minor-changes-7">Bug fixes and minor changes</h3>
+
+<ul>
+  <li>Fixed a bug where a <code class="highlighter-rouge">metrics-port</code> defined in the engine’s <code class="highlighter-rouge">daemon.json</code> blocks application restart.</li>
+  <li>Fixed a leak of ephemeral ports. Fixes <a href="https://github.com/docker/for-mac/issues/5611">docker/for-mac#5611</a>.</li>
+  <li>Enable buildkit garbage collection by default.</li>
+  <li>Fixed a bug which blocked binding to port 123. Fixes <a href="https://github.com/docker/for-mac/issues/5589">docker/for-mac#5589</a>.</li>
+  <li>Removed the “Deploy Docker Stacks to Kubernetes by default” Kubernetes setting. The component was removed in 2.4.0.0 but we forgot to remove the setting. Fixes <a href="https://github.com/docker/for-mac/issues/4966">docker/for-mac#4966</a>.</li>
+</ul>
+
+<h2 id="docker-desktop-331">Docker Desktop 3.3.1</h2>
+<p>2021-04-15</p>
+
+<blockquote>
+  <p>Download Docker Desktop</p>
+
+  <!-- This text will be included in topics containing Docker Desktop download URLs -->
+  <p><span class="no-js">We’ve updated the <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Subscription Service Agreement</a>. Please <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">read the announcement</a> and <a href="https://www.docker.com/pricing/faq" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">FAQs</a> to learn how companies using Docker Desktop may be affected. By downloading Docker Desktop, you agree to these updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_">terms</a>, the <a href="https://www.docker.com/legal/data-processing-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Data Processing Agreement</a>, and the <a href="https://www.docker.com/legal/docker-privacy-policy" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Data Privacy Policy</a>.</span></p>
+
+  <p><a href="https://desktop.docker.com/win/stable/amd64/63152/Docker%20Desktop%20Installer.exe" class="accept-eula">For Windows</a></p>
+</blockquote>
+
+<h3 id="bug-fixes-and-minor-changes-8">Bug fixes and minor changes</h3>
+
+<ul>
+  <li>Docker Desktop now ensures the permissions of <code class="highlighter-rouge">/dev/null</code> and other devices are correctly set to <code class="highlighter-rouge">0666</code> (<code class="highlighter-rouge">rw-rw-rw-</code>) inside <code class="highlighter-rouge">--privileged</code> containers. Fixes <a href="https://github.com/docker/for-mac/issues/5527">docker/for-mac#5527</a>.</li>
+  <li>Fixed an issue that caused <code class="highlighter-rouge">docker run</code> to fail when using <code class="highlighter-rouge">\\wsl.localhost</code> path to a directory. Fixes <a href="https://github.com/docker/for-win/issues/10786">docker/for-win#10786</a></li>
+  <li>Fixed an issue that caused Docker Desktop to fail during startup when it is unable to establish a connection with Docker Hub in the backend. Fixes <a href="https://github.com/docker/for-win/issues/10896">docker/for-win#10896</a></li>
+  <li>Fixed file permission when creating a file from a delta update. Fixes <a href="https://github.com/docker/for-win/issues/10881">docker/for-win#10881</a></li>
+</ul>
+
+<h2 id="docker-desktop-330">Docker Desktop 3.3.0</h2>
+<p>2021-04-08</p>
+
+<blockquote>
+  <p>Download Docker Desktop</p>
+
+  <!-- This text will be included in topics containing Docker Desktop download URLs -->
+  <p><span class="no-js">We’ve updated the <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Subscription Service Agreement</a>. Please <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">read the announcement</a> and <a href="https://www.docker.com/pricing/faq" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">FAQs</a> to learn how companies using Docker Desktop may be affected. By downloading Docker Desktop, you agree to these updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_">terms</a>, the <a href="https://www.docker.com/legal/data-processing-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Data Processing Agreement</a>, and the <a href="https://www.docker.com/legal/docker-privacy-policy" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Data Privacy Policy</a>.</span></p>
+
+  <p><a href="https://desktop.docker.com/win/stable/amd64/62916/Docker%20Desktop%20Installer.exe" class="accept-eula">For Windows</a></p>
+</blockquote>
+
+<h3 id="new-6">New</h3>
+
+<p>You can now specify when to download and install a Docker Desktop update. When an update becomes available, Docker Desktop displays an icon to indicate the availability of a newer version. You can download the update in the background whenever convenient. When the download is complete, all you need to do is to click Update and restart to install the latest update.</p>
+
+<p>Developers who use Docker Desktop for professional development purposes may at times need to skip a specific update. For this reason, users with a paid Docker subscription can skip notifications for a particular update when a reminder appears.</p>
+
+<p>For developers in IT managed environments, who don’t have administrative access to install updates to Docker Desktop, there is now an option in the Settings menu to opt out of notifications altogether for Docker Desktop updates if your Docker ID is part of a Team subscription.</p>
+
+<h3 id="upgrades-7">Upgrades</h3>
+
+<ul>
+  <li><a href="https://github.com/docker/compose/releases/tag/1.29.0">Docker Compose 1.29.0</a></li>
+  <li><a href="https://github.com/docker/compose-cli/tree/v1.0.12">Compose CLI v1.0.12</a></li>
+  <li><a href="https://hub.docker.com/layers/docker/for-desktop-kernel/4.19.76-83885d3b4cff391813f4262099b36a529bca2df8-amd64/images/sha256-0214b82436af70054e013ea51cb1fea72bd943d0d6245b6521f1ff09a505c40f?context=repo">Linux kernel 5.10.25</a></li>
+  <li><a href="https://github.com/snyk/snyk/releases/tag/v1.461.0">Snyk v1.461.0</a></li>
+  <li><a href="https://github.com/docker/hub-tool/releases/tag/v0.3.1">Docker Hub Tool v0.3.1</a></li>
+  <li><a href="https://github.com/containerd/containerd/releases/tag/v1.4.4">containerd v1.4.4</a></li>
+  <li><a href="https://github.com/opencontainers/runc/releases/tag/v1.0.0-rc93">runc v1.0.0-rc93</a></li>
+</ul>
+
+<h3 id="bug-fixes-and-minor-changes-9">Bug fixes and minor changes</h3>
+
+<ul>
+  <li>Fixed an issue when viewing compose applications that have been started with an explicit project name. Fixes <a href="https://github.com/docker/for-win/issues/10564">docker/for-win#10564</a>.</li>
+  <li>Ensure <code class="highlighter-rouge">--add-host host.docker.internal:host-gateway</code> causes <code class="highlighter-rouge">host.docker.internal</code> resolves to the host IP, rather than the IP of the IP router. See <a href="https://github.com/docker/for-linux/issues/264">docker/for-linux#264</a>.</li>
+  <li>Fixed port allocation for Windows containers. Fixes <a href="https://github.com/docker/for-win/issues/10552">docker/for-win#10552</a>.</li>
+  <li>Fixed an issue where running a container with a random port on the host caused Docker Desktop dashboard to incorrectly open a browser with port 0, instead of using the allocated port.</li>
+  <li>Fixed an issue where pulling an image from Docker Hub using the Docker Desktop dashboard was failing silently.</li>
+  <li>Perform a filesystem check when starting the Linux VM.</li>
+</ul>
+
+<h2 id="docker-desktop-322">Docker Desktop 3.2.2</h2>
+<p>2021-03-15</p>
+
+<blockquote>
+  <p>Download Docker Desktop</p>
+
+  <!-- This text will be included in topics containing Docker Desktop download URLs -->
+  <p><span class="no-js">We’ve updated the <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Subscription Service Agreement</a>. Please <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">read the announcement</a> and <a href="https://www.docker.com/pricing/faq" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">FAQs</a> to learn how companies using Docker Desktop may be affected. By downloading Docker Desktop, you agree to these updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_">terms</a>, the <a href="https://www.docker.com/legal/data-processing-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Data Processing Agreement</a>, and the <a href="https://www.docker.com/legal/docker-privacy-policy" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Data Privacy Policy</a>.</span></p>
+
+  <p><a href="https://desktop.docker.com/win/stable/amd64/61853/Docker%20Desktop%20Installer.exe" class="accept-eula">For Windows</a></p>
+</blockquote>
+
+<h3 id="bug-fixes-and-minor-changes-10">Bug fixes and minor changes</h3>
+
+<ul>
+  <li>Fixed an issue that stopped containers binding to port 53. Fixes <a href="https://github.com/docker/for-win/issues/10601">docker/for-win#10601</a>.</li>
+  <li>Fixed an issue that 32-bit Intel binaries were emulated on Intel CPUs. Fixes <a href="https://github.com/docker/for-win/issues/10594">docker/for-win#10594</a>.</li>
+  <li>Fixed an issue related to high CPU consumption and frozen UI when the network connection is lost. Fixes <a href="https://github.com/docker/for-win/issues/10563">for-win/#10563</a>.</li>
+</ul>
+
+<h2 id="docker-desktop-321">Docker Desktop 3.2.1</h2>
+<p>2021-03-05</p>
+
+<blockquote>
+  <p>Download Docker Desktop</p>
+
+  <!-- This text will be included in topics containing Docker Desktop download URLs -->
+  <p><span class="no-js">We’ve updated the <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Subscription Service Agreement</a>. Please <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">read the announcement</a> and <a href="https://www.docker.com/pricing/faq" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">FAQs</a> to learn how companies using Docker Desktop may be affected. By downloading Docker Desktop, you agree to these updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_">terms</a>, the <a href="https://www.docker.com/legal/data-processing-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Data Processing Agreement</a>, and the <a href="https://www.docker.com/legal/docker-privacy-policy" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Data Privacy Policy</a>.</span></p>
+
+  <p><a href="https://desktop.docker.com/win/stable/amd64/61626/Docker%20Desktop%20Installer.exe" class="accept-eula">For Windows</a></p>
+</blockquote>
+
+<h3 id="upgrades-8">Upgrades</h3>
+
+<ul>
+  <li><a href="/engine/release-notes/#20105">Docker Engine 20.10.5</a></li>
+</ul>
+
+<h2 id="docker-desktop-320">Docker Desktop 3.2.0</h2>
+<p>2021-03-01</p>
+
+<blockquote>
+  <p>Download Docker Desktop</p>
+
+  <!-- This text will be included in topics containing Docker Desktop download URLs -->
+  <p><span class="no-js">We’ve updated the <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Subscription Service Agreement</a>. Please <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">read the announcement</a> and <a href="https://www.docker.com/pricing/faq" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">FAQs</a> to learn how companies using Docker Desktop may be affected. By downloading Docker Desktop, you agree to these updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_">terms</a>, the <a href="https://www.docker.com/legal/data-processing-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Data Processing Agreement</a>, and the <a href="https://www.docker.com/legal/docker-privacy-policy" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Data Privacy Policy</a>.</span></p>
+
+  <p><a href="https://desktop.docker.com/win/stable/amd64/61504/Docker%20Desktop%20Installer.exe" class="accept-eula">For Windows</a></p>
+</blockquote>
+
+<h3 id="new-7">New</h3>
+
+<ul>
+  <li>The Docker Dashboard opens automatically when you start Docker Desktop.</li>
+  <li>The Docker Dashboard displays a tip once a week.</li>
+  <li>BuildKit is now the default builder for all users, not just for new installations. To turn this setting off, go to <strong>Settings</strong> &gt; <strong>Docker Engine</strong> and add the following block to the Docker daemon configuration file:
+    <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="s2">"buildkit"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>    </div>
+  </li>
+</ul>
+
+<h3 id="upgrades-9">Upgrades</h3>
+
+<ul>
+  <li><a href="/engine/release-notes/#20103">Docker Engine 20.10.3</a></li>
+  <li><a href="https://github.com/docker/compose/releases/tag/1.28.5">Docker Compose 1.28.5</a></li>
+  <li><a href="https://github.com/docker/compose-cli/tree/v1.0.9">Compose CLI v1.0.9</a></li>
+  <li><a href="https://github.com/docker/hub-tool/releases/tag/v0.3.0">Docker Hub Tool v0.3.0</a></li>
+  <li><a href="https://wiki.qemu.org/ChangeLog/5.0">QEMU 5.0.1</a></li>
+  <li><a href="https://github.com/awslabs/amazon-ecr-credential-helper/releases/tag/v0.5.0">Amazon ECR Credential Helper v0.5.0</a></li>
+  <li><a href="https://alpinelinux.org/posts/Alpine-3.13.0-released.html">Alpine 3.13</a></li>
+  <li><a href="https://github.com/kubernetes/kubernetes/releases/tag/v1.19.7">Kubernetes 1.19.7</a></li>
+  <li><a href="https://golang.org/doc/go1.16">Go 1.16</a></li>
+</ul>
+
+<h3 id="deprecation-1">Deprecation</h3>
+
+<ul>
+  <li>Docker Desktop cannot be installed on Windows 1709 (build 16299) anymore.</li>
+  <li>Removed the deprecated DNS name <code class="highlighter-rouge">docker.for.win.localhost</code>. Use DNS name <code class="highlighter-rouge">host.docker.internal</code> in a container to access services that are running on the host. <a href="https://github.com/docker/for-win/issues/10619">docker/for-win#10619</a></li>
+</ul>
+
+<h3 id="bug-fixes-and-minor-changes-11">Bug fixes and minor changes</h3>
+
+<ul>
+  <li>Fixed an issue on the container detail screen where the buttons would disappear when scrolling the logs. Fixes <a href="https://github.com/docker/for-win/issues/10160">docker/for-win#10160</a></li>
+  <li>Fixed an issue when port forwarding multiple ports with an IPv6 container network. Fixes <a href="https://github.com/docker/for-mac/issues/5247">docker/for-mac#5247</a></li>
+  <li>Fixed a regression where <code class="highlighter-rouge">docker load</code> could not use an xz archive anymore. Fixes <a href="https://github.com/docker/for-win/issues/10364">docker/for-win#10364</a></li>
+  <li>Fixed an issue that caused the WSL 2 backend shutdown process to interfere with Windows shutdown. Fixes <a href="https://github.com/docker/for-win/issues/5825">docker/for-win#5825</a> <a href="https://github.com/docker/for-win/issues/6933">docker/for-win#6933</a> <a href="https://github.com/docker/for-win/issues/6446">docker/for-win#6446</a></li>
+  <li>Fixed creds store using <code class="highlighter-rouge">desktop.exe</code> from WSL 2. Fixes <a href="https://github.com/docker/compose-cli/issues/1181">docker/compose-cli#1181</a></li>
+  <li>Fixed a navigation issue in the <strong>Containers / Apps</strong> view. Fixes <a href="https://github.com/docker/for-win/issues/10160#issuecomment-764660660">docker/for-win#10160</a></li>
+  <li>Fixed container instance view with long container/image name. Fixes <a href="https://github.com/docker/for-win/issues/10160">docker/for-win#10160</a></li>
+  <li>Fixed an issue when binding ports on specific IPs. Note: It may now take a bit of time before the <code class="highlighter-rouge">docker inspect</code> command shows the open ports. Fixes <a href="https://github.com/docker/for-win/issues/10008">docker/for-win#10008</a></li>
+  <li>Fixed an issue where an image deleted from the Docker dashboard was still displayed on the <strong>Images</strong> view.</li>
+</ul>
+
+<h2 id="docker-desktop-310">Docker Desktop 3.1.0</h2>
+<p>2021-01-14</p>
+
+<blockquote>
+  <p>Download Docker Desktop</p>
+
+  <!-- This text will be included in topics containing Docker Desktop download URLs -->
+  <p><span class="no-js">We’ve updated the <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Subscription Service Agreement</a>. Please <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">read the announcement</a> and <a href="https://www.docker.com/pricing/faq" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">FAQs</a> to learn how companies using Docker Desktop may be affected. By downloading Docker Desktop, you agree to these updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_">terms</a>, the <a href="https://www.docker.com/legal/data-processing-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Data Processing Agreement</a>, and the <a href="https://www.docker.com/legal/docker-privacy-policy" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Data Privacy Policy</a>.</span></p>
+
+  <p><a href="https://desktop.docker.com/win/stable/51484/Docker%20Desktop%20Installer.exe" class="accept-eula">For Windows</a></p>
+</blockquote>
+
+<h3 id="new-8">New</h3>
+
+<ul>
+  <li>Add experimental support for GPU workloads with WSL 2 backend (requires Windows Insider developer channel).</li>
+  <li>Docker daemon now runs within a Debian Buster based container (instead of Alpine).</li>
+</ul>
+
+<h3 id="upgrades-10">Upgrades</h3>
+
+<ul>
+  <li><a href="https://github.com/docker/compose-cli/tree/v1.0.7">Compose CLI v1.0.7</a></li>
+</ul>
+
+<h3 id="bug-fixes-and-minor-changes-12">Bug fixes and minor changes</h3>
+
+<ul>
+  <li>Fixed an issue where disabling proxy settings would not work. Fixes <a href="https://github.com/docker/for-win/issues/9357">docker/for-win#9357</a>.</li>
+  <li>Fixed UI reliability issues when users create or delete a lot of objects in batches.</li>
+  <li>Redesigned the <strong>Support</strong> UI to improve usability.</li>
+</ul>
+
+<h2 id="docker-desktop-304">Docker Desktop 3.0.4</h2>
+<p>2021-01-06</p>
+
+<blockquote>
+  <p>Download Docker Desktop</p>
+
+  <!-- This text will be included in topics containing Docker Desktop download URLs -->
+  <p><span class="no-js">We’ve updated the <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Subscription Service Agreement</a>. Please <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">read the announcement</a> and <a href="https://www.docker.com/pricing/faq" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">FAQs</a> to learn how companies using Docker Desktop may be affected. By downloading Docker Desktop, you agree to these updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_">terms</a>, the <a href="https://www.docker.com/legal/data-processing-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Data Processing Agreement</a>, and the <a href="https://www.docker.com/legal/docker-privacy-policy" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Data Privacy Policy</a>.</span></p>
+
+  <p><a href="https://desktop.docker.com/win/stable/51218/Docker%20Desktop%20Installer.exe" class="accept-eula">For Windows</a></p>
+</blockquote>
+
+<h3 id="upgrades-11">Upgrades</h3>
+
+<ul>
+  <li><a href="/engine/release-notes/#20102">Docker Engine 20.10.2</a></li>
+</ul>
+
+<h3 id="bug-fixes-and-minor-changes-13">Bug fixes and minor changes</h3>
+
+<ul>
+  <li>Fixed an issue that could cause Docker Desktop to fail to start after upgrading to 3.0.0. Fixes <a href="https://github.com/docker/for-win/issues/9755">docker/for-win#9755</a>.</li>
+</ul>
+
+<h2 id="docker-desktop-300">Docker Desktop 3.0.0</h2>
+<p>2020-12-10</p>
+
+<blockquote>
+  <p>Download Docker Desktop</p>
+
+  <!-- This text will be included in topics containing Docker Desktop download URLs -->
+  <p><span class="no-js">We’ve updated the <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Subscription Service Agreement</a>. Please <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">read the announcement</a> and <a href="https://www.docker.com/pricing/faq" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">FAQs</a> to learn how companies using Docker Desktop may be affected. By downloading Docker Desktop, you agree to these updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_">terms</a>, the <a href="https://www.docker.com/legal/data-processing-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Data Processing Agreement</a>, and the <a href="https://www.docker.com/legal/docker-privacy-policy" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Data Privacy Policy</a>.</span></p>
+
+  <p><a href="https://desktop.docker.com/win/stable/50684/Docker%20Desktop%20Installer.exe" class="accept-eula">For Windows</a></p>
+</blockquote>
+
+<h3 id="new-9">New</h3>
+
+<ul>
+  <li>Use of three-digit version number for Docker Desktop releases.</li>
+  <li>Docker Desktop updates are now much smaller as they will be applied using delta patches. For more information, see <a href="/desktop/windows/install/#updates">Automatic updates</a>.</li>
+  <li>
+    <p>First version of <code class="highlighter-rouge">docker compose</code> (as an alternative to the existing <code class="highlighter-rouge">docker-compose</code>). Supports some basic commands but not the complete functionality of <code class="highlighter-rouge">docker-compose</code> yet.</p>
+
+    <ul>
+      <li>Supports the following subcommands: <code class="highlighter-rouge">up</code>, <code class="highlighter-rouge">down</code>, <code class="highlighter-rouge">logs</code>, <code class="highlighter-rouge">build</code>, <code class="highlighter-rouge">pull</code>, <code class="highlighter-rouge">push</code>, <code class="highlighter-rouge">ls</code>, <code class="highlighter-rouge">ps</code></li>
+      <li>
+        <p>Supports basic volumes, bind mounts, networks, and environment variables</p>
+
+        <p>Let us know your feedback by creating an issue in the <a href="https://github.com/docker/compose-cli/issues" target="blank" rel="noopener">compose-cli</a> GitHub repository.</p>
+      </li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/docker/roadmap/issues/117" target="blank" rel="noopener">Docker Hub Tool v0.2.0</a></li>
+</ul>
+
+<h3 id="upgrades-12">Upgrades</h3>
+
+<ul>
+  <li><a href="/engine/release-notes/#20100">Docker Engine 20.10.0</a></li>
+  <li><a href="https://github.com/golang/go/issues?q=milestone%3AGo1.15.6+label%3ACherryPickApproved+">Go 1.15.6</a></li>
+  <li><a href="https://github.com/docker/compose-cli/releases/tag/v1.0.4">Compose CLI v1.0.4</a></li>
+  <li><a href="https://github.com/snyk/snyk/releases/tag/v1.432.0">Snyk v1.432.0</a></li>
+</ul>
+
+<h3 id="bug-fixes-and-minor-changes-14">Bug fixes and minor changes</h3>
+
+<ul>
+  <li>Downgraded the kernel to <a href="https://hub.docker.com/layers/docker/for-desktop-kernel/4.19.121-2a1dbedf3f998dac347c499808d7c7e029fbc4d3-amd64/images/sha256-4e7d94522be4f25f1fbb626d5a0142cbb6e785f37e437f6fd4285e64a199883a?context=repo">4.19.121</a> to reduce the CPU usage of hyperkit. Fixes <a href="https://github.com/docker/for-mac/issues/5044">docker/for-mac#5044</a></li>
+  <li>Fixed an unexpected EOF error when trying to start a non-existing container with <code class="highlighter-rouge">-v /var/run/docker.sock:</code>. See <a href="https://github.com/docker/for-mac/issues/5025">docker/for-mac#5025</a>.</li>
+</ul>
+
+<h3 id="known-issues">Known issues</h3>
+
+<ul>
+  <li>Building an image with BuildKit from a git URL fails when using the form <code class="highlighter-rouge">github.com/org/repo</code>. To work around this issue, use the form <code class="highlighter-rouge">git://github.com/org/repo</code>.</li>
+  <li>Some DNS addresses fail to resolve within containers based on Alpine Linux 3.13.</li>
+</ul>
+
+<div class="modal" id="accept-eula" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="download-docker-desktop">Download Docker Desktop</h5>
+ <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+      </div>
+      <div class="modal-body">
+        <p>We've updated the <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Subscription Service Agreement</a>. Please read <a href="https://www.docker.com/blog/updating-product-subscriptions/" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">the announcement</a> and <a href="https://www.docker.com/pricing/faq" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">FAQs</a> to learn how companies using Docker Desktop may be affected.</p>
+        <p>By clicking "Accept and Download", you agree to these updated <a href="https://www.docker.com/legal/docker-subscription-service-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">terms</a>, the <a href="https://www.docker.com/legal/data-processing-agreement" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Docker Data Processing Agreement</a>, and the <a href="https://www.docker.com/legal/docker-privacy-policy" target="_blank" rel="noopener" class="_" id="dkr_docs_relnotes_btl">Data Privacy Policy</a>.</p>
+      </div>
+      <div class="modal-footer">
+<a type="button" class="btn btn-primary">Accept and Download</a> <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<span class="glyphicon glyphicon-tags" style="padding-right: 10px"></span><span style="vertical-align: 2px"><a href="/search/?q=Docker Desktop for Windows">Docker Desktop for Windows</a>, <a href="/search/?q=release notes">release notes</a></span><div class="ratings-div"><div id="pd_rating_holder_8453675"></div></div></section>
+                    </main>
+                    <nav class="col-nav">
+                        <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+                            <div id="navbar" class="nav-sidebar">
+                                <ul class="nav hidden-md hidden-lg"></ul>
+                                <ul class="nav" id="jsTOCLeftNav"></ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="col-toc">
+                        <div class="sidebar hidden-xs hidden-sm">
+                            <div class="toc-nav">
+                                <div class="feedback-links">
+                                    <ul><li><a href="https://github.com/docker/docker.github.io/edit/master/desktop/windows/release-notes.md"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this page</a></li><li><a href="https://github.com/docker/docker.github.io/issues/new?body=File: [desktop/windows/release-notes.md](https://docs.docker.com/desktop/windows/release-notes/)" class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>
+                                        <li><div class="toggle-mode">
+  <div class="icon">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+  </div>
+  <div class="toggle-switch">
+      <label class="switch">
+          <input type="checkbox" id="switch-style">
+          <span class="slider round"></span>
+      </label>
+  </div>
+  <div class="icon">
+      <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </div>
+</div>
+</li>
+                                    </ul>
+                                </div><div id="side-toc-title">On this page:</div>
+<ul id="my_toc" class="inline_toc">
+  <li><a href="#docker-desktop-400" class="nomunge">Docker Desktop 4.0.0</a>
+    <ul>
+      <li><a href="#docker-desktop-360" class="nomunge">Docker Desktop 3.6.0</a></li>
+      <li><a href="#docker-desktop-352" class="nomunge">Docker Desktop 3.5.2</a></li>
+      <li><a href="#docker-desktop-351" class="nomunge">Docker Desktop 3.5.1</a></li>
+      <li><a href="#docker-desktop-350" class="nomunge">Docker Desktop 3.5.0</a></li>
+      <li><a href="#docker-desktop-340" class="nomunge">Docker Desktop 3.4.0</a></li>
+      <li><a href="#docker-desktop-333" class="nomunge">Docker Desktop 3.3.3</a></li>
+      <li><a href="#docker-desktop-332" class="nomunge">Docker Desktop 3.3.2</a></li>
+      <li><a href="#docker-desktop-331" class="nomunge">Docker Desktop 3.3.1</a></li>
+      <li><a href="#docker-desktop-330" class="nomunge">Docker Desktop 3.3.0</a></li>
+      <li><a href="#docker-desktop-322" class="nomunge">Docker Desktop 3.2.2</a></li>
+      <li><a href="#docker-desktop-321" class="nomunge">Docker Desktop 3.2.1</a></li>
+      <li><a href="#docker-desktop-320" class="nomunge">Docker Desktop 3.2.0</a></li>
+      <li><a href="#docker-desktop-310" class="nomunge">Docker Desktop 3.1.0</a></li>
+      <li><a href="#docker-desktop-304" class="nomunge">Docker Desktop 3.0.4</a></li>
+      <li><a href="#docker-desktop-300" class="nomunge">Docker Desktop 3.0.0</a></li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+          
+    <div class="container">
+        <div class="top_footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/why-docker">Why Docker?</a></b></li>
+                        <li><a href="https://www.docker.com/what-container">What is a Container?</a></li>
+                        <li><a href="https://docker.events.cube365.net/dockercon/">DockerCon</a></li>
+                        <li><b><a href="https://www.docker.com/products/overview">Products</a></b></li>
+                        <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+                        <li><a href="https://www.docker.com/products/docker-hub">Docker Hub</a></li>
+                        <li><a href="https://www.docker.com/roadmap">Docker Product Roadmap</a></li>
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Features</a></b></li>
+                        <li><a href="https://www.docker.com/products/container-runtime">Container Runtime</a></li>
+                        <li><a href="https://www.docker.com/products/developer-tools">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Developers</a></b></li>
+                        <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+                        <li><a href="https://www.docker.com/docker-community">Community</a></li>
+                        <li><a href="https://www.docker.com/open-source">Open Source</a></li>
+                        <li><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Pricing</a></b></li>
+                        <li><a href="https://www.docker.com/pricing/faq">FAQs</a></li>
+                        <li><a href="https://www.docker.com/partners/programs">Docker Verified Publisher Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/company" target="_blank" rel="noopener">Company</a></b></li>
+                        <li><a href="https://www.docker.com/company">About Us</a></li>
+                        <li><a href="https://www.docker.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+                        <li><a href="https://www.docker.com/customers">Customers</a></li>
+                        <li><a href="https://www.docker.com/partners">Partners</a></li>
+                        <li><a href="https://www.docker.com/company/newsroom">Newsroom</a></li>
+                        <li><a href="https://www.docker.com/careers">Careers</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <nav class="footer_sub_nav">
+                    <ul class="menu">
+                        <li><a href="http://status.docker.com/">Status</a></li>
+                        <li><a href="https://www.docker.com/legal">Legal</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="bottom_footer">
+            <div class="footer-copyright col-xs-12 col-md-8">
+                <p class="copyright">
+                    Copyright &copy; 2013-2021 Docker Inc. All rights reserved. </p>
+            </div>
+            <div class="footer_social_nav">
+                <ul class="nav-social">
+                    <li class="fa fa-twitter"><a href="http://twitter.com/docker">Twitter</a></li>
+                    <li class="fa fa-youtube"><a href="http://www.youtube.com/user/dockerrun">Youtube</a></li>
+                    <li class="fa fa-github"><a href="https://github.com/docker">GitHub</a></li>
+                    <li class="fa fa-linkedin"><a href="https://www.linkedin.com/company/docker">Linkedin</a></li>
+                    <li class="fa fa-facebook"><a href="https://www.facebook.com/docker.run">Facebook</a></li>
+                    <li class="fa fa-slideshare"><a href="https://www.slideshare.net/docker">Slideshare</a></li>
+                    <li class="fa fa-reddit"><a href="https://www.reddit.com/r/docker">Reddit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </footer>
+    <script>const pageURL = "/desktop/windows/release-notes/";</script><script>
+    let PDRTJS_settings_8453675 = {
+        "id": "8453675",
+        "unique_id": "desktop/windows/release-notes.md",
+        "title": "Docker for Windows release notes",
+        "font_family": "Open Sans, sans serif",
+        "font_color": "b9c2cc",
+        "font_align": "center",
+        "permalink": "https://github.com/docker/docker.github.io/blob/master/desktop/windows/release-notes.md"
+    };
+    (function (d, c, j) {
+        if (!document.getElementById(j)) {
+            let pd=d.createElement(c),s;pd.id=j;pd.src='https://polldaddy.com/js/rating/rating.js';s=document.getElementsByTagName(c)[0];s.parentNode.insertBefore(pd, s);
+        }
+    }(document, 'script', 'pd-rating-js'));
+</script></body>
+</html>

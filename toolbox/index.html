@@ -1,0 +1,398 @@
+<!-- Page generated 2021-11-17 12:16:07 +0000-->
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex"/><!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WL2QLG5');</script>
+<title>Docker Toolbox | Docker Documentation</title>
+  <meta name="description" content="Docker Desktop for Windows and Docker Toolbox" />
+  <meta name="keywords" content="windows, alpha, beta, toolbox, docker-machine, tutorial">
+  <link rel="canonical" href="https://docs.docker.com/toolbox/" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <meta name="msapplication-TileImage" content="/favicons/docs@2x.ico">
+  <meta property="og:image" content="/favicons/docs@2x.ico"/>
+  <meta name="theme-color" content="#2496ed" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- hide elements that are only shown without JavaScript enabled -->
+  <script>document.documentElement.classList.add('js')</script>
+  <style>html.js .no-js { display: none !important; }</style><script defer src="/js/theme-switcher.js"></script>
+  <script defer src="/js/anchorlinks.js"></script>
+  <script defer src="/js/jquery.js"></script>
+  <script defer src="/js/bootstrap.min.js"></script>
+  <script defer src="/js/docs.js"></script><script defer src="/js/search.js"></script><link rel="preload" as="font" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Book.woff2"    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/glyphicons-halflings-regular.woff2"       type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/fontawesome-webfont.woff2?v=4.7.0"        type="font/woff2" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css" id="pagestyle">
+
+  <!-- SEO stuff -->
+  <meta name="twitter:title" itemprop="title name" content="Docker Toolbox"/>
+  <meta name="twitter:description" property="og:description" itemprop="description" content="" />
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:domain" content="docs.docker.com"/>
+  <meta name="twitter:site" content="@docker_docs"/>
+  <meta name="twitter:url" content="https://twitter.com/docker_docs"/>
+  <meta name="twitter:image:src" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta name="twitter:image:alt" content="Docker Documentation"/>
+  <meta property="og:title" content="Docker Toolbox" />
+  <meta property="og:description" content="Docker Desktop for Windows and Docker Toolbox" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:updated_time" itemprop="dateUpdated" content="2021-11-17T12:16:07+00:00"/>
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://docs.docker.com/toolbox/" />
+  <meta property="og:site_name" content="Docker Documentation" />
+  <meta property="article:published_time" itemprop="datePublished" content="2021-11-17T12:16:07+00:00"/>
+  <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Docker Toolbox","description":"Docker Desktop for Windows and Docker Toolbox","url":"https://docs.docker.com/toolbox/"}</script>
+  <!-- END SEO STUFF -->
+</head>
+<body class="colums">
+    <header>
+        <nav class="nav-secondary navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/">
+                <img class="logo" src="/images/docker-docs-logo.svg" alt="Docker Docs" title="Docker Docs" width="160" height="28" />
+            </a>
+        </div>
+        <div class="navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <div class="logo-mobile">
+    <a href="/">
+        <img src="/images/docker-icon.svg" alt="Docker Docs" title="Docker Docs" width="30" height="30" />
+    </a>
+</div>
+<div class="search-form" id="search-div">
+    <form class="search-form form-inline" id="searchForm" action="/search/" method="get">
+        <label for="st-search-input" class="sr-only">Search</label>
+        <input class="search-field form-control ds-input" id="st-search-input" name="q" placeholder="Search the docs" type="search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
+        <div id="autocompleteResults"></div>
+        <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
+    </form>
+</div>
+<div class="sidebar-toggle">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="nav-container hidden-sm hidden-xs">
+    <div>
+        <ul class="nav navbar-nav"><li><a href="/" id="home">Home</a></li><li><a href="/get-started/overview/" id="guides">Guides</a></li><li><a href="/desktop/" id="manuals">Manuals</a></li><li><a href="/reference/" id="reference">Reference</a></li><li><a href="/samples/" id="samples">Samples</a></li></ul>
+    </div>
+    <div class="ctrl-right">
+        <a href="javascript:void(0)" id="menu-toggle" aria-label="Current page's menu toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
+    </div>
+</div>
+<div class="row hidden-sm hidden-xs">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="/" title="Docker docs homepage"><i class="fa fa-home"></i></a></li>
+            <li><a href="/desktop/">Manuals</a></li><li><a>Superseded products and tools</a></li><li><a href="/toolbox/">Docker Toolbox (deprecated)</a></li></ol>
+    </nav>
+</div></div>
+    </div>
+</nav>
+
+    </header>
+    <div class="wrapper right-open">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-body">
+                    <main class="col-content content">
+                        <section class="section"><h1>Docker Toolbox</h1><p><em class="reading-time">Estimated reading time: 3 minutes</em></p><blockquote class="warning">
+  <p><strong>Deprecated</strong></p>
+
+  <p>Docker Toolbox has been deprecated and is no longer in active development. Please
+use Docker Desktop instead. See <a href="/desktop/mac/">Docker Desktop for Mac</a>
+and <a href="/desktop/windows/">Docker Desktop for Windows</a>.</p>
+</blockquote>
+
+<p>This page explains how to migrate your Docker Toolbox installation to Docker Desktop.
+It also contains instructions on how to uninstall Docker Toolbox from Mac and Windows machines.</p>
+
+<h2 id="migrate-from-docker-toolbox-to-docker-desktop">Migrate from Docker Toolbox to Docker Desktop</h2>
+
+<p>Uninstalling Docker Toolbox will remove your local image cache, volumes, containers,
+and other data stored in Docker. Refer to the <a href="/desktop/backup-and-restore/">back up and restore data</a>
+documentation before uninstalling Docker Toolbox, to learn how to back up your
+data.</p>
+
+<h2 id="uninstall-docker-toolbox">Uninstall Docker Toolbox</h2>
+
+<p>Removing Toolbox involves removing all the Docker components it includes.</p>
+
+<p>A full uninstall also includes removing the local and remote machines
+you created with Docker Machine. In some cases, you might want to keep
+machines created with Docker Machine. For example, if you plan to re-install
+Docker Machine as a part of Docker Desktop, you can continue to manage those
+machines through Docker. Or, if you have remote machines on a cloud provider and
+you plan to manage them using the provider, you wouldn’t want to remove
+them. So, the step to remove machines is described here as optional.</p>
+
+<h3 id="uninstall-docker-toolbox-on-mac">Uninstall Docker Toolbox on Mac</h3>
+
+<p>To uninstall Docker Toolbox on Mac:</p>
+
+<ol>
+  <li>
+    <p>List your machines.</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine <span class="nb">ls</span>
+<span class="go">NAME                ACTIVE   DRIVER       STATE     URL                        SWARM
+dev                 *        virtualbox   Running   tcp://192.168.99.100:2376
+my-docker-machine            virtualbox   Stopped
+default                      virtualbox   Stopped
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Optionally, remove each machine. For example:</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine rm my-docker-machine
+<span class="go">Successfully removed my-docker-machine
+</span></code></pre></div>    </div>
+
+    <p>This step is optional because if you plan
+to re-install Docker Machine as a part
+of <a href="/desktop/mac/">Docker Desktop for Mac</a>, you can import and
+continue to manage those machines through Docker.</p>
+  </li>
+  <li>
+    <p>In your “Applications” folder, remove the “Docker” directory,
+which contains “Docker Quickstart Terminal” and “Kitematic”.</p>
+  </li>
+  <li>
+    <p>Run the following in a command shell to fully remove Kitematic:</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> rm <span class="nt">-fr</span> ~/Library/Application<span class="se">\ </span>Support/Kitematic
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Remove the <code class="highlighter-rouge">docker</code>, <code class="highlighter-rouge">docker-compose</code>, and <code class="highlighter-rouge">docker-machine</code> commands from
+the <code class="highlighter-rouge">/usr/local/bin</code> folder.  Docker Desktop for Mac and Brew may also have
+installed them; in case of doubt leave them, or reinstall them via Brew, or
+rerun Docker Desktop for Mac (no need to reinstall it).</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> rm <span class="nt">-f</span> /usr/local/bin/docker
+<span class="gp">$</span> rm <span class="nt">-f</span> /usr/local/bin/docker-compose
+<span class="gp">$</span> rm <span class="nt">-f</span> /usr/local/bin/docker-machine
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Optionally, remove the <code class="highlighter-rouge">~/.docker/machine</code> directory.</p>
+
+    <p>This directory stores some configuration and/or state, such as information
+about created machines and certificates.</p>
+  </li>
+  <li>
+    <p>Uninstall Oracle VirtualBox, which is installed as a part of the
+Toolbox install.</p>
+  </li>
+</ol>
+
+<h3 id="uninstall-docker-toolbox-on-windows">Uninstall Docker Toolbox on Windows</h3>
+
+<p>To uninstall Toolbox on Windows:</p>
+
+<ol>
+  <li>
+    <p>List your machines.</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine <span class="nb">ls</span>
+<span class="go">NAME                ACTIVE   DRIVER       STATE     URL                        SWARM
+dev                 *        virtualbox   Running   tcp://192.168.99.100:2376
+my-docker-machine            virtualbox   Stopped
+default                      virtualbox   Stopped
+</span></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Optionally, remove each machine. For example:</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine rm my-docker-machine
+<span class="go">Successfully removed my-docker-machine
+</span></code></pre></div>    </div>
+
+    <p>This step is optional because if you plan to re-install Docker Machine as a
+part of <a href="/desktop/windows/">Docker Desktop for Windows</a>, you can
+import and continue to manage those machines through Docker.</p>
+  </li>
+  <li>
+    <p>Uninstall Docker Toolbox using Window’s standard process for uninstalling programs through the control panel (programs and features).</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: This process does not remove the <code class="highlighter-rouge">docker-install.exe</code> file. You must delete that file yourself.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Optionally, remove the <code class="highlighter-rouge">C:\Users\&lt;your-user&gt;\.docker</code> directory.</p>
+
+    <p>If you want to remove Docker entirely, you
+ can verify that the uninstall removed
+ the <code class="highlighter-rouge">.docker</code> directory under your user path.
+ If it is still there, remove it manually.
+ This directory stores some Docker
+ program configuration and state, such as
+ information about created machines and
+ certificates. You usually don’t need to remove this directory.</p>
+  </li>
+  <li>
+    <p>Uninstall Oracle VirtualBox, which is
+  installed as a part of the Toolbox install.</p>
+  </li>
+</ol>
+<span class="glyphicon glyphicon-tags" style="padding-right: 10px"></span><span style="vertical-align: 2px"><a href="/search/?q=windows">windows</a>, <a href="/search/?q=alpha">alpha</a>, <a href="/search/?q=beta">beta</a>, <a href="/search/?q=toolbox">toolbox</a>, <a href="/search/?q=docker-machine">docker-machine</a>, <a href="/search/?q=tutorial">tutorial</a></span><div class="ratings-div"><div id="pd_rating_holder_8453675"></div></div></section>
+                    </main>
+                    <nav class="col-nav">
+                        <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+                            <div id="navbar" class="nav-sidebar">
+                                <ul class="nav hidden-md hidden-lg"></ul>
+                                <ul class="nav" id="jsTOCLeftNav"></ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="col-toc">
+                        <div class="sidebar hidden-xs hidden-sm">
+                            <div class="toc-nav">
+                                <div class="feedback-links">
+                                    <ul><li><a href="https://github.com/docker/docker.github.io/edit/master/toolbox/index.md"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this page</a></li><li><a href="https://github.com/docker/docker.github.io/issues/new?body=File: [toolbox/index.md](https://docs.docker.com/toolbox/)" class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>
+                                        <li><div class="toggle-mode">
+  <div class="icon">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+  </div>
+  <div class="toggle-switch">
+      <label class="switch">
+          <input type="checkbox" id="switch-style">
+          <span class="slider round"></span>
+      </label>
+  </div>
+  <div class="icon">
+      <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </div>
+</div>
+</li>
+                                    </ul>
+                                </div><div id="side-toc-title">On this page:</div>
+<ul id="my_toc" class="inline_toc">
+  <li><a href="#migrate-from-docker-toolbox-to-docker-desktop" class="nomunge">Migrate from Docker Toolbox to Docker Desktop</a>
+    <ul>
+      <li><a href="#uninstall-docker-toolbox" class="nomunge">Uninstall Docker Toolbox</a></li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+          
+    <div class="container">
+        <div class="top_footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/why-docker">Why Docker?</a></b></li>
+                        <li><a href="https://www.docker.com/what-container">What is a Container?</a></li>
+                        <li><a href="https://docker.events.cube365.net/dockercon/">DockerCon</a></li>
+                        <li><b><a href="https://www.docker.com/products/overview">Products</a></b></li>
+                        <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+                        <li><a href="https://www.docker.com/products/docker-hub">Docker Hub</a></li>
+                        <li><a href="https://www.docker.com/roadmap">Docker Product Roadmap</a></li>
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Features</a></b></li>
+                        <li><a href="https://www.docker.com/products/container-runtime">Container Runtime</a></li>
+                        <li><a href="https://www.docker.com/products/developer-tools">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Developers</a></b></li>
+                        <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+                        <li><a href="https://www.docker.com/docker-community">Community</a></li>
+                        <li><a href="https://www.docker.com/open-source">Open Source</a></li>
+                        <li><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Pricing</a></b></li>
+                        <li><a href="https://www.docker.com/pricing/faq">FAQs</a></li>
+                        <li><a href="https://www.docker.com/partners/programs">Docker Verified Publisher Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/company" target="_blank" rel="noopener">Company</a></b></li>
+                        <li><a href="https://www.docker.com/company">About Us</a></li>
+                        <li><a href="https://www.docker.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+                        <li><a href="https://www.docker.com/customers">Customers</a></li>
+                        <li><a href="https://www.docker.com/partners">Partners</a></li>
+                        <li><a href="https://www.docker.com/company/newsroom">Newsroom</a></li>
+                        <li><a href="https://www.docker.com/careers">Careers</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <nav class="footer_sub_nav">
+                    <ul class="menu">
+                        <li><a href="http://status.docker.com/">Status</a></li>
+                        <li><a href="https://www.docker.com/legal">Legal</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="bottom_footer">
+            <div class="footer-copyright col-xs-12 col-md-8">
+                <p class="copyright">
+                    Copyright &copy; 2013-2021 Docker Inc. All rights reserved. </p>
+            </div>
+            <div class="footer_social_nav">
+                <ul class="nav-social">
+                    <li class="fa fa-twitter"><a href="http://twitter.com/docker">Twitter</a></li>
+                    <li class="fa fa-youtube"><a href="http://www.youtube.com/user/dockerrun">Youtube</a></li>
+                    <li class="fa fa-github"><a href="https://github.com/docker">GitHub</a></li>
+                    <li class="fa fa-linkedin"><a href="https://www.linkedin.com/company/docker">Linkedin</a></li>
+                    <li class="fa fa-facebook"><a href="https://www.facebook.com/docker.run">Facebook</a></li>
+                    <li class="fa fa-slideshare"><a href="https://www.slideshare.net/docker">Slideshare</a></li>
+                    <li class="fa fa-reddit"><a href="https://www.reddit.com/r/docker">Reddit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </footer>
+    <script>const pageURL = "/toolbox/";</script><script>
+    let PDRTJS_settings_8453675 = {
+        "id": "8453675",
+        "unique_id": "toolbox/index.md",
+        "title": "Docker Toolbox",
+        "font_family": "Open Sans, sans serif",
+        "font_color": "b9c2cc",
+        "font_align": "center",
+        "permalink": "https://github.com/docker/docker.github.io/blob/master/toolbox/index.md"
+    };
+    (function (d, c, j) {
+        if (!document.getElementById(j)) {
+            let pd=d.createElement(c),s;pd.id=j;pd.src='https://polldaddy.com/js/rating/rating.js';s=document.getElementsByTagName(c)[0];s.parentNode.insertBefore(pd, s);
+        }
+    }(document, 'script', 'pd-rating-js'));
+</script></body>
+</html>

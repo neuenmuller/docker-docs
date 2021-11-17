@@ -1,0 +1,359 @@
+<!-- Page generated 2021-11-17 12:16:07 +0000-->
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex"/><!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WL2QLG5');</script>
+<title>docker-machine env | Docker Documentation</title>
+  <meta name="description" content="Set environment variables on a machine" />
+  <meta name="keywords" content="machine, env, subcommand">
+  <link rel="canonical" href="https://docs.docker.com/machine/reference/env/" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <meta name="msapplication-TileImage" content="/favicons/docs@2x.ico">
+  <meta property="og:image" content="/favicons/docs@2x.ico"/>
+  <meta name="theme-color" content="#2496ed" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- hide elements that are only shown without JavaScript enabled -->
+  <script>document.documentElement.classList.add('js')</script>
+  <style>html.js .no-js { display: none !important; }</style><script defer src="/js/theme-switcher.js"></script>
+  <script defer src="/js/anchorlinks.js"></script>
+  <script defer src="/js/jquery.js"></script>
+  <script defer src="/js/bootstrap.min.js"></script>
+  <script defer src="/js/docs.js"></script><script defer src="/js/search.js"></script><link rel="preload" as="font" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Book.woff2"    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/glyphicons-halflings-regular.woff2"       type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/fontawesome-webfont.woff2?v=4.7.0"        type="font/woff2" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css" id="pagestyle">
+
+  <!-- SEO stuff -->
+  <meta name="twitter:title" itemprop="title name" content="docker-machine env"/>
+  <meta name="twitter:description" property="og:description" itemprop="description" content="" />
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:domain" content="docs.docker.com"/>
+  <meta name="twitter:site" content="@docker_docs"/>
+  <meta name="twitter:url" content="https://twitter.com/docker_docs"/>
+  <meta name="twitter:image:src" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta name="twitter:image:alt" content="Docker Documentation"/>
+  <meta property="og:title" content="docker-machine env" />
+  <meta property="og:description" content="Set environment variables on a machine" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:updated_time" itemprop="dateUpdated" content="2021-11-17T12:16:07+00:00"/>
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://docs.docker.com/machine/reference/env/" />
+  <meta property="og:site_name" content="Docker Documentation" />
+  <meta property="article:published_time" itemprop="datePublished" content="2021-11-17T12:16:07+00:00"/>
+  <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"docker-machine env","description":"Set environment variables on a machine","url":"https://docs.docker.com/machine/reference/env/"}</script>
+  <!-- END SEO STUFF -->
+</head>
+<body class="colums">
+    <header>
+        <nav class="nav-secondary navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/">
+                <img class="logo" src="/images/docker-docs-logo.svg" alt="Docker Docs" title="Docker Docs" width="160" height="28" />
+            </a>
+        </div>
+        <div class="navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <div class="logo-mobile">
+    <a href="/">
+        <img src="/images/docker-icon.svg" alt="Docker Docs" title="Docker Docs" width="30" height="30" />
+    </a>
+</div>
+<div class="search-form" id="search-div">
+    <form class="search-form form-inline" id="searchForm" action="/search/" method="get">
+        <label for="st-search-input" class="sr-only">Search</label>
+        <input class="search-field form-control ds-input" id="st-search-input" name="q" placeholder="Search the docs" type="search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
+        <div id="autocompleteResults"></div>
+        <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
+    </form>
+</div>
+<div class="sidebar-toggle">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="nav-container hidden-sm hidden-xs">
+    <div>
+        <ul class="nav navbar-nav"><li><a href="/" id="home">Home</a></li><li><a href="/get-started/overview/" id="guides">Guides</a></li><li><a href="/desktop/" id="manuals">Manuals</a></li><li><a href="/reference/" id="reference">Reference</a></li><li><a href="/samples/" id="samples">Samples</a></li></ul>
+    </div>
+    <div class="ctrl-right">
+        <a href="javascript:void(0)" id="menu-toggle" aria-label="Current page's menu toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
+    </div>
+</div>
+</div>
+    </div>
+</nav>
+
+    </header>
+    <div class="wrapper right-open">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-body">
+                    <main class="col-content content">
+                        <section class="section"><h1>docker-machine env</h1><p><em class="reading-time">Estimated reading time: 3 minutes</em></p><p>Set environment variables to dictate that <code class="highlighter-rouge">docker</code> should run a command against
+a particular machine.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine env <span class="nt">--help</span>
+<span class="go">
+Usage: docker-machine env [OPTIONS] [arg...]
+
+Display the commands to set up the environment for the Docker client
+
+Description:
+   Argument is a machine name.
+
+Options:
+
+   --swarm	Display the Swarm config instead of the Docker daemon
+   --shell 	Force environment to be configured for a specified shell: [fish, cmd, powershell, tcsh], default is sh/bash
+   --unset, -u	Unset variables instead of setting them
+   --no-proxy	Add machine IP to NO_PROXY environment variable
+</span></code></pre></div></div>
+
+<p><code class="highlighter-rouge">docker-machine env machinename</code> prints out <code class="highlighter-rouge">export</code> commands which can be
+run in a subshell. Running <code class="highlighter-rouge">docker-machine env -u</code> prints <code class="highlighter-rouge">unset</code> commands
+which reverse this effect.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> env | <span class="nb">grep </span>DOCKER
+<span class="gp">$</span> <span class="nb">eval</span> <span class="s2">"</span><span class="k">$(</span>docker-machine env dev<span class="k">)</span><span class="s2">"</span>
+<span class="gp">$</span> env | <span class="nb">grep </span>DOCKER
+<span class="go">
+DOCKER_HOST=tcp://192.168.99.101:2376
+DOCKER_CERT_PATH=/Users/nathanleclaire/.docker/machines/.client
+DOCKER_TLS_VERIFY=1
+DOCKER_MACHINE_NAME=dev
+</span><span class="gp">$</span> <span class="c"># If you run a docker command, now it runs against that host.</span>
+<span class="gp">$</span> <span class="nb">eval</span> <span class="s2">"</span><span class="k">$(</span>docker-machine env <span class="nt">-u</span><span class="k">)</span><span class="s2">"</span>
+<span class="gp">$</span> env | <span class="nb">grep </span>DOCKER
+<span class="gp">$</span> <span class="c"># The environment variables have been unset.</span>
+</code></pre></div></div>
+
+<p>The output described above is intended for the shells <code class="highlighter-rouge">bash</code> and <code class="highlighter-rouge">zsh</code> (if
+you’re not sure which shell you’re using, there’s a very good possibility that
+it’s <code class="highlighter-rouge">bash</code>). However, these are not the only shells which Docker Machine
+supports. Docker Machine detects the shells available in your environment and lists them.
+Docker supports <code class="highlighter-rouge">bash</code>, <code class="highlighter-rouge">cmd</code>, <code class="highlighter-rouge">powershell</code>, and <code class="highlighter-rouge">emacs</code>.</p>
+
+<p>If you are using <code class="highlighter-rouge">fish</code> and the <code class="highlighter-rouge">SHELL</code> environment variable is correctly set to
+the path where <code class="highlighter-rouge">fish</code> is located, <code class="highlighter-rouge">docker-machine env name</code> prints out the
+values in the format which <code class="highlighter-rouge">fish</code> expects:</p>
+
+<pre><code class="language-fish">set -x DOCKER_TLS_VERIFY 1;
+set -x DOCKER_CERT_PATH "/Users/nathanleclaire/.docker/machine/machines/overlay";
+set -x DOCKER_HOST tcp://192.168.99.102:2376;
+set -x DOCKER_MACHINE_NAME overlay
+# Run this command to configure your shell:
+# eval "$(docker-machine env overlay)"
+</code></pre>
+
+<p>If you are on Windows and using either PowerShell or <code class="highlighter-rouge">cmd.exe</code>, <code class="highlighter-rouge">docker-machine env</code>
+ Docker Machine should now detect your shell automatically. If the automatic detection does not work, you
+ can still override it using the <code class="highlighter-rouge">--shell</code> flag for <code class="highlighter-rouge">docker-machine env</code>.</p>
+
+<p>For PowerShell:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine.exe env <span class="nt">--shell</span> powershell dev
+<span class="go">
+</span><span class="gp">$</span>Env:DOCKER_TLS_VERIFY <span class="o">=</span> <span class="s2">"1"</span>
+<span class="gp">$</span>Env:DOCKER_HOST <span class="o">=</span> <span class="s2">"tcp://192.168.99.101:2376"</span>
+<span class="gp">$</span>Env:DOCKER_CERT_PATH <span class="o">=</span> <span class="s2">"C:</span><span class="se">\U</span><span class="s2">sers</span><span class="se">\c</span><span class="s2">aptain</span><span class="se">\.</span><span class="s2">docker</span><span class="se">\m</span><span class="s2">achine</span><span class="se">\m</span><span class="s2">achines</span><span class="se">\d</span><span class="s2">ev"</span>
+<span class="gp">$</span>Env:DOCKER_MACHINE_NAME <span class="o">=</span> <span class="s2">"dev"</span>
+<span class="gp">#</span> Run this <span class="nb">command </span>to configure your shell:
+<span class="gp">#</span> docker-machine.exe env <span class="nt">--shell</span><span class="o">=</span>powershell dev | Invoke-Expression
+</code></pre></div></div>
+
+<p>For <code class="highlighter-rouge">cmd.exe</code>:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine.exe env <span class="nt">--shell</span> cmd dev
+<span class="go">
+set DOCKER_TLS_VERIFY=1
+set DOCKER_HOST=tcp://192.168.99.101:2376
+set DOCKER_CERT_PATH=C:\Users\captain\.docker\machine\machines\dev
+set DOCKER_MACHINE_NAME=dev
+</span><span class="gp">#</span> Run this <span class="nb">command </span>to configure your shell: copy and paste the above values into your <span class="nb">command </span>prompt
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Tip:</strong> See also, how to <a href="/machine/get-started/#unset-environment-variables-in-the-current-shell">unset environment variables in the current shell</a>.</p>
+</blockquote>
+
+<h2 id="excluding-the-created-machine-from-proxies">Excluding the created machine from proxies</h2>
+
+<p>The env command supports a <code class="highlighter-rouge">--no-proxy</code> flag which ensures that the created
+machine’s IP address is added to the <a href="https://wiki.archlinux.org/index.php/Proxy_settings"><code class="highlighter-rouge">NO_PROXY</code>/<code class="highlighter-rouge">no_proxy</code> environment
+variable</a>.</p>
+
+<p>This is useful when using <code class="highlighter-rouge">docker-machine</code> with a local VM provider, such as
+<code class="highlighter-rouge">virtualbox</code> or <code class="highlighter-rouge">vmwarefusion</code>, in network environments where an HTTP proxy is
+required for internet access.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine env <span class="nt">--no-proxy</span> default
+<span class="go">
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.99.104:2376"
+export DOCKER_CERT_PATH="/Users/databus23/.docker/machine/certs"
+export DOCKER_MACHINE_NAME="default"
+export NO_PROXY="192.168.99.104"
+</span><span class="gp">#</span> Run this <span class="nb">command </span>to configure your shell:
+<span class="gp">#</span> <span class="nb">eval</span> <span class="s2">"</span><span class="k">$(</span>docker-machine env default<span class="k">)</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>You may also want to visit the documentation on setting <code class="highlighter-rouge">HTTP_PROXY</code> for the
+created daemon using the <code class="highlighter-rouge">--engine-env</code> flag for 
+<a href="/machine/reference/create/#specifying-configuration-options-for-the-created-docker-engine"><code class="highlighter-rouge">docker-machine create</code></a>.</p>
+<span class="glyphicon glyphicon-tags" style="padding-right: 10px"></span><span style="vertical-align: 2px"><a href="/search/?q=machine">machine</a>, <a href="/search/?q=env">env</a>, <a href="/search/?q=subcommand">subcommand</a></span><div class="ratings-div"><div id="pd_rating_holder_8453675"></div></div></section>
+                    </main>
+                    <nav class="col-nav">
+                        <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+                            <div id="navbar" class="nav-sidebar">
+                                <ul class="nav hidden-md hidden-lg"></ul>
+                                <ul class="nav" id="jsTOCLeftNav"></ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="col-toc">
+                        <div class="sidebar hidden-xs hidden-sm">
+                            <div class="toc-nav">
+                                <div class="feedback-links">
+                                    <ul><li><a href="https://github.com/docker/docker.github.io/edit/master/machine/reference/env.md"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this page</a></li><li><a href="https://github.com/docker/docker.github.io/issues/new?body=File: [machine/reference/env.md](https://docs.docker.com/machine/reference/env/)" class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>
+                                        <li><div class="toggle-mode">
+  <div class="icon">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+  </div>
+  <div class="toggle-switch">
+      <label class="switch">
+          <input type="checkbox" id="switch-style">
+          <span class="slider round"></span>
+      </label>
+  </div>
+  <div class="icon">
+      <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </div>
+</div>
+</li>
+                                    </ul>
+                                </div><div id="side-toc-title">On this page:</div>
+<ul id="my_toc" class="inline_toc">
+  <li><a href="#excluding-the-created-machine-from-proxies" class="nomunge">Excluding the created machine from proxies</a></li>
+</ul>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+          
+    <div class="container">
+        <div class="top_footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/why-docker">Why Docker?</a></b></li>
+                        <li><a href="https://www.docker.com/what-container">What is a Container?</a></li>
+                        <li><a href="https://docker.events.cube365.net/dockercon/">DockerCon</a></li>
+                        <li><b><a href="https://www.docker.com/products/overview">Products</a></b></li>
+                        <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+                        <li><a href="https://www.docker.com/products/docker-hub">Docker Hub</a></li>
+                        <li><a href="https://www.docker.com/roadmap">Docker Product Roadmap</a></li>
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Features</a></b></li>
+                        <li><a href="https://www.docker.com/products/container-runtime">Container Runtime</a></li>
+                        <li><a href="https://www.docker.com/products/developer-tools">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Developers</a></b></li>
+                        <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+                        <li><a href="https://www.docker.com/docker-community">Community</a></li>
+                        <li><a href="https://www.docker.com/open-source">Open Source</a></li>
+                        <li><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Pricing</a></b></li>
+                        <li><a href="https://www.docker.com/pricing/faq">FAQs</a></li>
+                        <li><a href="https://www.docker.com/partners/programs">Docker Verified Publisher Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/company" target="_blank" rel="noopener">Company</a></b></li>
+                        <li><a href="https://www.docker.com/company">About Us</a></li>
+                        <li><a href="https://www.docker.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+                        <li><a href="https://www.docker.com/customers">Customers</a></li>
+                        <li><a href="https://www.docker.com/partners">Partners</a></li>
+                        <li><a href="https://www.docker.com/company/newsroom">Newsroom</a></li>
+                        <li><a href="https://www.docker.com/careers">Careers</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <nav class="footer_sub_nav">
+                    <ul class="menu">
+                        <li><a href="http://status.docker.com/">Status</a></li>
+                        <li><a href="https://www.docker.com/legal">Legal</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="bottom_footer">
+            <div class="footer-copyright col-xs-12 col-md-8">
+                <p class="copyright">
+                    Copyright &copy; 2013-2021 Docker Inc. All rights reserved. </p>
+            </div>
+            <div class="footer_social_nav">
+                <ul class="nav-social">
+                    <li class="fa fa-twitter"><a href="http://twitter.com/docker">Twitter</a></li>
+                    <li class="fa fa-youtube"><a href="http://www.youtube.com/user/dockerrun">Youtube</a></li>
+                    <li class="fa fa-github"><a href="https://github.com/docker">GitHub</a></li>
+                    <li class="fa fa-linkedin"><a href="https://www.linkedin.com/company/docker">Linkedin</a></li>
+                    <li class="fa fa-facebook"><a href="https://www.facebook.com/docker.run">Facebook</a></li>
+                    <li class="fa fa-slideshare"><a href="https://www.slideshare.net/docker">Slideshare</a></li>
+                    <li class="fa fa-reddit"><a href="https://www.reddit.com/r/docker">Reddit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </footer>
+    <script>const pageURL = "/machine/reference/env/";</script><script>
+    let PDRTJS_settings_8453675 = {
+        "id": "8453675",
+        "unique_id": "machine/reference/env.md",
+        "title": "docker-machine env",
+        "font_family": "Open Sans, sans serif",
+        "font_color": "b9c2cc",
+        "font_align": "center",
+        "permalink": "https://github.com/docker/docker.github.io/blob/master/machine/reference/env.md"
+    };
+    (function (d, c, j) {
+        if (!document.getElementById(j)) {
+            let pd=d.createElement(c),s;pd.id=j;pd.src='https://polldaddy.com/js/rating/rating.js';s=document.getElementsByTagName(c)[0];s.parentNode.insertBefore(pd, s);
+        }
+    }(document, 'script', 'pd-rating-js'));
+</script></body>
+</html>

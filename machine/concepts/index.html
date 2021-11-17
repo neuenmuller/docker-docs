@@ -1,0 +1,363 @@
+<!-- Page generated 2021-11-17 12:16:07 +0000-->
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex"/><!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WL2QLG5');</script>
+<title>Machine concepts and getting help | Docker Documentation</title>
+  <meta name="description" content="Understand concepts for Docker Machine, including drivers, base OS, IP addresses, environment variables" />
+  <meta name="keywords" content="docker, machine, amazonec2, azure, digitalocean, google, openstack, rackspace, softlayer, virtualbox, vmwarefusion, vmwarevcloudair, vmwarevsphere, exoscale">
+  <link rel="canonical" href="https://docs.docker.com/machine/concepts/" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <meta name="msapplication-TileImage" content="/favicons/docs@2x.ico">
+  <meta property="og:image" content="/favicons/docs@2x.ico"/>
+  <meta name="theme-color" content="#2496ed" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- hide elements that are only shown without JavaScript enabled -->
+  <script>document.documentElement.classList.add('js')</script>
+  <style>html.js .no-js { display: none !important; }</style><script defer src="/js/theme-switcher.js"></script>
+  <script defer src="/js/anchorlinks.js"></script>
+  <script defer src="/js/jquery.js"></script>
+  <script defer src="/js/bootstrap.min.js"></script>
+  <script defer src="/js/docs.js"></script><script defer src="/js/search.js"></script><link rel="preload" as="font" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Book.woff2"    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/glyphicons-halflings-regular.woff2"       type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/fontawesome-webfont.woff2?v=4.7.0"        type="font/woff2" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css" id="pagestyle">
+
+  <!-- SEO stuff -->
+  <meta name="twitter:title" itemprop="title name" content="Machine concepts and getting help"/>
+  <meta name="twitter:description" property="og:description" itemprop="description" content="" />
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:domain" content="docs.docker.com"/>
+  <meta name="twitter:site" content="@docker_docs"/>
+  <meta name="twitter:url" content="https://twitter.com/docker_docs"/>
+  <meta name="twitter:image:src" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta name="twitter:image:alt" content="Docker Documentation"/>
+  <meta property="og:title" content="Machine concepts and getting help" />
+  <meta property="og:description" content="Understand concepts for Docker Machine, including drivers, base OS, IP addresses, environment variables" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:updated_time" itemprop="dateUpdated" content="2021-11-17T12:16:07+00:00"/>
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://docs.docker.com/machine/concepts/" />
+  <meta property="og:site_name" content="Docker Documentation" />
+  <meta property="article:published_time" itemprop="datePublished" content="2021-11-17T12:16:07+00:00"/>
+  <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Machine concepts and getting help","description":"Understand concepts for Docker Machine, including drivers, base OS, IP addresses, environment variables","url":"https://docs.docker.com/machine/concepts/"}</script>
+  <!-- END SEO STUFF -->
+</head>
+<body class="colums">
+    <header>
+        <nav class="nav-secondary navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/">
+                <img class="logo" src="/images/docker-docs-logo.svg" alt="Docker Docs" title="Docker Docs" width="160" height="28" />
+            </a>
+        </div>
+        <div class="navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <div class="logo-mobile">
+    <a href="/">
+        <img src="/images/docker-icon.svg" alt="Docker Docs" title="Docker Docs" width="30" height="30" />
+    </a>
+</div>
+<div class="search-form" id="search-div">
+    <form class="search-form form-inline" id="searchForm" action="/search/" method="get">
+        <label for="st-search-input" class="sr-only">Search</label>
+        <input class="search-field form-control ds-input" id="st-search-input" name="q" placeholder="Search the docs" type="search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
+        <div id="autocompleteResults"></div>
+        <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
+    </form>
+</div>
+<div class="sidebar-toggle">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="nav-container hidden-sm hidden-xs">
+    <div>
+        <ul class="nav navbar-nav"><li><a href="/" id="home">Home</a></li><li><a href="/get-started/overview/" id="guides">Guides</a></li><li><a href="/desktop/" id="manuals">Manuals</a></li><li><a href="/reference/" id="reference">Reference</a></li><li><a href="/samples/" id="samples">Samples</a></li></ul>
+    </div>
+    <div class="ctrl-right">
+        <a href="javascript:void(0)" id="menu-toggle" aria-label="Current page's menu toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
+    </div>
+</div>
+<div class="row hidden-sm hidden-xs">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="/" title="Docker docs homepage"><i class="fa fa-home"></i></a></li>
+            <li><a href="/desktop/">Manuals</a></li><li><a>Superseded products and tools</a></li><li><a href="/machine/">Docker Machine</a></li><li><a href="/machine/examples/ocean/">Learn by example</a></li><li><a href="/machine/concepts/">Machine concepts and help</a></li></ol>
+    </nav>
+</div></div>
+    </div>
+</nav>
+
+    </header>
+    <div class="wrapper right-open">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-body">
+                    <main class="col-content content">
+                        <section class="section"><h1>Machine concepts and getting help</h1><p><em class="reading-time">Estimated reading time: 4 minutes</em></p><p>Docker Machine allows you to provision Docker machines in a variety of environments, including virtual machines that reside on your local system, on cloud providers, or on bare metal servers (physical computers). Docker Machine creates a Docker host, and you use the Docker Engine client as needed to build images and create containers on the host.</p>
+
+<h2 id="drivers-for-creating-machines">Drivers for creating machines</h2>
+
+<p>To create a virtual machine, you supply Docker Machine with the name of the driver you want to use. The driver determines where the virtual machine is created. For example, on a local Mac or Windows system, the driver is typically Oracle VirtualBox. For provisioning physical machines, a generic driver is provided. For cloud providers, Docker Machine supports drivers such as AWS, Microsoft Azure, DigitalOcean, and many more. The Docker Machine reference includes a complete <a href="/machine/drivers/">list of supported drivers</a>.</p>
+
+<h2 id="default-base-operating-systems-for-local-and-cloud-hosts">Default base operating systems for local and cloud hosts</h2>
+
+<p>Since Docker runs on Linux, each VM that Docker Machine provisions relies on a
+base operating system. For convenience, there are default base operating
+systems. For the Oracle Virtual Box driver, this base operating system
+is <a href="https://github.com/boot2docker/boot2docker">boot2docker</a>. For drivers used
+to connect to cloud providers, the base operating system is Ubuntu 12.04+. You
+can change this default when you create a machine. The Docker Machine reference
+includes a complete <a href="/machine/drivers/os-base/">list of supported operating systems</a>.</p>
+
+<h2 id="ip-addresses-for-docker-hosts">IP addresses for Docker hosts</h2>
+
+<p>For each machine you create, the Docker host address is the IP address of the
+Linux VM. This address is assigned by the <code class="highlighter-rouge">docker-machine create</code> subcommand.
+You use the <code class="highlighter-rouge">docker-machine ls</code> command to list the machines you have created.
+The <code class="highlighter-rouge">docker-machine ip &lt;machine-name&gt;</code> command returns a specific host’s IP
+address.</p>
+
+<h2 id="configuring-cli-environment-variables-for-a-docker-host">Configuring CLI environment variables for a Docker host</h2>
+
+<p>Before you can run a <code class="highlighter-rouge">docker</code> command on a machine, you need to configure your
+command-line to point to that machine. The <code class="highlighter-rouge">docker-machine env &lt;machine-name&gt;</code>
+subcommand outputs the configuration command you should use.</p>
+
+<p>For a complete list of <code class="highlighter-rouge">docker-machine</code> subcommands, see the
+<a href="/machine/reference/help/">Docker Machine subcommand reference</a>.</p>
+
+<h2 id="custom-root-certificate-authority-for-registry">Custom root Certificate Authority for Registry</h2>
+
+<p>if your registry is signed by a custom root Certificate Authority and it is
+not registered with Docker Engine, you may see the following error message:</p>
+
+<pre><code class="language-none">x509: certificate signed by unknown authority
+</code></pre>
+
+<p>As discussed in the
+<a href="/engine/security/certificates/#understand-the-configuration">Docker Engine documentation</a>
+place the certificates in <code class="highlighter-rouge">/etc/docker/certs.d/hostname/ca.crt</code>
+where <code class="highlighter-rouge">hostname</code> is your Registry server’s hostname.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">docker-machine scp certfile default:ca.crt
+docker-machine ssh default
+sudo mv ~/ca.crt /etc/docker/certs.d/hostname/ca.crt
+exit
+docker-machine restart
+</span></code></pre></div></div>
+
+<h2 id="crash-reporting">Crash reporting</h2>
+
+<p>Provisioning a host is a complex matter that can fail for a lot of reasons. Your
+workstation may have a wide variety of shell, network configuration, VPN, proxy
+or firewall issues. There are also reasons from the other end of the chain:
+your cloud provider or the network in between.</p>
+
+<p>To help <code class="highlighter-rouge">docker-machine</code> be as stable as possible, we added a monitoring of
+crashes whenever you try to <code class="highlighter-rouge">create</code> or <code class="highlighter-rouge">upgrade</code> a host. This sends, over
+HTTPS, to Bugsnag some information about your <code class="highlighter-rouge">docker-machine</code> version, build,
+OS, ARCH, the path to your current shell and, the history of the last command as
+you could see it with a <code class="highlighter-rouge">--debug</code> option. This data is sent to help us pinpoint
+recurring issues with <code class="highlighter-rouge">docker-machine</code> and is only transmitted in the case
+of a crash of <code class="highlighter-rouge">docker-machine</code>.</p>
+
+<p>To opt out of error reporting, create a <code class="highlighter-rouge">no-error-report</code>
+file in your <code class="highlighter-rouge">$HOME/.docker/machine</code> directory:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mkdir -p ~/.docker/machine &amp;&amp; touch ~/.docker/machine/no-error-report
+</code></pre></div></div>
+
+<p>The file doesn’t need to have any contents.</p>
+
+<h2 id="getting-help">Getting help</h2>
+
+<p>Docker Machine is still in its infancy and under active development. If you need
+help, would like to contribute, or simply want to talk about the project with
+like-minded individuals, we have a number of open channels for communication.</p>
+
+<ul>
+  <li>To report bugs or file feature requests, use the
+<a href="https://github.com/docker/machine/issues">issue tracker on Github</a>.</li>
+  <li>To talk about the project with people in real time,  join the
+<code class="highlighter-rouge">#docker-machine</code> channel on IRC.</li>
+  <li>To contribute code or documentation changes,
+<a href="https://github.com/docker/machine/pulls">submit a pull request on Github</a>.</li>
+</ul>
+
+<p>For more information and resources, visit
+<a href="/opensource/ways/">our help page</a>.</p>
+
+<h2 id="where-to-go-next">Where to go next</h2>
+
+<ul>
+  <li>Create and run a Docker host on your <a href="/machine/get-started/">local system using VirtualBox</a></li>
+  <li>Provision multiple Docker hosts <a href="/machine/get-started-cloud/">on your cloud provider</a></li>
+  <li><a href="/machine/drivers/" target="_blank" rel="noopener" class="_">Docker Machine driver reference</a></li>
+  <li><a href="/machine/reference/help/" target="_blank" rel="noopener" class="_">Docker Machine subcommand reference</a></li>
+</ul>
+<span class="glyphicon glyphicon-tags" style="padding-right: 10px"></span><span style="vertical-align: 2px"><a href="/search/?q=docker">docker</a>, <a href="/search/?q=machine">machine</a>, <a href="/search/?q=amazonec2">amazonec2</a>, <a href="/search/?q=azure">azure</a>, <a href="/search/?q=digitalocean">digitalocean</a>, <a href="/search/?q=google">google</a>, <a href="/search/?q=openstack">openstack</a>, <a href="/search/?q=rackspace">rackspace</a>, <a href="/search/?q=softlayer">softlayer</a>, <a href="/search/?q=virtualbox">virtualbox</a>, <a href="/search/?q=vmwarefusion">vmwarefusion</a>, <a href="/search/?q=vmwarevcloudair">vmwarevcloudair</a>, <a href="/search/?q=vmwarevsphere">vmwarevsphere</a>, <a href="/search/?q=exoscale">exoscale</a></span><div class="ratings-div"><div id="pd_rating_holder_8453675"></div></div></section>
+                    </main>
+                    <nav class="col-nav">
+                        <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+                            <div id="navbar" class="nav-sidebar">
+                                <ul class="nav hidden-md hidden-lg"></ul>
+                                <ul class="nav" id="jsTOCLeftNav"></ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="col-toc">
+                        <div class="sidebar hidden-xs hidden-sm">
+                            <div class="toc-nav">
+                                <div class="feedback-links">
+                                    <ul><li><a href="https://github.com/docker/docker.github.io/edit/master/machine/concepts.md"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this page</a></li><li><a href="https://github.com/docker/docker.github.io/issues/new?body=File: [machine/concepts.md](https://docs.docker.com/machine/concepts/)" class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>
+                                        <li><div class="toggle-mode">
+  <div class="icon">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+  </div>
+  <div class="toggle-switch">
+      <label class="switch">
+          <input type="checkbox" id="switch-style">
+          <span class="slider round"></span>
+      </label>
+  </div>
+  <div class="icon">
+      <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </div>
+</div>
+</li>
+                                    </ul>
+                                </div><div id="side-toc-title">On this page:</div>
+<ul id="my_toc" class="inline_toc">
+  <li><a href="#drivers-for-creating-machines" class="nomunge">Drivers for creating machines</a></li>
+  <li><a href="#default-base-operating-systems-for-local-and-cloud-hosts" class="nomunge">Default base operating systems for local and cloud hosts</a></li>
+  <li><a href="#ip-addresses-for-docker-hosts" class="nomunge">IP addresses for Docker hosts</a></li>
+  <li><a href="#configuring-cli-environment-variables-for-a-docker-host" class="nomunge">Configuring CLI environment variables for a Docker host</a></li>
+  <li><a href="#custom-root-certificate-authority-for-registry" class="nomunge">Custom root Certificate Authority for Registry</a></li>
+  <li><a href="#crash-reporting" class="nomunge">Crash reporting</a></li>
+  <li><a href="#getting-help" class="nomunge">Getting help</a></li>
+  <li><a href="#where-to-go-next" class="nomunge">Where to go next</a></li>
+</ul>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+          
+    <div class="container">
+        <div class="top_footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/why-docker">Why Docker?</a></b></li>
+                        <li><a href="https://www.docker.com/what-container">What is a Container?</a></li>
+                        <li><a href="https://docker.events.cube365.net/dockercon/">DockerCon</a></li>
+                        <li><b><a href="https://www.docker.com/products/overview">Products</a></b></li>
+                        <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+                        <li><a href="https://www.docker.com/products/docker-hub">Docker Hub</a></li>
+                        <li><a href="https://www.docker.com/roadmap">Docker Product Roadmap</a></li>
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Features</a></b></li>
+                        <li><a href="https://www.docker.com/products/container-runtime">Container Runtime</a></li>
+                        <li><a href="https://www.docker.com/products/developer-tools">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Developers</a></b></li>
+                        <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+                        <li><a href="https://www.docker.com/docker-community">Community</a></li>
+                        <li><a href="https://www.docker.com/open-source">Open Source</a></li>
+                        <li><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Pricing</a></b></li>
+                        <li><a href="https://www.docker.com/pricing/faq">FAQs</a></li>
+                        <li><a href="https://www.docker.com/partners/programs">Docker Verified Publisher Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/company" target="_blank" rel="noopener">Company</a></b></li>
+                        <li><a href="https://www.docker.com/company">About Us</a></li>
+                        <li><a href="https://www.docker.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+                        <li><a href="https://www.docker.com/customers">Customers</a></li>
+                        <li><a href="https://www.docker.com/partners">Partners</a></li>
+                        <li><a href="https://www.docker.com/company/newsroom">Newsroom</a></li>
+                        <li><a href="https://www.docker.com/careers">Careers</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <nav class="footer_sub_nav">
+                    <ul class="menu">
+                        <li><a href="http://status.docker.com/">Status</a></li>
+                        <li><a href="https://www.docker.com/legal">Legal</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="bottom_footer">
+            <div class="footer-copyright col-xs-12 col-md-8">
+                <p class="copyright">
+                    Copyright &copy; 2013-2021 Docker Inc. All rights reserved. </p>
+            </div>
+            <div class="footer_social_nav">
+                <ul class="nav-social">
+                    <li class="fa fa-twitter"><a href="http://twitter.com/docker">Twitter</a></li>
+                    <li class="fa fa-youtube"><a href="http://www.youtube.com/user/dockerrun">Youtube</a></li>
+                    <li class="fa fa-github"><a href="https://github.com/docker">GitHub</a></li>
+                    <li class="fa fa-linkedin"><a href="https://www.linkedin.com/company/docker">Linkedin</a></li>
+                    <li class="fa fa-facebook"><a href="https://www.facebook.com/docker.run">Facebook</a></li>
+                    <li class="fa fa-slideshare"><a href="https://www.slideshare.net/docker">Slideshare</a></li>
+                    <li class="fa fa-reddit"><a href="https://www.reddit.com/r/docker">Reddit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </footer>
+    <script>const pageURL = "/machine/concepts/";</script><script>
+    let PDRTJS_settings_8453675 = {
+        "id": "8453675",
+        "unique_id": "machine/concepts.md",
+        "title": "Machine concepts and getting help",
+        "font_family": "Open Sans, sans serif",
+        "font_color": "b9c2cc",
+        "font_align": "center",
+        "permalink": "https://github.com/docker/docker.github.io/blob/master/machine/concepts.md"
+    };
+    (function (d, c, j) {
+        if (!document.getElementById(j)) {
+            let pd=d.createElement(c),s;pd.id=j;pd.src='https://polldaddy.com/js/rating/rating.js';s=document.getElementsByTagName(c)[0];s.parentNode.insertBefore(pd, s);
+        }
+    }(document, 'script', 'pd-rating-js'));
+</script></body>
+</html>

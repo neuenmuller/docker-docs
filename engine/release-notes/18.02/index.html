@@ -1,0 +1,332 @@
+<!-- Page generated 2021-11-17 12:16:07 +0000-->
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WL2QLG5');</script>
+<title>Docker Engine 18.02 release notes | Docker Documentation</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="docker, docker open source, docker platform, distributed applications, microservices, containers, docker containers, docker software, docker virtualization">
+  <link rel="canonical" href="https://docs.docker.com/engine/release-notes/18.02/" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <meta name="msapplication-TileImage" content="/favicons/docs@2x.ico">
+  <meta property="og:image" content="/favicons/docs@2x.ico"/>
+  <meta name="theme-color" content="#2496ed" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- hide elements that are only shown without JavaScript enabled -->
+  <script>document.documentElement.classList.add('js')</script>
+  <style>html.js .no-js { display: none !important; }</style><script defer src="/js/theme-switcher.js"></script>
+  <script defer src="/js/anchorlinks.js"></script>
+  <script defer src="/js/jquery.js"></script>
+  <script defer src="/js/bootstrap.min.js"></script>
+  <script defer src="/js/docs.js"></script><script defer src="/js/search.js"></script><link rel="preload" as="font" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Book.woff2"    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/glyphicons-halflings-regular.woff2"       type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/fontawesome-webfont.woff2?v=4.7.0"        type="font/woff2" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css" id="pagestyle">
+
+  <!-- SEO stuff -->
+  <meta name="twitter:title" itemprop="title name" content="Docker Engine 18.02 release notes"/>
+  <meta name="twitter:description" property="og:description" itemprop="description" content="" />
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:domain" content="docs.docker.com"/>
+  <meta name="twitter:site" content="@docker_docs"/>
+  <meta name="twitter:url" content="https://twitter.com/docker_docs"/>
+  <meta name="twitter:image:src" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta name="twitter:image:alt" content="Docker Documentation"/>
+  <meta property="og:title" content="Docker Engine 18.02 release notes" />
+  <meta property="og:description" content="" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:updated_time" itemprop="dateUpdated" content="2021-11-17T12:16:07+00:00"/>
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://docs.docker.com/engine/release-notes/18.02/" />
+  <meta property="og:site_name" content="Docker Documentation" />
+  <meta property="article:published_time" itemprop="datePublished" content="2021-11-17T12:16:07+00:00"/>
+  <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Docker Engine 18.02 release notes","description":null,"url":"https://docs.docker.com/engine/release-notes/18.02/"}</script>
+  <!-- END SEO STUFF -->
+</head>
+<body class="colums">
+    <header>
+        <nav class="nav-secondary navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/">
+                <img class="logo" src="/images/docker-docs-logo.svg" alt="Docker Docs" title="Docker Docs" width="160" height="28" />
+            </a>
+        </div>
+        <div class="navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <div class="logo-mobile">
+    <a href="/">
+        <img src="/images/docker-icon.svg" alt="Docker Docs" title="Docker Docs" width="30" height="30" />
+    </a>
+</div>
+<div class="search-form" id="search-div">
+    <form class="search-form form-inline" id="searchForm" action="/search/" method="get">
+        <label for="st-search-input" class="sr-only">Search</label>
+        <input class="search-field form-control ds-input" id="st-search-input" name="q" placeholder="Search the docs" type="search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
+        <div id="autocompleteResults"></div>
+        <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
+    </form>
+</div>
+<div class="sidebar-toggle">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="nav-container hidden-sm hidden-xs">
+    <div>
+        <ul class="nav navbar-nav"><li><a href="/" id="home">Home</a></li><li><a href="/get-started/overview/" id="guides">Guides</a></li><li><a href="/desktop/" id="manuals">Manuals</a></li><li><a href="/reference/" id="reference">Reference</a></li><li><a href="/samples/" id="samples">Samples</a></li></ul>
+    </div>
+    <div class="ctrl-right">
+        <a href="javascript:void(0)" id="menu-toggle" aria-label="Current page's menu toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
+    </div>
+</div>
+<div class="row hidden-sm hidden-xs">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="/" title="Docker docs homepage"><i class="fa fa-home"></i></a></li>
+            <li><a href="/desktop/">Manuals</a></li><li><a href="/engine/">Docker Engine</a></li><li><a href="/engine/release-notes/19.03/">Previous versions</a></li><li><a href="/engine/release-notes/18.02/">Engine 18.02 release notes</a></li></ol>
+    </nav>
+</div></div>
+    </div>
+</nav>
+
+    </header>
+    <div class="wrapper right-open">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-body">
+                    <main class="col-content content">
+                        <section class="section"><h1>Docker Engine 18.02 release notes</h1><h2 id="18020-ce">18.02.0-ce</h2>
+<p>2018-02-07</p>
+
+<h3 id="builder">Builder</h3>
+
+<ul>
+  <li>Gitutils: fix checking out submodules <a href="https://github.com/moby/moby/pull/35737">moby/moby#35737</a></li>
+</ul>
+
+<h3 id="client">Client</h3>
+
+<ul>
+  <li>Attach: Ensure attach exit code matches container’s <a href="https://github.com/docker/cli/pull/696">docker/cli#696</a></li>
+  <li>Added support for tmpfs-mode in compose file <a href="https://github.com/docker/cli/pull/808">docker/cli#808</a></li>
+  <li>Adds a new compose file version 3.6 <a href="https://github.com/docker/cli/pull/808">docker/cli#808</a></li>
+  <li>Fix issue of filter in <code class="highlighter-rouge">docker ps</code> where <code class="highlighter-rouge">health=starting</code> returns nothing <a href="https://github.com/moby/moby/pull/35940">moby/moby#35940</a></li>
+  <li>Improve presentation of published port ranges <a href="https://github.com/docker/cli/pull/581">docker/cli#581</a></li>
+  <li>Bump Go to 1.9.3 <a href="https://github.com/docker/cli/pull/827">docker/cli#827</a></li>
+  <li>Fix broken Kubernetes stack flags <a href="https://github.com/docker/cli/pull/831">docker/cli#831</a></li>
+  <li>Annotate “stack” commands to be “swarm” and “kubernetes” <a href="https://github.com/docker/cli/pull/804">docker/cli#804</a></li>
+</ul>
+
+<h3 id="experimental">Experimental</h3>
+
+<ul>
+  <li>Add manifest command <a href="https://github.com/docker/cli/pull/138">docker/cli#138</a></li>
+  <li>LCOW remotefs - return error in Read() implementation <a href="https://github.com/moby/moby/pull/36051">moby/moby#36051</a></li>
+  <li>LCOW: Coalesce daemon stores, allow dual LCOW and WCOW mode <a href="https://github.com/moby/moby/pull/34859">moby/moby#34859</a></li>
+  <li>LCOW: Fix OpenFile parameters <a href="https://github.com/moby/moby/pull/36043">moby/moby#36043</a></li>
+  <li>LCOW: Raise minimum requirement to Windows RS3 RTM build (16299) <a href="https://github.com/moby/moby/pull/36065">moby/moby#36065</a></li>
+</ul>
+
+<h3 id="logging">Logging</h3>
+
+<ul>
+  <li>Improve daemon config reload; log active configuration <a href="https://github.com/moby/moby/pull/36019">moby/moby#36019</a></li>
+  <li>Fixed error detection using IsErrNotFound and IsErrNotImplemented for the ContainerLogs method <a href="https://github.com/moby/moby/pull/36000">moby/moby#36000</a></li>
+  <li>Add journald tag as SYSLOG_IDENTIFIER <a href="https://github.com/moby/moby/pull/35570">moby/moby#35570</a></li>
+  <li>Splunk: limit the reader size on error responses <a href="https://github.com/moby/moby/pull/35509">moby/moby#35509</a></li>
+</ul>
+
+<h3 id="networking">Networking</h3>
+
+<ul>
+  <li>Disable service on release network results in zero-downtime deployments with rolling upgrades <a href="https://github.com/moby/moby/pull/35960">moby/moby#35960</a></li>
+  <li>Fix services failing to start if multiple networks with the same name exist in different spaces <a href="https://github.com/moby/moby/pull/30897">moby/moby#30897</a></li>
+  <li>Fix duplicate networks being added with <code class="highlighter-rouge">docker service update --network-add</code> <a href="https://github.com/docker/cli/pull/780">docker/cli#780</a></li>
+  <li>Fixing ingress network when upgrading from 17.09 to 17.12. <a href="https://github.com/moby/moby/pull/36003">moby/moby#36003</a></li>
+  <li>Fix ndots configuration <a href="https://github.com/docker/libnetwork/pull/1995">docker/libnetwork#1995</a></li>
+  <li>Fix IPV6 networking being deconfigured if live-restore is enabled <a href="https://github.com/docker/libnetwork/pull/2043">docker/libnetwork#2043</a></li>
+  <li>Add support for MX type DNS queries in the embedded DNS server <a href="https://github.com/docker/libnetwork/pull/2041">docker/libnetwork#2041</a></li>
+</ul>
+
+<h3 id="packaging">Packaging</h3>
+
+<ul>
+  <li>Added packaging for Fedora 26, Fedora 27, and Centos 7 on aarch64 <a href="https://github.com/docker/docker-ce-packaging/pull/71">docker/docker-ce-packaging#71</a></li>
+  <li>Removed support for Ubuntu Zesty <a href="https://github.com/docker/docker-ce-packaging/pull/73">docker/docker-ce-packaging#73</a></li>
+  <li>Removed support for Fedora 25 <a href="https://github.com/docker/docker-ce-packaging/pull/72">docker/docker-ce-packaging#72</a></li>
+</ul>
+
+<h3 id="runtime">Runtime</h3>
+
+<ul>
+  <li>Fixes unexpected Docker Daemon shutdown based on pipe error <a href="https://github.com/moby/moby/pull/35968">moby/moby#35968</a></li>
+  <li>Fix some occurrences of hcsshim::ImportLayer failed in Win32: The system cannot find the path specified <a href="https://github.com/moby/moby/pull/35924">moby/moby#35924</a></li>
+  <li>Windows: increase the maximum layer size during build to 127GB <a href="https://github.com/moby/moby/pull/35925">moby/moby#35925</a></li>
+  <li>Fix Devicemapper: Error running DeleteDevice dm_task_run failed <a href="https://github.com/moby/moby/pull/35919">moby/moby#35919</a></li>
+  <li>Introduce « exec_die » event <a href="https://github.com/moby/moby/pull/35744">moby/moby#35744</a></li>
+  <li>Update API to version 1.36 <a href="https://github.com/moby/moby/pull/35744">moby/moby#35744</a></li>
+  <li>Fix <code class="highlighter-rouge">docker update</code> not updating cpu quota, and cpu-period of a running container <a href="https://github.com/moby/moby/pull/36030">moby/moby#36030</a></li>
+  <li>Make container shm parent unbindable <a href="https://github.com/moby/moby/pull/35830">moby/moby#35830</a></li>
+  <li>Make image (layer) downloads faster by using pigz <a href="https://github.com/moby/moby/pull/35697">moby/moby#35697</a></li>
+  <li>Protect the daemon from volume plugins that are slow or deadlocked <a href="https://github.com/moby/moby/pull/35441">moby/moby#35441</a></li>
+  <li>Fix <code class="highlighter-rouge">DOCKER_RAMDISK</code> environment variable not being honoured <a href="https://github.com/moby/moby/pull/35957">moby/moby#35957</a></li>
+  <li>Bump containerd to 1.0.1 (9b55aab90508bd389d7654c4baf173a981477d55) <a href="https://github.com/moby/moby/pull/35986">moby/moby#35986</a></li>
+  <li>Update runc to fix hang during start and exec <a href="https://github.com/moby/moby/pull/36097">moby/moby#36097</a></li>
+  <li>Fix “--node-generic-resource” singular/plural <a href="https://github.com/moby/moby/pull/36125">moby/moby#36125</a></li>
+</ul>
+<div class="ratings-div"><div id="pd_rating_holder_8453675"></div></div></section>
+                    </main>
+                    <nav class="col-nav">
+                        <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+                            <div id="navbar" class="nav-sidebar">
+                                <ul class="nav hidden-md hidden-lg"></ul>
+                                <ul class="nav" id="jsTOCLeftNav"></ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="col-toc">
+                        <div class="sidebar hidden-xs hidden-sm">
+                            <div class="toc-nav">
+                                <div class="feedback-links">
+                                    <ul><li><a href="https://github.com/docker/docker.github.io/edit/master/engine/release-notes/18.02.md"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this page</a></li><li><a href="https://github.com/docker/docker.github.io/issues/new?body=File: [engine/release-notes/18.02.md](https://docs.docker.com/engine/release-notes/18.02/)" class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>
+                                        <li><div class="toggle-mode">
+  <div class="icon">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+  </div>
+  <div class="toggle-switch">
+      <label class="switch">
+          <input type="checkbox" id="switch-style">
+          <span class="slider round"></span>
+      </label>
+  </div>
+  <div class="icon">
+      <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </div>
+</div>
+</li>
+                                    </ul>
+                                </div><div id="side-toc-title">On this page:</div>
+<ul id="my_toc" class="inline_toc">
+  <li><a href="#18020-ce" class="nomunge">18.02.0-ce</a></li>
+</ul>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+          
+    <div class="container">
+        <div class="top_footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/why-docker">Why Docker?</a></b></li>
+                        <li><a href="https://www.docker.com/what-container">What is a Container?</a></li>
+                        <li><a href="https://docker.events.cube365.net/dockercon/">DockerCon</a></li>
+                        <li><b><a href="https://www.docker.com/products/overview">Products</a></b></li>
+                        <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+                        <li><a href="https://www.docker.com/products/docker-hub">Docker Hub</a></li>
+                        <li><a href="https://www.docker.com/roadmap">Docker Product Roadmap</a></li>
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Features</a></b></li>
+                        <li><a href="https://www.docker.com/products/container-runtime">Container Runtime</a></li>
+                        <li><a href="https://www.docker.com/products/developer-tools">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Developers</a></b></li>
+                        <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+                        <li><a href="https://www.docker.com/docker-community">Community</a></li>
+                        <li><a href="https://www.docker.com/open-source">Open Source</a></li>
+                        <li><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Pricing</a></b></li>
+                        <li><a href="https://www.docker.com/pricing/faq">FAQs</a></li>
+                        <li><a href="https://www.docker.com/partners/programs">Docker Verified Publisher Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/company" target="_blank" rel="noopener">Company</a></b></li>
+                        <li><a href="https://www.docker.com/company">About Us</a></li>
+                        <li><a href="https://www.docker.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+                        <li><a href="https://www.docker.com/customers">Customers</a></li>
+                        <li><a href="https://www.docker.com/partners">Partners</a></li>
+                        <li><a href="https://www.docker.com/company/newsroom">Newsroom</a></li>
+                        <li><a href="https://www.docker.com/careers">Careers</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <nav class="footer_sub_nav">
+                    <ul class="menu">
+                        <li><a href="http://status.docker.com/">Status</a></li>
+                        <li><a href="https://www.docker.com/legal">Legal</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="bottom_footer">
+            <div class="footer-copyright col-xs-12 col-md-8">
+                <p class="copyright">
+                    Copyright &copy; 2013-2021 Docker Inc. All rights reserved. </p>
+            </div>
+            <div class="footer_social_nav">
+                <ul class="nav-social">
+                    <li class="fa fa-twitter"><a href="http://twitter.com/docker">Twitter</a></li>
+                    <li class="fa fa-youtube"><a href="http://www.youtube.com/user/dockerrun">Youtube</a></li>
+                    <li class="fa fa-github"><a href="https://github.com/docker">GitHub</a></li>
+                    <li class="fa fa-linkedin"><a href="https://www.linkedin.com/company/docker">Linkedin</a></li>
+                    <li class="fa fa-facebook"><a href="https://www.facebook.com/docker.run">Facebook</a></li>
+                    <li class="fa fa-slideshare"><a href="https://www.slideshare.net/docker">Slideshare</a></li>
+                    <li class="fa fa-reddit"><a href="https://www.reddit.com/r/docker">Reddit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </footer>
+    <script>const pageURL = "/engine/release-notes/18.02/";</script><script>
+    let PDRTJS_settings_8453675 = {
+        "id": "8453675",
+        "unique_id": "engine/release-notes/18.02.md",
+        "title": "Docker Engine 18.02 release notes",
+        "font_family": "Open Sans, sans serif",
+        "font_color": "b9c2cc",
+        "font_align": "center",
+        "permalink": "https://github.com/docker/docker.github.io/blob/master/engine/release-notes/18.02.md"
+    };
+    (function (d, c, j) {
+        if (!document.getElementById(j)) {
+            let pd=d.createElement(c),s;pd.id=j;pd.src='https://polldaddy.com/js/rating/rating.js';s=document.getElementsByTagName(c)[0];s.parentNode.insertBefore(pd, s);
+        }
+    }(document, 'script', 'pd-rating-js'));
+</script></body>
+</html>

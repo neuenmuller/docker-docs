@@ -1,0 +1,404 @@
+<!-- Page generated 2021-11-17 12:16:07 +0000-->
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex"/><!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WL2QLG5');</script>
+<title>docker-machine ls | Docker Documentation</title>
+  <meta name="description" content="List machines" />
+  <meta name="keywords" content="machine, ls, subcommand">
+  <link rel="canonical" href="https://docs.docker.com/machine/reference/ls/" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <meta name="msapplication-TileImage" content="/favicons/docs@2x.ico">
+  <meta property="og:image" content="/favicons/docs@2x.ico"/>
+  <meta name="theme-color" content="#2496ed" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- hide elements that are only shown without JavaScript enabled -->
+  <script>document.documentElement.classList.add('js')</script>
+  <style>html.js .no-js { display: none !important; }</style><script defer src="/js/theme-switcher.js"></script>
+  <script defer src="/js/anchorlinks.js"></script>
+  <script defer src="/js/jquery.js"></script>
+  <script defer src="/js/bootstrap.min.js"></script>
+  <script defer src="/js/docs.js"></script><script defer src="/js/search.js"></script><link rel="preload" as="font" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Book.woff2"    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/glyphicons-halflings-regular.woff2"       type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/fontawesome-webfont.woff2?v=4.7.0"        type="font/woff2" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css" id="pagestyle">
+
+  <!-- SEO stuff -->
+  <meta name="twitter:title" itemprop="title name" content="docker-machine ls"/>
+  <meta name="twitter:description" property="og:description" itemprop="description" content="" />
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:domain" content="docs.docker.com"/>
+  <meta name="twitter:site" content="@docker_docs"/>
+  <meta name="twitter:url" content="https://twitter.com/docker_docs"/>
+  <meta name="twitter:image:src" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta name="twitter:image:alt" content="Docker Documentation"/>
+  <meta property="og:title" content="docker-machine ls" />
+  <meta property="og:description" content="List machines" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:updated_time" itemprop="dateUpdated" content="2021-11-17T12:16:07+00:00"/>
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://docs.docker.com/machine/reference/ls/" />
+  <meta property="og:site_name" content="Docker Documentation" />
+  <meta property="article:published_time" itemprop="datePublished" content="2021-11-17T12:16:07+00:00"/>
+  <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"docker-machine ls","description":"List machines","url":"https://docs.docker.com/machine/reference/ls/"}</script>
+  <!-- END SEO STUFF -->
+</head>
+<body class="colums">
+    <header>
+        <nav class="nav-secondary navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/">
+                <img class="logo" src="/images/docker-docs-logo.svg" alt="Docker Docs" title="Docker Docs" width="160" height="28" />
+            </a>
+        </div>
+        <div class="navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <div class="logo-mobile">
+    <a href="/">
+        <img src="/images/docker-icon.svg" alt="Docker Docs" title="Docker Docs" width="30" height="30" />
+    </a>
+</div>
+<div class="search-form" id="search-div">
+    <form class="search-form form-inline" id="searchForm" action="/search/" method="get">
+        <label for="st-search-input" class="sr-only">Search</label>
+        <input class="search-field form-control ds-input" id="st-search-input" name="q" placeholder="Search the docs" type="search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
+        <div id="autocompleteResults"></div>
+        <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
+    </form>
+</div>
+<div class="sidebar-toggle">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="nav-container hidden-sm hidden-xs">
+    <div>
+        <ul class="nav navbar-nav"><li><a href="/" id="home">Home</a></li><li><a href="/get-started/overview/" id="guides">Guides</a></li><li><a href="/desktop/" id="manuals">Manuals</a></li><li><a href="/reference/" id="reference">Reference</a></li><li><a href="/samples/" id="samples">Samples</a></li></ul>
+    </div>
+    <div class="ctrl-right">
+        <a href="javascript:void(0)" id="menu-toggle" aria-label="Current page's menu toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
+    </div>
+</div>
+</div>
+    </div>
+</nav>
+
+    </header>
+    <div class="wrapper right-open">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-body">
+                    <main class="col-content content">
+                        <section class="section"><h1>docker-machine ls</h1><p><em class="reading-time">Estimated reading time: 3 minutes</em></p><pre><code class="language-none">Usage: docker-machine ls [OPTIONS] [arg...]
+
+List machines
+
+Options:
+
+   --quiet, -q                                  Enable quiet mode
+   --filter [--filter option --filter option]   Filter output based on conditions provided
+   --timeout, -t "10"                           Timeout in seconds, default to 10s
+   --format, -f                                 Pretty-print machines using a Go template
+</code></pre>
+
+<h2 id="timeout">Timeout</h2>
+
+<p>The <code class="highlighter-rouge">ls</code> command tries to reach each host in parallel. If a given host does not
+answer in less than 10 seconds, the <code class="highlighter-rouge">ls</code> command states that this host is in
+<code class="highlighter-rouge">Timeout</code> state. In some circumstances (poor connection, high load, or while
+troubleshooting), you may want to increase or decrease this value. You can use
+the -t flag for this purpose with a numerical value in seconds.</p>
+
+<h3 id="example">Example</h3>
+
+<pre><code class="language-none">$ docker-machine ls -t 12
+NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER   ERRORS
+default   -        virtualbox   Running   tcp://192.168.99.100:2376           v1.9.1
+</code></pre>
+
+<h2 id="filtering">Filtering</h2>
+
+<p>The filtering flag (<code class="highlighter-rouge">--filter</code>) format is a <code class="highlighter-rouge">key=value</code> pair. If there is more
+than one filter, then pass multiple flags. For example:
+<code class="highlighter-rouge">--filter "foo=bar" --filter "bif=baz"</code></p>
+
+<p>The currently supported filters are:</p>
+
+<ul>
+  <li>driver (driver name)</li>
+  <li>swarm  (swarm master’s name)</li>
+  <li>state  (<code class="highlighter-rouge">Running|Paused|Saved|Stopped|Stopping|Starting|Error</code>)</li>
+  <li>name   (Machine name returned by driver, supports <a href="https://github.com/google/re2/wiki/Syntax">golang style</a> regular expressions)</li>
+  <li>label  (Machine created with <code class="highlighter-rouge">--engine-label</code> option, can be filtered with <code class="highlighter-rouge">label=&lt;key&gt;[=&lt;value&gt;]</code>)</li>
+</ul>
+
+<h3 id="examples">Examples</h3>
+
+<pre><code class="language-none">$ docker-machine ls
+NAME   ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER   ERRORS
+dev    -        virtualbox   Stopped
+foo0   -        virtualbox   Running   tcp://192.168.99.105:2376           v1.9.1
+foo1   -        virtualbox   Running   tcp://192.168.99.106:2376           v1.9.1
+foo2   *        virtualbox   Running   tcp://192.168.99.107:2376           v1.9.1
+
+$ docker-machine ls --filter name=foo0
+NAME   ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER   ERRORS
+foo0   -        virtualbox   Running   tcp://192.168.99.105:2376           v1.9.1
+
+$ docker-machine ls --filter driver=virtualbox --filter state=Stopped
+NAME   ACTIVE   DRIVER       STATE     URL   SWARM   DOCKER   ERRORS
+dev    -        virtualbox   Stopped                 v1.9.1
+
+$ docker-machine ls --filter label=com.class.app=foo1 --filter label=com.class.app=foo2
+NAME   ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER   ERRORS
+foo1   -        virtualbox   Running   tcp://192.168.99.105:2376           v1.9.1
+foo2   *        virtualbox   Running   tcp://192.168.99.107:2376           v1.9.1
+</code></pre>
+
+<h2 id="formatting">Formatting</h2>
+
+<p>The formatting option (<code class="highlighter-rouge">--format</code>) pretty-prints machines using a Go template.</p>
+
+<p>Valid placeholders for the Go template are listed below:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Placeholder</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">.Name</td>
+      <td style="text-align: left">Machine name</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">.Active</td>
+      <td style="text-align: left">Is the machine active?</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">.ActiveHost</td>
+      <td style="text-align: left">Is the machine an active non-swarm host?</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">.ActiveSwarm</td>
+      <td style="text-align: left">Is the machine an active swarm master?</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">.DriverName</td>
+      <td style="text-align: left">Driver name</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">.State</td>
+      <td style="text-align: left">Machine state (running, stopped...)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">.URL</td>
+      <td style="text-align: left">Machine URL</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">.Swarm</td>
+      <td style="text-align: left">Machine swarm name</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">.Error</td>
+      <td style="text-align: left">Machine errors</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">.DockerVersion</td>
+      <td style="text-align: left">Docker Daemon version</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">.ResponseTime</td>
+      <td style="text-align: left">Time taken by the host to respond</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>When using the <code class="highlighter-rouge">--format</code> option, the <code class="highlighter-rouge">ls</code> command either outputs the data exactly as the template declares or,
+when using the table directive, includes column headers as well.</p>
+
+<p>The following example uses a template without headers and outputs the <code class="highlighter-rouge">Name</code> and <code class="highlighter-rouge">Driver</code> entries separated by a colon
+for all running machines:</p>
+
+<pre><code class="language-none">$ docker-machine ls --format "{{.Name}}: {{.DriverName}}"
+default: virtualbox
+ec2: amazonec2
+</code></pre>
+
+<p>To list all machine names with their driver in a table format you can use:</p>
+
+<pre><code class="language-none">$ docker-machine ls --format "table {{.Name}} {{.DriverName}}"
+NAME     DRIVER
+default  virtualbox
+ec2      amazonec2
+</code></pre>
+
+<span class="glyphicon glyphicon-tags" style="padding-right: 10px"></span><span style="vertical-align: 2px"><a href="/search/?q=machine">machine</a>, <a href="/search/?q=ls">ls</a>, <a href="/search/?q=subcommand">subcommand</a></span><div class="ratings-div"><div id="pd_rating_holder_8453675"></div></div></section>
+                    </main>
+                    <nav class="col-nav">
+                        <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+                            <div id="navbar" class="nav-sidebar">
+                                <ul class="nav hidden-md hidden-lg"></ul>
+                                <ul class="nav" id="jsTOCLeftNav"></ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="col-toc">
+                        <div class="sidebar hidden-xs hidden-sm">
+                            <div class="toc-nav">
+                                <div class="feedback-links">
+                                    <ul><li><a href="https://github.com/docker/docker.github.io/edit/master/machine/reference/ls.md"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this page</a></li><li><a href="https://github.com/docker/docker.github.io/issues/new?body=File: [machine/reference/ls.md](https://docs.docker.com/machine/reference/ls/)" class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>
+                                        <li><div class="toggle-mode">
+  <div class="icon">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+  </div>
+  <div class="toggle-switch">
+      <label class="switch">
+          <input type="checkbox" id="switch-style">
+          <span class="slider round"></span>
+      </label>
+  </div>
+  <div class="icon">
+      <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </div>
+</div>
+</li>
+                                    </ul>
+                                </div><div id="side-toc-title">On this page:</div>
+<ul id="my_toc" class="inline_toc">
+  <li><a href="#timeout" class="nomunge">Timeout</a>
+    <ul>
+      <li><a href="#example" class="nomunge">Example</a></li>
+    </ul>
+  </li>
+  <li><a href="#filtering" class="nomunge">Filtering</a>
+    <ul>
+      <li><a href="#examples" class="nomunge">Examples</a></li>
+    </ul>
+  </li>
+  <li><a href="#formatting" class="nomunge">Formatting</a></li>
+</ul>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+          
+    <div class="container">
+        <div class="top_footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/why-docker">Why Docker?</a></b></li>
+                        <li><a href="https://www.docker.com/what-container">What is a Container?</a></li>
+                        <li><a href="https://docker.events.cube365.net/dockercon/">DockerCon</a></li>
+                        <li><b><a href="https://www.docker.com/products/overview">Products</a></b></li>
+                        <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+                        <li><a href="https://www.docker.com/products/docker-hub">Docker Hub</a></li>
+                        <li><a href="https://www.docker.com/roadmap">Docker Product Roadmap</a></li>
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Features</a></b></li>
+                        <li><a href="https://www.docker.com/products/container-runtime">Container Runtime</a></li>
+                        <li><a href="https://www.docker.com/products/developer-tools">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Developers</a></b></li>
+                        <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+                        <li><a href="https://www.docker.com/docker-community">Community</a></li>
+                        <li><a href="https://www.docker.com/open-source">Open Source</a></li>
+                        <li><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Pricing</a></b></li>
+                        <li><a href="https://www.docker.com/pricing/faq">FAQs</a></li>
+                        <li><a href="https://www.docker.com/partners/programs">Docker Verified Publisher Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/company" target="_blank" rel="noopener">Company</a></b></li>
+                        <li><a href="https://www.docker.com/company">About Us</a></li>
+                        <li><a href="https://www.docker.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+                        <li><a href="https://www.docker.com/customers">Customers</a></li>
+                        <li><a href="https://www.docker.com/partners">Partners</a></li>
+                        <li><a href="https://www.docker.com/company/newsroom">Newsroom</a></li>
+                        <li><a href="https://www.docker.com/careers">Careers</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <nav class="footer_sub_nav">
+                    <ul class="menu">
+                        <li><a href="http://status.docker.com/">Status</a></li>
+                        <li><a href="https://www.docker.com/legal">Legal</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="bottom_footer">
+            <div class="footer-copyright col-xs-12 col-md-8">
+                <p class="copyright">
+                    Copyright &copy; 2013-2021 Docker Inc. All rights reserved. </p>
+            </div>
+            <div class="footer_social_nav">
+                <ul class="nav-social">
+                    <li class="fa fa-twitter"><a href="http://twitter.com/docker">Twitter</a></li>
+                    <li class="fa fa-youtube"><a href="http://www.youtube.com/user/dockerrun">Youtube</a></li>
+                    <li class="fa fa-github"><a href="https://github.com/docker">GitHub</a></li>
+                    <li class="fa fa-linkedin"><a href="https://www.linkedin.com/company/docker">Linkedin</a></li>
+                    <li class="fa fa-facebook"><a href="https://www.facebook.com/docker.run">Facebook</a></li>
+                    <li class="fa fa-slideshare"><a href="https://www.slideshare.net/docker">Slideshare</a></li>
+                    <li class="fa fa-reddit"><a href="https://www.reddit.com/r/docker">Reddit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </footer>
+    <script>const pageURL = "/machine/reference/ls/";</script><script>
+    let PDRTJS_settings_8453675 = {
+        "id": "8453675",
+        "unique_id": "machine/reference/ls.md",
+        "title": "docker-machine ls",
+        "font_family": "Open Sans, sans serif",
+        "font_color": "b9c2cc",
+        "font_align": "center",
+        "permalink": "https://github.com/docker/docker.github.io/blob/master/machine/reference/ls.md"
+    };
+    (function (d, c, j) {
+        if (!document.getElementById(j)) {
+            let pd=d.createElement(c),s;pd.id=j;pd.src='https://polldaddy.com/js/rating/rating.js';s=document.getElementsByTagName(c)[0];s.parentNode.insertBefore(pd, s);
+        }
+    }(document, 'script', 'pd-rating-js'));
+</script></body>
+</html>

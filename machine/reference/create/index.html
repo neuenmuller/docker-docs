@@ -1,0 +1,502 @@
+<!-- Page generated 2021-11-17 12:16:07 +0000-->
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex"/><!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WL2QLG5');</script>
+<title>docker-machine create | Docker Documentation</title>
+  <meta name="description" content="Create a machine." />
+  <meta name="keywords" content="machine, create, subcommand">
+  <link rel="canonical" href="https://docs.docker.com/machine/reference/create/" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <meta name="msapplication-TileImage" content="/favicons/docs@2x.ico">
+  <meta property="og:image" content="/favicons/docs@2x.ico"/>
+  <meta name="theme-color" content="#2496ed" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- hide elements that are only shown without JavaScript enabled -->
+  <script>document.documentElement.classList.add('js')</script>
+  <style>html.js .no-js { display: none !important; }</style><script defer src="/js/theme-switcher.js"></script>
+  <script defer src="/js/anchorlinks.js"></script>
+  <script defer src="/js/jquery.js"></script>
+  <script defer src="/js/bootstrap.min.js"></script>
+  <script defer src="/js/docs.js"></script><script defer src="/js/search.js"></script><link rel="preload" as="font" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Book.woff2"    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/glyphicons-halflings-regular.woff2"       type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/fontawesome-webfont.woff2?v=4.7.0"        type="font/woff2" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css" id="pagestyle">
+
+  <!-- SEO stuff -->
+  <meta name="twitter:title" itemprop="title name" content="docker-machine create"/>
+  <meta name="twitter:description" property="og:description" itemprop="description" content="" />
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:domain" content="docs.docker.com"/>
+  <meta name="twitter:site" content="@docker_docs"/>
+  <meta name="twitter:url" content="https://twitter.com/docker_docs"/>
+  <meta name="twitter:image:src" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta name="twitter:image:alt" content="Docker Documentation"/>
+  <meta property="og:title" content="docker-machine create" />
+  <meta property="og:description" content="Create a machine." />
+  <meta property="og:type" content="website"/>
+  <meta property="og:updated_time" itemprop="dateUpdated" content="2021-11-17T12:16:07+00:00"/>
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://docs.docker.com/machine/reference/create/" />
+  <meta property="og:site_name" content="Docker Documentation" />
+  <meta property="article:published_time" itemprop="datePublished" content="2021-11-17T12:16:07+00:00"/>
+  <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"docker-machine create","description":"Create a machine.","url":"https://docs.docker.com/machine/reference/create/"}</script>
+  <!-- END SEO STUFF -->
+</head>
+<body class="colums">
+    <header>
+        <nav class="nav-secondary navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/">
+                <img class="logo" src="/images/docker-docs-logo.svg" alt="Docker Docs" title="Docker Docs" width="160" height="28" />
+            </a>
+        </div>
+        <div class="navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <div class="logo-mobile">
+    <a href="/">
+        <img src="/images/docker-icon.svg" alt="Docker Docs" title="Docker Docs" width="30" height="30" />
+    </a>
+</div>
+<div class="search-form" id="search-div">
+    <form class="search-form form-inline" id="searchForm" action="/search/" method="get">
+        <label for="st-search-input" class="sr-only">Search</label>
+        <input class="search-field form-control ds-input" id="st-search-input" name="q" placeholder="Search the docs" type="search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
+        <div id="autocompleteResults"></div>
+        <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
+    </form>
+</div>
+<div class="sidebar-toggle">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="nav-container hidden-sm hidden-xs">
+    <div>
+        <ul class="nav navbar-nav"><li><a href="/" id="home">Home</a></li><li><a href="/get-started/overview/" id="guides">Guides</a></li><li><a href="/desktop/" id="manuals">Manuals</a></li><li><a href="/reference/" id="reference">Reference</a></li><li><a href="/samples/" id="samples">Samples</a></li></ul>
+    </div>
+    <div class="ctrl-right">
+        <a href="javascript:void(0)" id="menu-toggle" aria-label="Current page's menu toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
+    </div>
+</div>
+</div>
+    </div>
+</nav>
+
+    </header>
+    <div class="wrapper right-open">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-body">
+                    <main class="col-content content">
+                        <section class="section"><h1>docker-machine create</h1><p><em class="reading-time">Estimated reading time: 10 minutes</em></p><p>Create a machine.  Requires the <code class="highlighter-rouge">--driver</code> flag to indicate which provider
+(VirtualBox, DigitalOcean, AWS, etc.) the machine should be created on, and an
+argument to indicate the name of the created machine.</p>
+
+<blockquote class="important">
+  <p>Looking for the full list of available drivers?</p>
+
+  <p>For a full list of drivers that work with <code class="highlighter-rouge">docker-machine create</code> and
+information on how to use them, see <a href="/machine/drivers/">Machine drivers</a>.</p>
+</blockquote>
+
+<h2 id="example">Example</h2>
+
+<p>Here is an example of using the <code class="highlighter-rouge">--virtualbox</code> driver to create a machine called <code class="highlighter-rouge">dev</code>.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine create <span class="nt">--driver</span> virtualbox dev
+<span class="go">
+Creating CA: /home/username/.docker/machine/certs/ca.pem
+Creating client certificate: /home/username/.docker/machine/certs/cert.pem
+Image cache does not exist, creating it at /home/username/.docker/machine/cache...
+No default boot2docker iso found locally, downloading the latest release...
+Downloading https://github.com/boot2docker/boot2docker/releases/download/v1.6.2/boot2docker.iso to /home/username/.docker/machine/cache/boot2docker.iso...
+Creating VirtualBox VM...
+Creating SSH key...
+Starting VirtualBox VM...
+Starting VM...
+To see how to connect Docker to this machine, run: docker-machine env dev
+</span></code></pre></div></div>
+
+<h2 id="accessing-driver-specific-flags-in-the-help-text">Accessing driver-specific flags in the help text</h2>
+
+<p>The <code class="highlighter-rouge">docker-machine create</code> command has some flags which apply to all
+drivers.  These largely control aspects of Machine’s provisioning process
+(including the creation of Docker Swarm containers) that the user may wish to
+customize.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine create
+<span class="go">
+Docker Machine Version: 0.5.0 (45e3688)
+Usage: docker-machine create [OPTIONS] [arg...]
+
+Create a machine.
+
+Run 'docker-machine create --driver name' to include the create flags for that driver in the help text.
+
+Options:
+
+   --driver, -d "none"                                                                                  Driver to create machine with.
+</span><span class="gp">   --engine-install-url "https://get.docker.com"                                                        Custom URL to use for engine installation [$</span>MACHINE_DOCKER_INSTALL_URL]
+<span class="go">   --engine-opt [--engine-opt option --engine-opt option]                                               Specify arbitrary flags to include with the created engine in the form flag=value
+   --engine-insecure-registry [--engine-insecure-registry option --engine-insecure-registry option]     Specify insecure registries to allow with the created engine
+</span><span class="gp">   --engine-registry-mirror [--engine-registry-mirror option --engine-registry-mirror option]           Specify registry mirrors to use [$</span>ENGINE_REGISTRY_MIRROR]
+<span class="go">   --engine-label [--engine-label option --engine-label option]                                         Specify labels for the created engine
+   --engine-storage-driver                                                                              Specify a storage driver to use with the engine
+   --engine-env [--engine-env option --engine-env option]                                               Specify environment variables to set in the engine
+   --swarm                                                                                              Configure Machine with Swarm
+</span><span class="gp">   --swarm-image "swarm:latest"                                                                         Specify Docker image to use for Swarm [$</span>MACHINE_SWARM_IMAGE]
+<span class="go">   --swarm-master                                                                                       Configure Machine to be a Swarm master
+   --swarm-discovery                                                                                    Discovery service to use with Swarm
+   --swarm-strategy "spread"                                                                            Define a default scheduling strategy for Swarm
+   --swarm-opt [--swarm-opt option --swarm-opt option]                                                  Define arbitrary flags for swarm
+   --swarm-host "tcp://0.0.0.0:3376"                                                                    ip/socket to listen on for Swarm master
+   --swarm-addr                                                                                         addr to advertise for Swarm (default: detect and use the machine IP)
+   --swarm-experimental                                                                                 Enable Swarm experimental features
+</span></code></pre></div></div>
+
+<p>Additionally, drivers can specify flags that Machine can accept as part of their
+plugin code.  These allow users to customize the provider-specific parameters of
+the created machine, such as size (<code class="highlighter-rouge">--amazonec2-instance-type m1.medium</code>),
+geographical region (<code class="highlighter-rouge">--amazonec2-region us-west-1</code>), and so on.</p>
+
+<p>To see the provider-specific flags, simply pass a value for <code class="highlighter-rouge">--driver</code> when
+invoking the <code class="highlighter-rouge">create</code> help text.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine create <span class="nt">--driver</span> virtualbox <span class="nt">--help</span>
+<span class="go">Usage: docker-machine create [OPTIONS] [arg...]
+
+Create a machine.
+
+Run 'docker-machine create --driver name' to include the create flags for that driver in the help text.
+
+Options:
+
+   --driver, -d "none"                                                                                  Driver to create machine with.
+   --engine-env [--engine-env option --engine-env option]                                               Specify environment variables to set in the engine
+   --engine-insecure-registry [--engine-insecure-registry option --engine-insecure-registry option]     Specify insecure registries to allow with the created engine
+</span><span class="gp">   --engine-install-url "https://get.docker.com"                                                        Custom URL to use for engine installation [$</span>MACHINE_DOCKER_INSTALL_URL]
+<span class="go">   --engine-label [--engine-label option --engine-label option]                                         Specify labels for the created engine
+   --engine-opt [--engine-opt option --engine-opt option]                                               Specify arbitrary flags to include with the created engine in the form flag=value
+</span><span class="gp">   --engine-registry-mirror [--engine-registry-mirror option --engine-registry-mirror option]           Specify registry mirrors to use [$</span>ENGINE_REGISTRY_MIRROR]
+<span class="go">   --engine-storage-driver                                                                              Specify a storage driver to use with the engine
+   --swarm                                                                                              Configure Machine with Swarm
+   --swarm-addr                                                                                         addr to advertise for Swarm (default: detect and use the machine IP)
+   --swarm-discovery                                                                                    Discovery service to use with Swarm
+   --swarm-experimental                                                                                 Enable Swarm experimental features
+   --swarm-host "tcp://0.0.0.0:3376"                                                                    ip/socket to listen on for Swarm master
+</span><span class="gp">   --swarm-image "swarm:latest"                                                                         Specify Docker image to use for Swarm [$</span>MACHINE_SWARM_IMAGE]
+<span class="go">   --swarm-master                                                                                       Configure Machine to be a Swarm master
+   --swarm-opt [--swarm-opt option --swarm-opt option]                                                  Define arbitrary flags for swarm
+   --swarm-strategy "spread"                                                                            Define a default scheduling strategy for Swarm
+</span><span class="gp">   --virtualbox-boot2docker-url                                                                         The URL of the boot2docker image. Defaults to the latest available version [$</span>VIRTUALBOX_BOOT2DOCKER_URL]
+<span class="gp">   --virtualbox-cpu-count "1"                                                                           number of CPUs for the machine (-1 to use the number of CPUs available) [$</span>VIRTUALBOX_CPU_COUNT]
+<span class="gp">   --virtualbox-disk-size "20000"                                                                       Size of disk for host in MB [$</span>VIRTUALBOX_DISK_SIZE]
+<span class="gp">   --virtualbox-host-dns-resolver                                                                       Use the host DNS resolver [$</span>VIRTUALBOX_HOST_DNS_RESOLVER]
+<span class="gp">   --virtualbox-dns-proxy                                                                               Proxy all DNS requests to the host [$</span>VIRTUALBOX_DNS_PROXY]
+<span class="gp">   --virtualbox-hostonly-cidr "192.168.99.1/24"                                                         Specify the Host Only CIDR [$</span>VIRTUALBOX_HOSTONLY_CIDR]
+<span class="gp">   --virtualbox-hostonly-nicpromisc "deny"                                                              Specify the Host Only Network Adapter Promiscuous Mode [$</span>VIRTUALBOX_HOSTONLY_NIC_PROMISC]
+<span class="gp">   --virtualbox-hostonly-nictype "82540EM"                                                              Specify the Host Only Network Adapter Type [$</span>VIRTUALBOX_HOSTONLY_NIC_TYPE]
+<span class="go">   --virtualbox-import-boot2docker-vm                                                                   The name of a Boot2Docker VM to import
+</span><span class="gp">   --virtualbox-memory "1024"                                                                           Size of memory for host in MB [$</span>VIRTUALBOX_MEMORY_SIZE]
+<span class="go">   --virtualbox-no-share                                                                                Disable the mount of your home directory
+</span></code></pre></div></div>
+
+<p>You may notice that some flags specify environment variables that they are
+associated with as well (located to the far left hand side of the row).  If
+these environment variables are set when <code class="highlighter-rouge">docker-machine create</code> is invoked,
+Docker Machine uses them for the default value of the flag.</p>
+
+<h2 id="specifying-configuration-options-for-the-created-docker-engine">Specifying configuration options for the created Docker engine</h2>
+
+<p>As part of the process of creation, Docker Machine installs Docker and
+configures it with some sensible defaults. For instance, it allows connection
+from the outside world over TCP with TLS-based encryption and defaults to AUFS
+as the <a href="/engine/reference/commandline/dockerd/#daemon-storage-driver">storage driver</a>
+when available.</p>
+
+<p>There are several cases where the user might want to set options for the created
+Docker engine (also known as the Docker <em>daemon</em>) themselves. For example, they
+may want to allow connection to a <a href="/registry/">registry</a>
+that they are running themselves using the <code class="highlighter-rouge">--insecure-registry</code> flag for the
+daemon. Docker Machine supports the configuration of such options for the
+created engines via the <code class="highlighter-rouge">create</code> command flags which begin with <code class="highlighter-rouge">--engine</code>.</p>
+
+<p>Docker Machine only sets the configured parameters on the daemon
+and does not set up any of the “dependencies” for you. For instance, if you
+specify that the created daemon should use <code class="highlighter-rouge">btrfs</code> as a storage driver, you
+still must ensure that the proper dependencies are installed, the BTRFS
+filesystem has been created, and so on.</p>
+
+<p>The following is an example usage:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine create <span class="nt">-d</span> virtualbox <span class="se">\</span>
+    <span class="nt">--engine-label</span> <span class="nv">foo</span><span class="o">=</span>bar <span class="se">\</span>
+    <span class="nt">--engine-label</span> <span class="nv">spam</span><span class="o">=</span>eggs <span class="se">\</span>
+    <span class="nt">--engine-storage-driver</span> overlay <span class="se">\</span>
+    <span class="nt">--engine-insecure-registry</span> registry.myco.com <span class="se">\</span>
+    foobarmachine
+</code></pre></div></div>
+
+<p>This creates a virtual machine running locally in VirtualBox which uses the
+<code class="highlighter-rouge">overlay</code> storage backend, has the key-value pairs <code class="highlighter-rouge">foo=bar</code> and <code class="highlighter-rouge">spam=eggs</code> as
+labels on the engine, and allows pushing / pulling from the insecure registry
+located at <code class="highlighter-rouge">registry.myco.com</code>. You can verify much of this by inspecting the
+output of <code class="highlighter-rouge">docker info</code>:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> <span class="nb">eval</span> <span class="k">$(</span>docker-machine env foobarmachine<span class="k">)</span>
+<span class="gp">$</span> docker info
+<span class="go">
+Containers: 0
+Images: 0
+Storage Driver: overlay
+</span><span class="c">...
+</span><span class="go">Name: foobarmachine
+</span><span class="c">...
+</span><span class="go">Labels:
+ foo=bar
+ spam=eggs
+ provider=virtualbox
+</span></code></pre></div></div>
+
+<p>The supported flags are as follows:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">--engine-insecure-registry</code>: Specify <a href="/engine/reference/commandline/dockerd/#insecure-registries">insecure registries</a> to allow with the created engine</li>
+  <li><code class="highlighter-rouge">--engine-registry-mirror</code>: Specify <a href="/registry/recipes/mirror/">registry mirrors</a> to use</li>
+  <li><code class="highlighter-rouge">--engine-label</code>: Specify <a href="/config/labels-custom-metadata/">labels</a> for the created engine</li>
+  <li><code class="highlighter-rouge">--engine-storage-driver</code>: Specify a <a href="/engine/reference/commandline/dockerd/#daemon-storage-driver">storage driver</a> to use with the engine</li>
+</ul>
+
+<p>If the engine supports specifying the flag multiple times (such as with
+<code class="highlighter-rouge">--label</code>), then so does Docker Machine.</p>
+
+<p>In addition to this subset of daemon flags which are directly supported, Docker
+Machine also supports an additional flag, <code class="highlighter-rouge">--engine-opt</code>, which can be used to
+specify arbitrary daemon options with the syntax <code class="highlighter-rouge">--engine-opt flagname=value</code>.
+For example, to specify that the daemon should use <code class="highlighter-rouge">8.8.8.8</code> as the DNS server
+for all containers, and always use the <code class="highlighter-rouge">syslog</code> <a href="/config/containers/logging/configure/">log driver</a>
+you could run the following create command:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine create <span class="nt">-d</span> virtualbox <span class="se">\</span>
+    <span class="nt">--engine-opt</span> <span class="nv">dns</span><span class="o">=</span>8.8.8.8 <span class="se">\</span>
+    <span class="nt">--engine-opt</span> log-driver<span class="o">=</span>syslog <span class="se">\</span>
+    gdns
+</code></pre></div></div>
+
+<p>Additionally, Docker Machine supports a flag, <code class="highlighter-rouge">--engine-env</code>, which can be used to
+specify arbitrary environment variables to be set within the engine with the syntax <code class="highlighter-rouge">--engine-env name=value</code>. For example, to specify that the engine should use <code class="highlighter-rouge">example.com</code> as the proxy server, you could run the following create command:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine create <span class="nt">-d</span> virtualbox <span class="se">\</span>
+    <span class="nt">--engine-env</span> <span class="nv">HTTP_PROXY</span><span class="o">=</span>http://example.com:8080 <span class="se">\</span>
+    <span class="nt">--engine-env</span> <span class="nv">HTTPS_PROXY</span><span class="o">=</span>https://example.com:8080 <span class="se">\</span>
+    <span class="nt">--engine-env</span> <span class="nv">NO_PROXY</span><span class="o">=</span>example2.com <span class="se">\</span>
+    proxbox
+</code></pre></div></div>
+
+<h2 id="specifying-docker-swarm-options-for-the-created-machine">Specifying Docker Swarm options for the created machine</h2>
+
+<p>In addition to configuring Docker Engine options as listed above,
+you can use Machine to specify how the created swarm manager is
+configured. There is a <code class="highlighter-rouge">--swarm-strategy</code> flag, which you can use to specify
+the scheduling strategy
+which Docker Swarm should use (Machine defaults to the <code class="highlighter-rouge">spread</code> strategy).
+There is also a general purpose <code class="highlighter-rouge">--swarm-opt</code> option which works similar to the aforementioned <code class="highlighter-rouge">--engine-opt</code> option, except that it specifies options
+for the <code class="highlighter-rouge">swarm manage</code> command (used to boot a master node) instead of the base
+command. You can use this to configure features that power users might be
+interested in, such as configuring the heartbeat interval or Swarm’s willingness
+to over-commit resources. There is also the <code class="highlighter-rouge">--swarm-experimental</code> flag, that
+allows you to access <a href="https://github.com/docker/swarm/tree/master/experimental">experimental features</a>
+in Docker Swarm.</p>
+
+<p>If you’re not sure how to configure these options, it is best to not specify
+configuration at all. Docker Machine chooses sensible defaults for you and
+you don’t need to worry about it.</p>
+
+<p>Example create:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine create <span class="nt">-d</span> virtualbox <span class="se">\</span>
+    <span class="nt">--swarm</span> <span class="se">\</span>
+    <span class="nt">--swarm-master</span> <span class="se">\</span>
+    <span class="nt">--swarm-discovery</span> token://&lt;token&gt; <span class="se">\</span>
+    <span class="nt">--swarm-strategy</span> binpack <span class="se">\</span>
+    <span class="nt">--swarm-opt</span> <span class="nv">heartbeat</span><span class="o">=</span>5s <span class="se">\</span>
+    upbeat
+</code></pre></div></div>
+
+<p>This sets the swarm scheduling strategy to “binpack” (pack in containers as
+tightly as possible per host instead of spreading them out), and the “heartbeat”
+interval to 5 seconds.</p>
+
+<h2 id="pre-create-check">Pre-create check</h2>
+
+<p>Many drivers require a certain set of conditions to be in place before
+machines can be created. For instance, VirtualBox needs to be installed before
+the <code class="highlighter-rouge">virtualbox</code> driver can be used. For this reason, Docker Machine has a
+“pre-create check” which is specified at the driver level.</p>
+
+<p>If this pre-create check succeeds, Docker Machine proceeds with the creation
+as normal.  If the pre-create check fails, the Docker Machine process exits
+with status code 3 to indicate that the source of the non-zero exit was the
+pre-create check failing.</p>
+<span class="glyphicon glyphicon-tags" style="padding-right: 10px"></span><span style="vertical-align: 2px"><a href="/search/?q=machine">machine</a>, <a href="/search/?q=create">create</a>, <a href="/search/?q=subcommand">subcommand</a></span><div class="ratings-div"><div id="pd_rating_holder_8453675"></div></div></section>
+                    </main>
+                    <nav class="col-nav">
+                        <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+                            <div id="navbar" class="nav-sidebar">
+                                <ul class="nav hidden-md hidden-lg"></ul>
+                                <ul class="nav" id="jsTOCLeftNav"></ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="col-toc">
+                        <div class="sidebar hidden-xs hidden-sm">
+                            <div class="toc-nav">
+                                <div class="feedback-links">
+                                    <ul><li><a href="https://github.com/docker/docker.github.io/edit/master/machine/reference/create.md"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this page</a></li><li><a href="https://github.com/docker/docker.github.io/issues/new?body=File: [machine/reference/create.md](https://docs.docker.com/machine/reference/create/)" class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>
+                                        <li><div class="toggle-mode">
+  <div class="icon">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+  </div>
+  <div class="toggle-switch">
+      <label class="switch">
+          <input type="checkbox" id="switch-style">
+          <span class="slider round"></span>
+      </label>
+  </div>
+  <div class="icon">
+      <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </div>
+</div>
+</li>
+                                    </ul>
+                                </div><div id="side-toc-title">On this page:</div>
+<ul id="my_toc" class="inline_toc">
+  <li><a href="#example" class="nomunge">Example</a></li>
+  <li><a href="#accessing-driver-specific-flags-in-the-help-text" class="nomunge">Accessing driver-specific flags in the help text</a></li>
+  <li><a href="#specifying-configuration-options-for-the-created-docker-engine" class="nomunge">Specifying configuration options for the created Docker engine</a></li>
+  <li><a href="#specifying-docker-swarm-options-for-the-created-machine" class="nomunge">Specifying Docker Swarm options for the created machine</a></li>
+  <li><a href="#pre-create-check" class="nomunge">Pre-create check</a></li>
+</ul>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+          
+    <div class="container">
+        <div class="top_footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/why-docker">Why Docker?</a></b></li>
+                        <li><a href="https://www.docker.com/what-container">What is a Container?</a></li>
+                        <li><a href="https://docker.events.cube365.net/dockercon/">DockerCon</a></li>
+                        <li><b><a href="https://www.docker.com/products/overview">Products</a></b></li>
+                        <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+                        <li><a href="https://www.docker.com/products/docker-hub">Docker Hub</a></li>
+                        <li><a href="https://www.docker.com/roadmap">Docker Product Roadmap</a></li>
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Features</a></b></li>
+                        <li><a href="https://www.docker.com/products/container-runtime">Container Runtime</a></li>
+                        <li><a href="https://www.docker.com/products/developer-tools">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Developers</a></b></li>
+                        <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+                        <li><a href="https://www.docker.com/docker-community">Community</a></li>
+                        <li><a href="https://www.docker.com/open-source">Open Source</a></li>
+                        <li><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Pricing</a></b></li>
+                        <li><a href="https://www.docker.com/pricing/faq">FAQs</a></li>
+                        <li><a href="https://www.docker.com/partners/programs">Docker Verified Publisher Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/company" target="_blank" rel="noopener">Company</a></b></li>
+                        <li><a href="https://www.docker.com/company">About Us</a></li>
+                        <li><a href="https://www.docker.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+                        <li><a href="https://www.docker.com/customers">Customers</a></li>
+                        <li><a href="https://www.docker.com/partners">Partners</a></li>
+                        <li><a href="https://www.docker.com/company/newsroom">Newsroom</a></li>
+                        <li><a href="https://www.docker.com/careers">Careers</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <nav class="footer_sub_nav">
+                    <ul class="menu">
+                        <li><a href="http://status.docker.com/">Status</a></li>
+                        <li><a href="https://www.docker.com/legal">Legal</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="bottom_footer">
+            <div class="footer-copyright col-xs-12 col-md-8">
+                <p class="copyright">
+                    Copyright &copy; 2013-2021 Docker Inc. All rights reserved. </p>
+            </div>
+            <div class="footer_social_nav">
+                <ul class="nav-social">
+                    <li class="fa fa-twitter"><a href="http://twitter.com/docker">Twitter</a></li>
+                    <li class="fa fa-youtube"><a href="http://www.youtube.com/user/dockerrun">Youtube</a></li>
+                    <li class="fa fa-github"><a href="https://github.com/docker">GitHub</a></li>
+                    <li class="fa fa-linkedin"><a href="https://www.linkedin.com/company/docker">Linkedin</a></li>
+                    <li class="fa fa-facebook"><a href="https://www.facebook.com/docker.run">Facebook</a></li>
+                    <li class="fa fa-slideshare"><a href="https://www.slideshare.net/docker">Slideshare</a></li>
+                    <li class="fa fa-reddit"><a href="https://www.reddit.com/r/docker">Reddit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </footer>
+    <script>const pageURL = "/machine/reference/create/";</script><script>
+    let PDRTJS_settings_8453675 = {
+        "id": "8453675",
+        "unique_id": "machine/reference/create.md",
+        "title": "docker-machine create",
+        "font_family": "Open Sans, sans serif",
+        "font_color": "b9c2cc",
+        "font_align": "center",
+        "permalink": "https://github.com/docker/docker.github.io/blob/master/machine/reference/create.md"
+    };
+    (function (d, c, j) {
+        if (!document.getElementById(j)) {
+            let pd=d.createElement(c),s;pd.id=j;pd.src='https://polldaddy.com/js/rating/rating.js';s=document.getElementsByTagName(c)[0];s.parentNode.insertBefore(pd, s);
+        }
+    }(document, 'script', 'pd-rating-js'));
+</script></body>
+</html>

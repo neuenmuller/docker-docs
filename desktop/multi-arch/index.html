@@ -1,0 +1,421 @@
+<!-- Page generated 2021-11-17 12:16:07 +0000-->
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WL2QLG5');</script>
+<title>Leverage multi-CPU architecture support | Docker Documentation</title>
+  <meta name="description" content="Multi-CPU Architecture Support" />
+  <meta name="keywords" content="mac, windows, Multi-CPU architecture support">
+  <link rel="canonical" href="https://docs.docker.com/desktop/multi-arch/" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <meta name="msapplication-TileImage" content="/favicons/docs@2x.ico">
+  <meta property="og:image" content="/favicons/docs@2x.ico"/>
+  <meta name="theme-color" content="#2496ed" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- hide elements that are only shown without JavaScript enabled -->
+  <script>document.documentElement.classList.add('js')</script>
+  <style>html.js .no-js { display: none !important; }</style><script defer src="/js/theme-switcher.js"></script>
+  <script defer src="/js/anchorlinks.js"></script>
+  <script defer src="/js/jquery.js"></script>
+  <script defer src="/js/bootstrap.min.js"></script>
+  <script defer src="/js/docs.js"></script><script defer src="/js/search.js"></script><link rel="preload" as="font" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Book.woff2"    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/glyphicons-halflings-regular.woff2"       type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/fontawesome-webfont.woff2?v=4.7.0"        type="font/woff2" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css" id="pagestyle">
+
+  <!-- SEO stuff -->
+  <meta name="twitter:title" itemprop="title name" content="Leverage multi-CPU architecture support"/>
+  <meta name="twitter:description" property="og:description" itemprop="description" content="" />
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:domain" content="docs.docker.com"/>
+  <meta name="twitter:site" content="@docker_docs"/>
+  <meta name="twitter:url" content="https://twitter.com/docker_docs"/>
+  <meta name="twitter:image:src" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta name="twitter:image:alt" content="Docker Documentation"/>
+  <meta property="og:title" content="Leverage multi-CPU architecture support" />
+  <meta property="og:description" content="Multi-CPU Architecture Support" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:updated_time" itemprop="dateUpdated" content="2021-11-17T12:16:07+00:00"/>
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://docs.docker.com/desktop/multi-arch/" />
+  <meta property="og:site_name" content="Docker Documentation" />
+  <meta property="article:published_time" itemprop="datePublished" content="2021-11-17T12:16:07+00:00"/>
+  <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Leverage multi-CPU architecture support","description":"Multi-CPU Architecture Support","url":"https://docs.docker.com/desktop/multi-arch/"}</script>
+  <!-- END SEO STUFF -->
+</head>
+<body class="colums">
+    <header>
+        <nav class="nav-secondary navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/">
+                <img class="logo" src="/images/docker-docs-logo.svg" alt="Docker Docs" title="Docker Docs" width="160" height="28" />
+            </a>
+        </div>
+        <div class="navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <div class="logo-mobile">
+    <a href="/">
+        <img src="/images/docker-icon.svg" alt="Docker Docs" title="Docker Docs" width="30" height="30" />
+    </a>
+</div>
+<div class="search-form" id="search-div">
+    <form class="search-form form-inline" id="searchForm" action="/search/" method="get">
+        <label for="st-search-input" class="sr-only">Search</label>
+        <input class="search-field form-control ds-input" id="st-search-input" name="q" placeholder="Search the docs" type="search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
+        <div id="autocompleteResults"></div>
+        <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
+    </form>
+</div>
+<div class="sidebar-toggle">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="nav-container hidden-sm hidden-xs">
+    <div>
+        <ul class="nav navbar-nav"><li><a href="/" id="home">Home</a></li><li><a href="/get-started/overview/" id="guides">Guides</a></li><li><a href="/desktop/" id="manuals">Manuals</a></li><li><a href="/reference/" id="reference">Reference</a></li><li><a href="/samples/" id="samples">Samples</a></li></ul>
+    </div>
+    <div class="ctrl-right">
+        <a href="javascript:void(0)" id="menu-toggle" aria-label="Current page's menu toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
+    </div>
+</div>
+<div class="row hidden-sm hidden-xs">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="/" title="Docker docs homepage"><i class="fa fa-home"></i></a></li>
+            <li><a href="/desktop/">Manuals</a></li><li><a href="/desktop/">Docker Desktop</a></li><li><a href="/desktop/multi-arch/">Multi-arch support</a></li></ol>
+    </nav>
+</div></div>
+    </div>
+</nav>
+
+    </header>
+    <div class="wrapper right-open">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-body">
+                    <main class="col-content content">
+                        <section class="section"><h1>Leverage multi-CPU architecture support</h1><p><em class="reading-time">Estimated reading time: 5 minutes</em></p><p>Docker images can support multiple architectures, which means that a single
+image may contain variants for different architectures, and sometimes for different
+operating systems, such as Windows.</p>
+
+<p>When running an image with multi-architecture support, <code class="highlighter-rouge">docker</code> automatically
+selects the image variant that matches your OS and architecture.</p>
+
+<p>Most of the Docker Official Images on Docker Hub provide a <a href="https://github.com/docker-library/official-images#architectures-other-than-amd64" target="_blank" rel="noopener" class="_">variety of architectures</a>.
+For example, the <code class="highlighter-rouge">busybox</code> image supports <code class="highlighter-rouge">amd64</code>, <code class="highlighter-rouge">arm32v5</code>, <code class="highlighter-rouge">arm32v6</code>,
+<code class="highlighter-rouge">arm32v7</code>, <code class="highlighter-rouge">arm64v8</code>, <code class="highlighter-rouge">i386</code>, <code class="highlighter-rouge">ppc64le</code>, and <code class="highlighter-rouge">s390x</code>. When running this image
+on an <code class="highlighter-rouge">x86_64</code> / <code class="highlighter-rouge">amd64</code> machine, the <code class="highlighter-rouge">x86_64</code> variant is pulled and run.</p>
+
+<h2 id="multi-arch-support-on-docker-desktop">Multi-arch support on Docker Desktop</h2>
+
+<p><strong>Docker Desktop</strong> provides <code class="highlighter-rouge">binfmt_misc</code> multi-architecture support,
+which means you can run containers for different Linux architectures
+such as <code class="highlighter-rouge">arm</code>, <code class="highlighter-rouge">mips</code>, <code class="highlighter-rouge">ppc64le</code>, and even <code class="highlighter-rouge">s390x</code>.</p>
+
+<p>This does not require any special configuration in the container itself as it uses
+<a href="https://wiki.qemu.org/Main_Page" target="_blank" rel="noopener" class="_">qemu-static</a>
+from the <strong>Docker for Mac VM</strong>. Because of this, you can run an ARM container,
+like the <code class="highlighter-rouge">arm32v7</code> or <code class="highlighter-rouge">ppc64le</code> variants of the busybox image.</p>
+
+<h2 id="build-multi-arch-images-with-buildx">Build multi-arch images with Buildx</h2>
+
+<p>Docker is now making it easier than ever to develop containers on, and for Arm
+servers and devices. Using the standard Docker tooling and processes, you can
+start to build, push, pull, and run images seamlessly on different compute
+architectures. In most cases, you don’t have to make any changes to Dockerfiles
+or source code to start building for Arm.</p>
+
+<p>Docker introduces a new CLI command called <code class="highlighter-rouge">buildx</code>. You can use the <code class="highlighter-rouge">buildx</code>
+command on Docker Desktop for Mac and Windows to build multi-arch images, link
+them together with a manifest file, and push them all to a registry using a
+single command.  With the included emulation, you can transparently build more
+than just native images.  Buildx accomplishes this by adding new builder
+instances based on BuildKit, and leveraging Docker Desktop’s technology stack
+to run non-native binaries.</p>
+
+<p>For more information about the Buildx CLI command, see <a href="/buildx/working-with-buildx/">Buildx</a>
+and the <a href="/engine/reference/commandline/buildx/"><code class="highlighter-rouge">docker buildx</code> command line reference</a>.</p>
+
+<h3 id="build-and-run-multi-architecture-images">Build and run multi-architecture images</h3>
+
+<p>Run the <code class="highlighter-rouge">docker buildx ls</code> command to list the existing builders. This displays
+the default builder, which is our old builder.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker buildx <span class="nb">ls</span>
+<span class="go">
+NAME/NODE DRIVER/ENDPOINT STATUS  PLATFORMS
+default * docker
+  default default         running linux/amd64, linux/arm64, linux/arm/v7, linux/arm/v6
+</span></code></pre></div></div>
+
+<p>Create a new builder which gives access to the new multi-architecture features.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker buildx create <span class="nt">--name</span> mybuilder
+<span class="go">
+mybuilder
+</span></code></pre></div></div>
+
+<p>Alternatively, run <code class="highlighter-rouge">docker buildx create --name mybuilder --use</code> to create a new
+builder and switch to it using a single command.</p>
+
+<p>Switch to the new builder and inspect it.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker buildx use mybuilder
+<span class="go">
+</span><span class="gp">$</span> docker buildx inspect <span class="nt">--bootstrap</span>
+<span class="go">
+[+] Building 2.5s (1/1) FINISHED
+</span><span class="gp"> =&gt;</span> <span class="o">[</span>internal] booting buildkit                                                   2.5s
+<span class="gp"> =&gt;</span> <span class="o">=&gt;</span> pulling image moby/buildkit:master                                         1.3s
+<span class="gp"> =&gt;</span> <span class="o">=&gt;</span> creating container buildx_buildkit_mybuilder0                              1.2s
+<span class="go">Name:   mybuilder
+Driver: docker-container
+
+Nodes:
+Name:      mybuilder0
+Endpoint:  unix:///var/run/docker.sock
+Status:    running
+
+Platforms: linux/amd64, linux/arm64, linux/arm/v7, linux/arm/v6
+</span></code></pre></div></div>
+
+<p>Test the workflow to ensure you can build, push, and run multi-architecture
+images. Create a simple example Dockerfile, build a couple of image variants,
+and push them to Docker Hub.</p>
+
+<p>The following example uses a single <code class="highlighter-rouge">Dockerfile</code> to build an Ubuntu image with cURL
+installed for multiple architectures.</p>
+
+<p>Create a <code class="highlighter-rouge">Dockerfile</code> with the following:</p>
+
+<div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> ubuntu:20.04</span>
+<span class="k">RUN </span>apt-get update <span class="o">&amp;&amp;</span> apt-get install <span class="nt">-y</span> curl
+</code></pre></div></div>
+
+<p>Build the Dockerfile with buildx, passing the list of architectures to build for:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker buildx build <span class="nt">--platform</span> linux/amd64,linux/arm64,linux/arm/v7 <span class="nt">-t</span> username/demo:latest <span class="nt">--push</span> <span class="nb">.</span>
+<span class="go">
+[+] Building 6.9s (19/19) FINISHED
+</span><span class="c">...
+</span><span class="gp"> =&gt;</span> <span class="o">=&gt;</span> pushing layers                                                             2.7s
+<span class="gp"> =&gt;</span> <span class="o">=&gt;</span> pushing manifest <span class="k">for </span>docker.io/username/demo:latest                       2.2
+</code></pre></div></div>
+
+<p>Where, <code class="highlighter-rouge">username</code> is a valid Docker username.</p>
+
+<blockquote>
+  <p><strong>Notes:</strong></p>
+
+  <ul>
+    <li>The <code class="highlighter-rouge">--platform</code> flag informs buildx to generate Linux images for AMD 64-bit,
+Arm 64-bit, and Armv7 architectures.</li>
+    <li>The <code class="highlighter-rouge">--push</code> flag generates a multi-arch manifest and pushes all the images
+to Docker Hub.</li>
+  </ul>
+</blockquote>
+
+<p>Inspect the image using <code class="highlighter-rouge">docker buildx imagetools</code>.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker buildx imagetools inspect username/demo:latest
+<span class="go">
+Name:      docker.io/username/demo:latest
+MediaType: application/vnd.docker.distribution.manifest.list.v2+json
+Digest:    sha256:2a2769e4a50db6ac4fa39cf7fb300fa26680aba6ae30f241bb3b6225858eab76
+
+Manifests:
+  Name:      docker.io/username/demo:latest@sha256:8f77afbf7c1268aab1ee7f6ce169bb0d96b86f585587d259583a10d5cd56edca
+  MediaType: application/vnd.docker.distribution.manifest.v2+json
+  Platform:  linux/amd64
+
+  Name:      docker.io/username/demo:latest@sha256:2b77acdfea5dc5baa489ffab2a0b4a387666d1d526490e31845eb64e3e73ed20
+  MediaType: application/vnd.docker.distribution.manifest.v2+json
+  Platform:  linux/arm64
+
+  Name:      docker.io/username/demo:latest@sha256:723c22f366ae44e419d12706453a544ae92711ae52f510e226f6467d8228d191
+  MediaType: application/vnd.docker.distribution.manifest.v2+json
+  Platform:  linux/arm/v7
+</span></code></pre></div></div>
+
+<p>The image is now available on Docker Hub with the tag <code class="highlighter-rouge">username/demo:latest</code>. You
+can use this image to run a container on Intel laptops, Amazon EC2 A1 instances,
+Raspberry Pis, and on other architectures. Docker pulls the correct image for the
+current architecture, so Raspberry Pis run the 32-bit Arm version and EC2 A1
+instances run 64-bit Arm. The SHA tags identify a fully qualified image variant.
+You can also run images targeted for a different architecture on Docker Desktop.</p>
+
+<p>You can run the images using the SHA tag, and verify the architecture. For
+example, when you run the following on a macOS:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker run <span class="nt">--rm</span> docker.io/username/demo:latest@sha256:2b77acdfea5dc5baa489ffab2a0b4a387666d1d526490e31845eb64e3e73ed20 uname <span class="nt">-m</span>
+<span class="go">aarch64
+</span></code></pre></div></div>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker run <span class="nt">--rm</span> docker.io/username/demo:latest@sha256:723c22f366ae44e419d12706453a544ae92711ae52f510e226f6467d8228d191 uname <span class="nt">-m</span>
+<span class="go">armv7l
+</span></code></pre></div></div>
+
+<p>In the above example, <code class="highlighter-rouge">uname -m</code> returns <code class="highlighter-rouge">aarch64</code> and <code class="highlighter-rouge">armv7l</code> as expected,
+even when running the commands on a native macOS or Windows developer machine.</p>
+<span class="glyphicon glyphicon-tags" style="padding-right: 10px"></span><span style="vertical-align: 2px"><a href="/search/?q=mac">mac</a>, <a href="/search/?q=windows">windows</a>, <a href="/search/?q=Multi-CPU architecture support">Multi-CPU architecture support</a></span><div class="ratings-div"><div id="pd_rating_holder_8453675"></div></div></section>
+                    </main>
+                    <nav class="col-nav">
+                        <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+                            <div id="navbar" class="nav-sidebar">
+                                <ul class="nav hidden-md hidden-lg"></ul>
+                                <ul class="nav" id="jsTOCLeftNav"></ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="col-toc">
+                        <div class="sidebar hidden-xs hidden-sm">
+                            <div class="toc-nav">
+                                <div class="feedback-links">
+                                    <ul><li><a href="https://github.com/docker/docker.github.io/edit/master/desktop/multi-arch.md"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this page</a></li><li><a href="https://github.com/docker/docker.github.io/issues/new?body=File: [desktop/multi-arch.md](https://docs.docker.com/desktop/multi-arch/)" class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>
+                                        <li><div class="toggle-mode">
+  <div class="icon">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+  </div>
+  <div class="toggle-switch">
+      <label class="switch">
+          <input type="checkbox" id="switch-style">
+          <span class="slider round"></span>
+      </label>
+  </div>
+  <div class="icon">
+      <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </div>
+</div>
+</li>
+                                    </ul>
+                                </div><div id="side-toc-title">On this page:</div>
+<ul id="my_toc" class="inline_toc">
+  <li><a href="#multi-arch-support-on-docker-desktop" class="nomunge">Multi-arch support on Docker Desktop</a></li>
+  <li><a href="#build-multi-arch-images-with-buildx" class="nomunge">Build multi-arch images with Buildx</a>
+    <ul>
+      <li><a href="#build-and-run-multi-architecture-images" class="nomunge">Build and run multi-architecture images</a></li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+          
+    <div class="container">
+        <div class="top_footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/why-docker">Why Docker?</a></b></li>
+                        <li><a href="https://www.docker.com/what-container">What is a Container?</a></li>
+                        <li><a href="https://docker.events.cube365.net/dockercon/">DockerCon</a></li>
+                        <li><b><a href="https://www.docker.com/products/overview">Products</a></b></li>
+                        <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+                        <li><a href="https://www.docker.com/products/docker-hub">Docker Hub</a></li>
+                        <li><a href="https://www.docker.com/roadmap">Docker Product Roadmap</a></li>
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Features</a></b></li>
+                        <li><a href="https://www.docker.com/products/container-runtime">Container Runtime</a></li>
+                        <li><a href="https://www.docker.com/products/developer-tools">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Developers</a></b></li>
+                        <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+                        <li><a href="https://www.docker.com/docker-community">Community</a></li>
+                        <li><a href="https://www.docker.com/open-source">Open Source</a></li>
+                        <li><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Pricing</a></b></li>
+                        <li><a href="https://www.docker.com/pricing/faq">FAQs</a></li>
+                        <li><a href="https://www.docker.com/partners/programs">Docker Verified Publisher Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/company" target="_blank" rel="noopener">Company</a></b></li>
+                        <li><a href="https://www.docker.com/company">About Us</a></li>
+                        <li><a href="https://www.docker.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+                        <li><a href="https://www.docker.com/customers">Customers</a></li>
+                        <li><a href="https://www.docker.com/partners">Partners</a></li>
+                        <li><a href="https://www.docker.com/company/newsroom">Newsroom</a></li>
+                        <li><a href="https://www.docker.com/careers">Careers</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <nav class="footer_sub_nav">
+                    <ul class="menu">
+                        <li><a href="http://status.docker.com/">Status</a></li>
+                        <li><a href="https://www.docker.com/legal">Legal</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="bottom_footer">
+            <div class="footer-copyright col-xs-12 col-md-8">
+                <p class="copyright">
+                    Copyright &copy; 2013-2021 Docker Inc. All rights reserved. </p>
+            </div>
+            <div class="footer_social_nav">
+                <ul class="nav-social">
+                    <li class="fa fa-twitter"><a href="http://twitter.com/docker">Twitter</a></li>
+                    <li class="fa fa-youtube"><a href="http://www.youtube.com/user/dockerrun">Youtube</a></li>
+                    <li class="fa fa-github"><a href="https://github.com/docker">GitHub</a></li>
+                    <li class="fa fa-linkedin"><a href="https://www.linkedin.com/company/docker">Linkedin</a></li>
+                    <li class="fa fa-facebook"><a href="https://www.facebook.com/docker.run">Facebook</a></li>
+                    <li class="fa fa-slideshare"><a href="https://www.slideshare.net/docker">Slideshare</a></li>
+                    <li class="fa fa-reddit"><a href="https://www.reddit.com/r/docker">Reddit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </footer>
+    <script>const pageURL = "/desktop/multi-arch/";</script><script>
+    let PDRTJS_settings_8453675 = {
+        "id": "8453675",
+        "unique_id": "desktop/multi-arch.md",
+        "title": "Leverage multi-CPU architecture support",
+        "font_family": "Open Sans, sans serif",
+        "font_color": "b9c2cc",
+        "font_align": "center",
+        "permalink": "https://github.com/docker/docker.github.io/blob/master/desktop/multi-arch.md"
+    };
+    (function (d, c, j) {
+        if (!document.getElementById(j)) {
+            let pd=d.createElement(c),s;pd.id=j;pd.src='https://polldaddy.com/js/rating/rating.js';s=document.getElementsByTagName(c)[0];s.parentNode.insertBefore(pd, s);
+        }
+    }(document, 'script', 'pd-rating-js'));
+</script></body>
+</html>

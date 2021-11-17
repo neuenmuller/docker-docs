@@ -1,0 +1,488 @@
+<!-- Page generated 2021-11-17 12:16:07 +0000-->
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex"/><!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WL2QLG5');</script>
+<title>Amazon Web Services (AWS) EC2 example | Docker Documentation</title>
+  <meta name="description" content="Using Docker Machine to provision hosts on AWS" />
+  <meta name="keywords" content="docker, machine, cloud, aws">
+  <link rel="canonical" href="https://docs.docker.com/machine/examples/aws/" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <meta name="msapplication-TileImage" content="/favicons/docs@2x.ico">
+  <meta property="og:image" content="/favicons/docs@2x.ico"/>
+  <meta name="theme-color" content="#2496ed" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- hide elements that are only shown without JavaScript enabled -->
+  <script>document.documentElement.classList.add('js')</script>
+  <style>html.js .no-js { display: none !important; }</style><script defer src="/js/theme-switcher.js"></script>
+  <script defer src="/js/anchorlinks.js"></script>
+  <script defer src="/js/jquery.js"></script>
+  <script defer src="/js/bootstrap.min.js"></script>
+  <script defer src="/js/docs.js"></script><script defer src="/js/search.js"></script><link rel="preload" as="font" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Book.woff2"    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/glyphicons-halflings-regular.woff2"       type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/fontawesome-webfont.woff2?v=4.7.0"        type="font/woff2" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css" id="pagestyle">
+
+  <!-- SEO stuff -->
+  <meta name="twitter:title" itemprop="title name" content="Amazon Web Services (AWS) EC2 example"/>
+  <meta name="twitter:description" property="og:description" itemprop="description" content="" />
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:domain" content="docs.docker.com"/>
+  <meta name="twitter:site" content="@docker_docs"/>
+  <meta name="twitter:url" content="https://twitter.com/docker_docs"/>
+  <meta name="twitter:image:src" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta name="twitter:image:alt" content="Docker Documentation"/>
+  <meta property="og:title" content="Amazon Web Services (AWS) EC2 example" />
+  <meta property="og:description" content="Using Docker Machine to provision hosts on AWS" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:updated_time" itemprop="dateUpdated" content="2021-11-17T12:16:07+00:00"/>
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://docs.docker.com/machine/examples/aws/" />
+  <meta property="og:site_name" content="Docker Documentation" />
+  <meta property="article:published_time" itemprop="datePublished" content="2021-11-17T12:16:07+00:00"/>
+  <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Amazon Web Services (AWS) EC2 example","description":"Using Docker Machine to provision hosts on AWS","url":"https://docs.docker.com/machine/examples/aws/"}</script>
+  <!-- END SEO STUFF -->
+</head>
+<body class="colums">
+    <header>
+        <nav class="nav-secondary navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/">
+                <img class="logo" src="/images/docker-docs-logo.svg" alt="Docker Docs" title="Docker Docs" width="160" height="28" />
+            </a>
+        </div>
+        <div class="navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <div class="logo-mobile">
+    <a href="/">
+        <img src="/images/docker-icon.svg" alt="Docker Docs" title="Docker Docs" width="30" height="30" />
+    </a>
+</div>
+<div class="search-form" id="search-div">
+    <form class="search-form form-inline" id="searchForm" action="/search/" method="get">
+        <label for="st-search-input" class="sr-only">Search</label>
+        <input class="search-field form-control ds-input" id="st-search-input" name="q" placeholder="Search the docs" type="search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
+        <div id="autocompleteResults"></div>
+        <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
+    </form>
+</div>
+<div class="sidebar-toggle">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="nav-container hidden-sm hidden-xs">
+    <div>
+        <ul class="nav navbar-nav"><li><a href="/" id="home">Home</a></li><li><a href="/get-started/overview/" id="guides">Guides</a></li><li><a href="/desktop/" id="manuals">Manuals</a></li><li><a href="/reference/" id="reference">Reference</a></li><li><a href="/samples/" id="samples">Samples</a></li></ul>
+    </div>
+    <div class="ctrl-right">
+        <a href="javascript:void(0)" id="menu-toggle" aria-label="Current page's menu toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
+    </div>
+</div>
+<div class="row hidden-sm hidden-xs">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="/" title="Docker docs homepage"><i class="fa fa-home"></i></a></li>
+            <li><a href="/desktop/">Manuals</a></li><li><a>Superseded products and tools</a></li><li><a href="/machine/">Docker Machine</a></li><li><a href="/machine/examples/ocean/">Learn by example</a></li><li><a href="/machine/examples/aws/">Provision AWS EC2 instances</a></li></ol>
+    </nav>
+</div></div>
+    </div>
+</nav>
+
+    </header>
+    <div class="wrapper right-open">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-body">
+                    <main class="col-content content">
+                        <section class="section"><h1>Amazon Web Services (AWS) EC2 example</h1><p><em class="reading-time">Estimated reading time: 6 minutes</em></p><p>Follow along with this example to create a Dockerized <a href="https://aws.amazon.com/">Amazon Web Services (AWS)</a> EC2 instance.</p>
+
+<h3 id="step-1-sign-up-for-aws-and-configure-credentials">Step 1. Sign up for AWS and configure credentials</h3>
+
+<ol>
+  <li>
+    <p>If you are not already an AWS user, sign up for <a href="https://aws.amazon.com/">AWS</a> to create an account and get root access to EC2 cloud computers.</p>
+
+    <p>If you have an Amazon account, you can use it as your root user account.</p>
+  </li>
+  <li>
+    <p>Create an IAM (Identity and Access Management) administrator user, an admin group, and a key pair associated with a region.</p>
+
+    <p>From the AWS menus, select <strong>Services</strong> &gt; <strong>IAM</strong> to get started.</p>
+
+    <p>To create machines on AWS, you must supply two parameters:</p>
+
+    <ul>
+      <li>
+        <p>an AWS Access Key ID</p>
+      </li>
+      <li>
+        <p>an AWS Secret Access Key</p>
+      </li>
+    </ul>
+
+    <p>See the AWS documentation on <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html">Setting Up with Amazon EC2</a>. Follow the steps for “Create an IAM User” and “Create a Key Pair”.</p>
+  </li>
+</ol>
+
+<h3 id="step-2-use-machine-to-create-the-instance">Step 2. Use Machine to create the instance</h3>
+
+<ol>
+  <li>
+    <p>Optionally, create an AWS credential file.</p>
+
+    <p>You can create an <code class="highlighter-rouge">~/.aws/credentials</code> file to hold your AWS keys so that
+you don’t need to type them every time you run the <code class="highlighter-rouge">docker-machine create</code>
+command. Here is an example of a credentials file.</p>
+
+    <div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[<span class="n">default</span>]
+<span class="n">aws_access_key_id</span> = <span class="n">AKID1234567890</span>
+<span class="n">aws_secret_access_key</span> = <span class="n">MY</span>-<span class="n">SECRET</span>-<span class="n">KEY</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Run <code class="highlighter-rouge">docker-machine create</code> with the <code class="highlighter-rouge">amazonec2</code> driver, credentials, inbound
+port, region, and a name for the new instance. For example:</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine create <span class="nt">--driver</span> amazonec2 <span class="nt">--amazonec2-open-port</span> 8000 <span class="nt">--amazonec2-region</span> us-west-1 aws-sandbox
+</code></pre></div>    </div>
+
+    <blockquote>
+      <p><strong>Note</strong>: For all aws create flags, run: <code class="highlighter-rouge">docker-machine create --driver amazonec2 --help</code></p>
+    </blockquote>
+
+    <p><strong>Use aws credentials file</strong></p>
+
+    <p>If you set your keys in a credentials file, the command looks like this to
+create an instance called <code class="highlighter-rouge">aws-sandbox</code>:</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine create <span class="nt">--driver</span> amazonec2 aws-sandbox
+</code></pre></div>    </div>
+
+    <p><strong>Specify keys at the command line</strong></p>
+
+    <p>If you don’t have a credentials file, you can use the flags
+<code class="highlighter-rouge">--amazonec2-access-key</code> and <code class="highlighter-rouge">--amazonec2-secret-key</code> on the command line:</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine create <span class="nt">--driver</span> amazonec2 <span class="nt">--amazonec2-access-key</span> AKI<span class="k">*******</span> <span class="nt">--amazonec2-secret-key</span> 8T93C<span class="k">*******</span>  aws-sandbox
+</code></pre></div>    </div>
+
+    <p><strong>Expose a port</strong></p>
+
+    <p>To expose an inbound port to the new machine, use the flag, <code class="highlighter-rouge">--amazonec2-open-port</code>:</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine create <span class="nt">--driver</span> amazonec2 <span class="nt">--amazonec2-open-port</span> 8000 aws-sandbox
+</code></pre></div>    </div>
+
+    <p><strong>Specify a region</strong></p>
+
+    <p>By default, the driver creates new instances in region us-east-1 (North
+Virginia). You can specify a different region by using the
+<code class="highlighter-rouge">--amazonec2-region</code> flag. For example, create aws-sandbox in us-west-1
+(Northern California).</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine create <span class="nt">--driver</span> amazonec2 <span class="nt">--amazonec2-region</span> us-west-1 aws-sandbox
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Go to the AWS EC2 Dashboard to view the new instance.</p>
+
+    <p>Log into AWS with your IAM credentials, and navigate to your EC2 Running Instances.</p>
+
+    <p><img src="/machine/img/aws-instance-east.png" alt="instance on AWS EC2 Dashboard" /></p>
+
+    <blockquote>
+      <p><strong>Note</strong>: To ensure that you see your new instance, select your region from
+the menu in the upper right. If you did not specify a region as part of
+<code class="highlighter-rouge">docker-machine create</code> (with the optional <code class="highlighter-rouge">--amazonec2-region</code> flag), select
+the default, US East (N. Virginia).</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Ensure that your new machine is the active host.</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine <span class="nb">ls</span>
+<span class="go">NAME             ACTIVE   DRIVER         STATE     URL                         SWARM   DOCKER        ERRORS
+aws-sandbox      *        amazonec2      Running   tcp://52.90.113.128:2376            v1.10.0
+default          -        virtualbox     Running   tcp://192.168.99.100:2376           v1.10.0-rc4
+digi-sandbox       -      digitalocean   Running   tcp://104.131.43.236:2376           v1.9.1
+</span></code></pre></div>    </div>
+
+    <p>The new <code class="highlighter-rouge">aws-sandbox</code> instance is running and is the active host as
+indicated by the asterisk (*). When you create a new machine, your command
+shell automatically connects to it. You can also check active status by
+running <code class="highlighter-rouge">docker-machine active</code>.</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: If your new machine is not the active host, connect to it by
+running <code class="highlighter-rouge">docker-machine env aws-sandbox</code> and the returned eval command:
+<code class="highlighter-rouge">eval $(docker-machine env aws-sandbox)</code>.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Inspect the remote host. For example, <code class="highlighter-rouge">docker-machine ip &lt;machine&gt;</code> returns
+the host IP address and <code class="highlighter-rouge">docker-machine inspect &lt;machine&gt;</code> lists all the
+details.</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp"> $</span> docker-machine ip aws-sandbox
+<span class="go"> 192.168.99.100
+
+</span><span class="gp"> $</span> docker-machine inspect aws-sandbox
+<span class="go"> {
+     "ConfigVersion": 3,
+     "Driver": {
+         "IPAddress": "52.90.113.128",
+         "MachineName": "aws-sandbox",
+         "SSHUser": "ubuntu",
+         "SSHPort": 22,
+</span><span class="c">         ...
+</span><span class="go">       }
+ }
+</span></code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="step-3-run-docker-commands-on-the-new-instance">Step 3. Run Docker commands on the new instance</h3>
+<p>You can run docker commands from a local terminal to the active docker machine.</p>
+
+<ol>
+  <li>
+    <p>Run docker on the active docker machine by downloading and running the
+hello-world image:</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker run hello-world
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Ensure that you ran hello-world on aws-sandbox (and not localhost or some
+other machine):</p>
+
+    <p>Log on to aws-sandbox with ssh and list all containers. You should see
+ hello-world (with a recent exited status):</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp"> $</span> docker-machine ssh aws-sandbox
+<span class="gp"> $</span> <span class="nb">sudo </span>docker container <span class="nb">ls</span> <span class="nt">-a</span>
+<span class="gp"> $</span> <span class="nb">exit</span>
+</code></pre></div>    </div>
+
+    <p>Log off aws-sandbox and unset this machine as active. Then list images
+ again. You should not see hello-world (at least not with the same exited
+ status):</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp"> $</span> <span class="nb">eval</span> <span class="k">$(</span>docker-machine env <span class="nt">-u</span><span class="k">)</span>
+<span class="gp"> $</span> docker container <span class="nb">ls</span> <span class="nt">-a</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Reset aws-sandbox as the active docker machine:</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp"> $</span> <span class="nb">eval</span> <span class="k">$(</span>docker-machine env aws-sandbox<span class="k">)</span>
+</code></pre></div>    </div>
+
+    <p>For a more interesting test, run a Dockerized webserver on your new machine.</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: In this example, we use port <code class="highlighter-rouge">8000</code> which we added to the
+docker-machine AWS Security Group during <code class="highlighter-rouge">docker-machine create</code>. To run your
+container on another port, update the security group to reflect that.</p>
+    </blockquote>
+
+    <p>In this example, the <code class="highlighter-rouge">-p</code> option is used to expose port 80 from the <code class="highlighter-rouge">nginx</code>
+ container and make it accessible on port <code class="highlighter-rouge">8000</code> of the <code class="highlighter-rouge">aws-sandbox</code> host:</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp"> $</span> docker run <span class="nt">-d</span> <span class="nt">-p</span> 8000:80 <span class="nt">--name</span> webserver kitematic/hello-world-nginx
+<span class="go"> Unable to find image 'kitematic/hello-world-nginx:latest' locally
+ latest: Pulling from kitematic/hello-world-nginx
+ a285d7f063ea: Pull complete
+ 2d7baf27389b: Pull complete
+</span><span class="c"> ...
+</span><span class="go"> Digest: sha256:ec0ca6dcb034916784c988b4f2432716e2e92b995ac606e080c7a54b52b87066
+ Status: Downloaded newer image for kitematic/hello-world-nginx:latest
+ 942dfb4a0eaae75bf26c9785ade4ff47ceb2ec2a152be82b9d7960e8b5777e65
+</span></code></pre></div>    </div>
+
+    <p>In a web browser, go to <code class="highlighter-rouge">http://&lt;host_ip&gt;:8000</code> to bring up the webserver
+ home page. You got the <code class="highlighter-rouge">&lt;host_ip&gt;</code> from the output of the <code class="highlighter-rouge">docker-machine ip &lt;machine&gt;</code>
+ command you ran in a previous step. Use the port you exposed in the
+ <code class="highlighter-rouge">docker run</code> command.</p>
+
+    <p><img src="/machine/img/nginx-webserver.png" alt="nginx webserver" /></p>
+  </li>
+</ol>
+
+<h3 id="step-4-use-machine-to-remove-the-instance">Step 4. Use Machine to remove the instance</h3>
+
+<p>To remove an instance and all of its containers and images, first stop the
+machine, then use <code class="highlighter-rouge">docker-machine rm</code>.</p>
+
+<h2 id="where-to-go-next">Where to go next</h2>
+
+<ul>
+  <li><a href="/machine/concepts/">Understand Machine concepts</a></li>
+  <li><a href="/machine/drivers/">Docker Machine driver reference</a></li>
+  <li><a href="/machine/reference/">Docker Machine subcommand reference</a></li>
+</ul>
+<span class="glyphicon glyphicon-tags" style="padding-right: 10px"></span><span style="vertical-align: 2px"><a href="/search/?q=docker">docker</a>, <a href="/search/?q=machine">machine</a>, <a href="/search/?q=cloud">cloud</a>, <a href="/search/?q=aws">aws</a></span><div class="ratings-div"><div id="pd_rating_holder_8453675"></div></div></section>
+                    </main>
+                    <nav class="col-nav">
+                        <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+                            <div id="navbar" class="nav-sidebar">
+                                <ul class="nav hidden-md hidden-lg"></ul>
+                                <ul class="nav" id="jsTOCLeftNav"></ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="col-toc">
+                        <div class="sidebar hidden-xs hidden-sm">
+                            <div class="toc-nav">
+                                <div class="feedback-links">
+                                    <ul><li><a href="https://github.com/docker/docker.github.io/edit/master/machine/examples/aws.md"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this page</a></li><li><a href="https://github.com/docker/docker.github.io/issues/new?body=File: [machine/examples/aws.md](https://docs.docker.com/machine/examples/aws/)" class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>
+                                        <li><div class="toggle-mode">
+  <div class="icon">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+  </div>
+  <div class="toggle-switch">
+      <label class="switch">
+          <input type="checkbox" id="switch-style">
+          <span class="slider round"></span>
+      </label>
+  </div>
+  <div class="icon">
+      <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </div>
+</div>
+</li>
+                                    </ul>
+                                </div><div id="side-toc-title">On this page:</div>
+<ul id="my_toc" class="inline_toc">
+  <li><a href="#step-1-sign-up-for-aws-and-configure-credentials" class="nomunge">Step 1. Sign up for AWS and configure credentials</a>
+    <ul>
+      <li><a href="#step-2-use-machine-to-create-the-instance" class="nomunge">Step 2. Use Machine to create the instance</a></li>
+      <li><a href="#step-3-run-docker-commands-on-the-new-instance" class="nomunge">Step 3. Run Docker commands on the new instance</a></li>
+      <li><a href="#step-4-use-machine-to-remove-the-instance" class="nomunge">Step 4. Use Machine to remove the instance</a></li>
+    </ul>
+  </li>
+  <li><a href="#where-to-go-next" class="nomunge">Where to go next</a></li>
+</ul>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+          
+    <div class="container">
+        <div class="top_footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/why-docker">Why Docker?</a></b></li>
+                        <li><a href="https://www.docker.com/what-container">What is a Container?</a></li>
+                        <li><a href="https://docker.events.cube365.net/dockercon/">DockerCon</a></li>
+                        <li><b><a href="https://www.docker.com/products/overview">Products</a></b></li>
+                        <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+                        <li><a href="https://www.docker.com/products/docker-hub">Docker Hub</a></li>
+                        <li><a href="https://www.docker.com/roadmap">Docker Product Roadmap</a></li>
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Features</a></b></li>
+                        <li><a href="https://www.docker.com/products/container-runtime">Container Runtime</a></li>
+                        <li><a href="https://www.docker.com/products/developer-tools">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Developers</a></b></li>
+                        <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+                        <li><a href="https://www.docker.com/docker-community">Community</a></li>
+                        <li><a href="https://www.docker.com/open-source">Open Source</a></li>
+                        <li><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Pricing</a></b></li>
+                        <li><a href="https://www.docker.com/pricing/faq">FAQs</a></li>
+                        <li><a href="https://www.docker.com/partners/programs">Docker Verified Publisher Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/company" target="_blank" rel="noopener">Company</a></b></li>
+                        <li><a href="https://www.docker.com/company">About Us</a></li>
+                        <li><a href="https://www.docker.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+                        <li><a href="https://www.docker.com/customers">Customers</a></li>
+                        <li><a href="https://www.docker.com/partners">Partners</a></li>
+                        <li><a href="https://www.docker.com/company/newsroom">Newsroom</a></li>
+                        <li><a href="https://www.docker.com/careers">Careers</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <nav class="footer_sub_nav">
+                    <ul class="menu">
+                        <li><a href="http://status.docker.com/">Status</a></li>
+                        <li><a href="https://www.docker.com/legal">Legal</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="bottom_footer">
+            <div class="footer-copyright col-xs-12 col-md-8">
+                <p class="copyright">
+                    Copyright &copy; 2013-2021 Docker Inc. All rights reserved. </p>
+            </div>
+            <div class="footer_social_nav">
+                <ul class="nav-social">
+                    <li class="fa fa-twitter"><a href="http://twitter.com/docker">Twitter</a></li>
+                    <li class="fa fa-youtube"><a href="http://www.youtube.com/user/dockerrun">Youtube</a></li>
+                    <li class="fa fa-github"><a href="https://github.com/docker">GitHub</a></li>
+                    <li class="fa fa-linkedin"><a href="https://www.linkedin.com/company/docker">Linkedin</a></li>
+                    <li class="fa fa-facebook"><a href="https://www.facebook.com/docker.run">Facebook</a></li>
+                    <li class="fa fa-slideshare"><a href="https://www.slideshare.net/docker">Slideshare</a></li>
+                    <li class="fa fa-reddit"><a href="https://www.reddit.com/r/docker">Reddit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </footer>
+    <script>const pageURL = "/machine/examples/aws/";</script><script>
+    let PDRTJS_settings_8453675 = {
+        "id": "8453675",
+        "unique_id": "machine/examples/aws.md",
+        "title": "Amazon Web Services (AWS) EC2 example",
+        "font_family": "Open Sans, sans serif",
+        "font_color": "b9c2cc",
+        "font_align": "center",
+        "permalink": "https://github.com/docker/docker.github.io/blob/master/machine/examples/aws.md"
+    };
+    (function (d, c, j) {
+        if (!document.getElementById(j)) {
+            let pd=d.createElement(c),s;pd.id=j;pd.src='https://polldaddy.com/js/rating/rating.js';s=document.getElementsByTagName(c)[0];s.parentNode.insertBefore(pd, s);
+        }
+    }(document, 'script', 'pd-rating-js'));
+</script></body>
+</html>

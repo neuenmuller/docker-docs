@@ -1,0 +1,488 @@
+<!-- Page generated 2021-11-17 12:16:07 +0000-->
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WL2QLG5');</script>
+<title>Teams and Organizations | Docker Documentation</title>
+  <meta name="description" content="Docker Hub Teams &amp; Organizations" />
+  <meta name="keywords" content="Docker, docker, registry, teams, organizations, plans, Dockerfile, Docker Hub, docs, documentation">
+  <link rel="canonical" href="https://docs.docker.com/docker-hub/orgs/" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <meta name="msapplication-TileImage" content="/favicons/docs@2x.ico">
+  <meta property="og:image" content="/favicons/docs@2x.ico"/>
+  <meta name="theme-color" content="#2496ed" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- hide elements that are only shown without JavaScript enabled -->
+  <script>document.documentElement.classList.add('js')</script>
+  <style>html.js .no-js { display: none !important; }</style><script defer src="/js/theme-switcher.js"></script>
+  <script defer src="/js/anchorlinks.js"></script>
+  <script defer src="/js/jquery.js"></script>
+  <script defer src="/js/bootstrap.min.js"></script>
+  <script defer src="/js/docs.js"></script><script defer src="/js/search.js"></script><link rel="preload" as="font" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Book.woff2"    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/glyphicons-halflings-regular.woff2"       type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/fontawesome-webfont.woff2?v=4.7.0"        type="font/woff2" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css" id="pagestyle">
+
+  <!-- SEO stuff -->
+  <meta name="twitter:title" itemprop="title name" content="Teams and Organizations"/>
+  <meta name="twitter:description" property="og:description" itemprop="description" content="" />
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:domain" content="docs.docker.com"/>
+  <meta name="twitter:site" content="@docker_docs"/>
+  <meta name="twitter:url" content="https://twitter.com/docker_docs"/>
+  <meta name="twitter:image:src" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta name="twitter:image:alt" content="Docker Documentation"/>
+  <meta property="og:title" content="Teams and Organizations" />
+  <meta property="og:description" content="Docker Hub Teams &amp; Organizations" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:updated_time" itemprop="dateUpdated" content="2021-11-17T12:16:07+00:00"/>
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://docs.docker.com/docker-hub/orgs/" />
+  <meta property="og:site_name" content="Docker Documentation" />
+  <meta property="article:published_time" itemprop="datePublished" content="2021-11-17T12:16:07+00:00"/>
+  <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Teams and Organizations","description":"Docker Hub Teams & Organizations","url":"https://docs.docker.com/docker-hub/orgs/"}</script>
+  <!-- END SEO STUFF -->
+</head>
+<body class="colums">
+    <header>
+        <nav class="nav-secondary navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/">
+                <img class="logo" src="/images/docker-docs-logo.svg" alt="Docker Docs" title="Docker Docs" width="160" height="28" />
+            </a>
+        </div>
+        <div class="navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <div class="logo-mobile">
+    <a href="/">
+        <img src="/images/docker-icon.svg" alt="Docker Docs" title="Docker Docs" width="30" height="30" />
+    </a>
+</div>
+<div class="search-form" id="search-div">
+    <form class="search-form form-inline" id="searchForm" action="/search/" method="get">
+        <label for="st-search-input" class="sr-only">Search</label>
+        <input class="search-field form-control ds-input" id="st-search-input" name="q" placeholder="Search the docs" type="search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
+        <div id="autocompleteResults"></div>
+        <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
+    </form>
+</div>
+<div class="sidebar-toggle">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="nav-container hidden-sm hidden-xs">
+    <div>
+        <ul class="nav navbar-nav"><li><a href="/" id="home">Home</a></li><li><a href="/get-started/overview/" id="guides">Guides</a></li><li><a href="/desktop/" id="manuals">Manuals</a></li><li><a href="/reference/" id="reference">Reference</a></li><li><a href="/samples/" id="samples">Samples</a></li></ul>
+    </div>
+    <div class="ctrl-right">
+        <a href="javascript:void(0)" id="menu-toggle" aria-label="Current page's menu toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
+    </div>
+</div>
+<div class="row hidden-sm hidden-xs">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="/" title="Docker docs homepage"><i class="fa fa-home"></i></a></li>
+            <li><a href="/desktop/">Manuals</a></li><li><a href="/docker-hub/">Docker Hub</a></li><li><a href="/docker-hub/orgs/">Teams and organizations</a></li></ol>
+    </nav>
+</div></div>
+    </div>
+</nav>
+
+    </header>
+    <div class="wrapper right-open">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-body">
+                    <main class="col-content content">
+                        <section class="section"><h1>Teams and Organizations</h1><p><em class="reading-time">Estimated reading time: 4 minutes</em></p><p>Docker Hub organizations let you create teams so you can give your team access
+to shared image repositories.</p>
+
+<ul>
+  <li><strong>Organizations</strong> are collections of teams and repositories that can be managed together.</li>
+  <li><strong>Teams</strong> are groups of Docker Hub users that belong to an organization.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Note:</strong> in Docker Hub, users cannot belong directly to an organization.
+They belong only to teams within an organization.</p>
+</blockquote>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/G7lvSnAqed8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h2 id="working-with-organizations">Working with organizations</h2>
+
+<h3 id="create-an-organization">Create an organization</h3>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/b0TKcIqa9Po" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<ol>
+  <li>
+    <p>Start by clicking on <strong><a href="https://hub.docker.com/orgs">Organizations</a></strong> in
+Docker Hub.</p>
+  </li>
+  <li>
+    <p>Click on <strong>Create Organization</strong>.</p>
+  </li>
+  <li>
+    <p>Provide information about your organization.</p>
+  </li>
+</ol>
+
+<p>You’ve created an organization. You’ll see you have a team, the <strong>owners</strong> team
+with a single member (you!).</p>
+
+<h4 id="the-owners-team">The owners team</h4>
+
+<p>The <strong>owners</strong> team is a special team that has full access to all repositories
+in the organization.</p>
+
+<p>Members of this team can:</p>
+<ul>
+  <li>Manage organization settings and billing</li>
+  <li>Create a team and modify the membership of any team</li>
+  <li>Access and modify any repository belonging to the organization</li>
+</ul>
+
+<h3 id="access-an-organization">Access an organization</h3>
+
+<p>You can’t <em>directly</em> log into an organization. This is especially important to note if you create an organization by converting a user account, as conversion means you lose the ability to log into that “account”, since it no longer exists.</p>
+
+<p>To access an organization:</p>
+
+<ol>
+  <li>
+    <p>Log into Docker Hub with a user account that is a member of any team in the organization.</p>
+
+    <blockquote>
+      <p>If you want access to organization settings, this account has to be part of the <strong>owners</strong> team.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Click <strong>Organizations</strong> in the top navigation bar, then choose your organization from the list.</p>
+  </li>
+</ol>
+
+<p>If you don’t see the organization, then you are neither a member or an owner of it. An organization administrator will need to add you as a member of the organization team.</p>
+
+<h2 id="working-with-teams-and-members">Working with teams and members</h2>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/MROKmtmWCVI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h3 id="create-a-team">Create a team</h3>
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/78wbbBoasIc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<ol>
+  <li>
+    <p>Go to <strong>Organizations</strong> in Docker Hub, and select your organization.</p>
+  </li>
+  <li>
+    <p>Open the <strong>Teams</strong> tab and click <strong>Create Team</strong>.</p>
+  </li>
+  <li>
+    <p>Fill out your team’s information and click <strong>Create</strong>.</p>
+  </li>
+</ol>
+
+<h3 id="add-a-member-to-a-team">Add a member to a team</h3>
+
+<p>You can add a member to a team in one of two ways.</p>
+
+<p>If the user isn’t in your organization:</p>
+
+<ol>
+  <li>
+    <p>Go to <strong>Organizations</strong> in Docker Hub, and select your organization.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add Member</strong>.</p>
+  </li>
+  <li>
+    <p>Enter the user’s Docker ID or email, and select a team from the drop-down list.</p>
+  </li>
+  <li>
+    <p>Click <strong>Add</strong> to confirm.</p>
+  </li>
+</ol>
+
+<p>If the user already belongs to another team in the organization:</p>
+
+<ol>
+  <li>
+    <p>Open the team’s page in Docker Hub: <strong>Organizations</strong> &gt; <strong><em>Your Organization</em></strong> &gt; <strong>Teams</strong> &gt; <strong><em>Your Team Name</em></strong></p>
+  </li>
+  <li>
+    <p>Click <strong>Add user</strong>.</p>
+  </li>
+  <li>
+    <p>Enter the user’s Docker ID or email to add them to the team.</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: You are not automatically added to teams created by your organization.</p>
+    </blockquote>
+  </li>
+</ol>
+
+<h3 id="remove-team-members">Remove team members</h3>
+
+<p>To remove a member from all teams in an organization:</p>
+
+<ol>
+  <li>
+    <p>Go to <strong>Organizations</strong> in Docker Hub, and select your organization. The Organizations page lists all team members.</p>
+  </li>
+  <li>
+    <p>Click the <strong>x</strong> next to a member’s name to remove them from all the teams in the organization.</p>
+  </li>
+  <li>
+    <p>When prompted, click <strong>Remove</strong> to confirm the removal.</p>
+  </li>
+</ol>
+
+<p>To remove a member from a specific team:</p>
+
+<ol>
+  <li>
+    <p>Go to <strong>Organizations</strong> in Docker Hub, and select your organization.</p>
+  </li>
+  <li>
+    <p>Click on the <strong>Teams</strong> tab and select the team from the list.</p>
+  </li>
+  <li>
+    <p>Click the <strong>x</strong> next to the user’s name to remove them from the team.</p>
+  </li>
+  <li>
+    <p>When prompted, click <strong>Remove</strong> to confirm the removal.
+to confirm the removal.</p>
+  </li>
+</ol>
+
+<h3 id="give-a-team-access-to-a-repository">Give a team access to a repository</h3>
+
+<ol>
+  <li>
+    <p>Visit the repository list on Docker Hub by clicking on <strong>Repositories</strong>.</p>
+  </li>
+  <li>
+    <p>Select your organization in the namespace dropdown list.</p>
+  </li>
+  <li>
+    <p>Click the repository you’d like to edit.</p>
+
+    <p><img src="/docker-hub/images/repos-list2019.png" alt="Org Repos" /></p>
+  </li>
+  <li>
+    <p>Click the <strong>Permissions</strong> tab.</p>
+  </li>
+  <li>
+    <p>Select the team, the <a href="#permissions-reference">permissions level</a>, and click <strong>+</strong> to save.</p>
+
+    <p><img src="/docker-hub/images/orgs-repo-perms2019.png" alt="Add Repo Permissions for Team" /></p>
+  </li>
+</ol>
+
+<h3 id="view-a-teams-permissions-for-all-repositories">View a team’s permissions for all repositories</h3>
+
+<p>To view a team’s permissions over all repos:</p>
+
+<ol>
+  <li>
+    <p>Open <strong>Organizations</strong> &gt; <strong><em>Your Organization</em></strong> &gt; <strong>Teams</strong> &gt; <strong><em>Team Name</em></strong>.</p>
+  </li>
+  <li>
+    <p>Click on the <strong>Permissions</strong> tab, where you can view the repositories this team can access.</p>
+
+    <p><img src="/docker-hub/images/orgs-teams-perms2019.png" alt="Team Audit Permissions" /></p>
+  </li>
+</ol>
+
+<p>You can also edit repository permissions from this tab.</p>
+
+<h3 id="permissions-reference">Permissions reference</h3>
+
+<p>Permissions are cumulative. For example, if you have Write permissions, you
+automatically have Read permissions:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">Read</code> access allows users to view, search, and pull a private repository in the same way as they can a public repository.</li>
+  <li><code class="highlighter-rouge">Write</code> access allows users to push to repositories on Docker Hub.</li>
+  <li><code class="highlighter-rouge">Admin</code> access allows users to modify the repositories “Description”, “Collaborators” rights, “Public/Private” visibility, and “Delete”.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Note</strong>: A User who has not yet verified their email address only has
+<code class="highlighter-rouge">Read</code> access to the repository, regardless of the rights their team
+membership has given them.</p>
+</blockquote>
+<span class="glyphicon glyphicon-tags" style="padding-right: 10px"></span><span style="vertical-align: 2px"><a href="/search/?q=Docker">Docker</a>, <a href="/search/?q=docker">docker</a>, <a href="/search/?q=registry">registry</a>, <a href="/search/?q=teams">teams</a>, <a href="/search/?q=organizations">organizations</a>, <a href="/search/?q=plans">plans</a>, <a href="/search/?q=Dockerfile">Dockerfile</a>, <a href="/search/?q=Docker Hub">Docker Hub</a>, <a href="/search/?q=docs">docs</a>, <a href="/search/?q=documentation">documentation</a></span><div class="ratings-div"><div id="pd_rating_holder_8453675"></div></div></section>
+                    </main>
+                    <nav class="col-nav">
+                        <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+                            <div id="navbar" class="nav-sidebar">
+                                <ul class="nav hidden-md hidden-lg"></ul>
+                                <ul class="nav" id="jsTOCLeftNav"></ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="col-toc">
+                        <div class="sidebar hidden-xs hidden-sm">
+                            <div class="toc-nav">
+                                <div class="feedback-links">
+                                    <ul><li><a href="https://github.com/docker/docker.github.io/edit/master/docker-hub/orgs.md"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this page</a></li><li><a href="https://github.com/docker/docker.github.io/issues/new?body=File: [docker-hub/orgs.md](https://docs.docker.com/docker-hub/orgs/)" class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>
+                                        <li><div class="toggle-mode">
+  <div class="icon">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+  </div>
+  <div class="toggle-switch">
+      <label class="switch">
+          <input type="checkbox" id="switch-style">
+          <span class="slider round"></span>
+      </label>
+  </div>
+  <div class="icon">
+      <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </div>
+</div>
+</li>
+                                    </ul>
+                                </div><div id="side-toc-title">On this page:</div>
+<ul id="my_toc" class="inline_toc">
+  <li><a href="#working-with-organizations" class="nomunge">Working with organizations</a>
+    <ul>
+      <li><a href="#create-an-organization" class="nomunge">Create an organization</a></li>
+      <li><a href="#access-an-organization" class="nomunge">Access an organization</a></li>
+    </ul>
+  </li>
+  <li><a href="#working-with-teams-and-members" class="nomunge">Working with teams and members</a>
+    <ul>
+      <li><a href="#create-a-team" class="nomunge">Create a team</a></li>
+      <li><a href="#add-a-member-to-a-team" class="nomunge">Add a member to a team</a></li>
+      <li><a href="#remove-team-members" class="nomunge">Remove team members</a></li>
+      <li><a href="#give-a-team-access-to-a-repository" class="nomunge">Give a team access to a repository</a></li>
+      <li><a href="#view-a-teams-permissions-for-all-repositories" class="nomunge">View a team’s permissions for all repositories</a></li>
+      <li><a href="#permissions-reference" class="nomunge">Permissions reference</a></li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+          
+    <div class="container">
+        <div class="top_footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/why-docker">Why Docker?</a></b></li>
+                        <li><a href="https://www.docker.com/what-container">What is a Container?</a></li>
+                        <li><a href="https://docker.events.cube365.net/dockercon/">DockerCon</a></li>
+                        <li><b><a href="https://www.docker.com/products/overview">Products</a></b></li>
+                        <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+                        <li><a href="https://www.docker.com/products/docker-hub">Docker Hub</a></li>
+                        <li><a href="https://www.docker.com/roadmap">Docker Product Roadmap</a></li>
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Features</a></b></li>
+                        <li><a href="https://www.docker.com/products/container-runtime">Container Runtime</a></li>
+                        <li><a href="https://www.docker.com/products/developer-tools">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Developers</a></b></li>
+                        <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+                        <li><a href="https://www.docker.com/docker-community">Community</a></li>
+                        <li><a href="https://www.docker.com/open-source">Open Source</a></li>
+                        <li><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Pricing</a></b></li>
+                        <li><a href="https://www.docker.com/pricing/faq">FAQs</a></li>
+                        <li><a href="https://www.docker.com/partners/programs">Docker Verified Publisher Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/company" target="_blank" rel="noopener">Company</a></b></li>
+                        <li><a href="https://www.docker.com/company">About Us</a></li>
+                        <li><a href="https://www.docker.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+                        <li><a href="https://www.docker.com/customers">Customers</a></li>
+                        <li><a href="https://www.docker.com/partners">Partners</a></li>
+                        <li><a href="https://www.docker.com/company/newsroom">Newsroom</a></li>
+                        <li><a href="https://www.docker.com/careers">Careers</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <nav class="footer_sub_nav">
+                    <ul class="menu">
+                        <li><a href="http://status.docker.com/">Status</a></li>
+                        <li><a href="https://www.docker.com/legal">Legal</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="bottom_footer">
+            <div class="footer-copyright col-xs-12 col-md-8">
+                <p class="copyright">
+                    Copyright &copy; 2013-2021 Docker Inc. All rights reserved. </p>
+            </div>
+            <div class="footer_social_nav">
+                <ul class="nav-social">
+                    <li class="fa fa-twitter"><a href="http://twitter.com/docker">Twitter</a></li>
+                    <li class="fa fa-youtube"><a href="http://www.youtube.com/user/dockerrun">Youtube</a></li>
+                    <li class="fa fa-github"><a href="https://github.com/docker">GitHub</a></li>
+                    <li class="fa fa-linkedin"><a href="https://www.linkedin.com/company/docker">Linkedin</a></li>
+                    <li class="fa fa-facebook"><a href="https://www.facebook.com/docker.run">Facebook</a></li>
+                    <li class="fa fa-slideshare"><a href="https://www.slideshare.net/docker">Slideshare</a></li>
+                    <li class="fa fa-reddit"><a href="https://www.reddit.com/r/docker">Reddit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </footer>
+    <script>const pageURL = "/docker-hub/orgs/";</script><script>
+    let PDRTJS_settings_8453675 = {
+        "id": "8453675",
+        "unique_id": "docker-hub/orgs.md",
+        "title": "Teams and Organizations",
+        "font_family": "Open Sans, sans serif",
+        "font_color": "b9c2cc",
+        "font_align": "center",
+        "permalink": "https://github.com/docker/docker.github.io/blob/master/docker-hub/orgs.md"
+    };
+    (function (d, c, j) {
+        if (!document.getElementById(j)) {
+            let pd=d.createElement(c),s;pd.id=j;pd.src='https://polldaddy.com/js/rating/rating.js';s=document.getElementsByTagName(c)[0];s.parentNode.insertBefore(pd, s);
+        }
+    }(document, 'script', 'pd-rating-js'));
+</script></body>
+</html>

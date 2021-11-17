@@ -1,0 +1,393 @@
+<!-- Page generated 2021-11-17 12:16:07 +0000-->
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex"/><!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WL2QLG5');</script>
+<title>Install Docker Machine | Docker Documentation</title>
+  <meta name="description" content="How to install Docker Machine" />
+  <meta name="keywords" content="machine, orchestration, install, installation, docker, documentation, uninstall Docker Machine, uninstall">
+  <link rel="canonical" href="https://docs.docker.com/machine/install-machine/" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <meta name="msapplication-TileImage" content="/favicons/docs@2x.ico">
+  <meta property="og:image" content="/favicons/docs@2x.ico"/>
+  <meta name="theme-color" content="#2496ed" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- hide elements that are only shown without JavaScript enabled -->
+  <script>document.documentElement.classList.add('js')</script>
+  <style>html.js .no-js { display: none !important; }</style><script defer src="/js/theme-switcher.js"></script>
+  <script defer src="/js/anchorlinks.js"></script>
+  <script defer src="/js/jquery.js"></script>
+  <script defer src="/js/bootstrap.min.js"></script>
+  <script defer src="/js/docs.js"></script><script defer src="/js/search.js"></script><link rel="preload" as="font" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Book.woff2"    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/glyphicons-halflings-regular.woff2"       type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/fontawesome-webfont.woff2?v=4.7.0"        type="font/woff2" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css" id="pagestyle">
+
+  <!-- SEO stuff -->
+  <meta name="twitter:title" itemprop="title name" content="Install Docker Machine"/>
+  <meta name="twitter:description" property="og:description" itemprop="description" content="" />
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:domain" content="docs.docker.com"/>
+  <meta name="twitter:site" content="@docker_docs"/>
+  <meta name="twitter:url" content="https://twitter.com/docker_docs"/>
+  <meta name="twitter:image:src" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta name="twitter:image:alt" content="Docker Documentation"/>
+  <meta property="og:title" content="Install Docker Machine" />
+  <meta property="og:description" content="How to install Docker Machine" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:updated_time" itemprop="dateUpdated" content="2021-11-17T12:16:07+00:00"/>
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://docs.docker.com/machine/install-machine/" />
+  <meta property="og:site_name" content="Docker Documentation" />
+  <meta property="article:published_time" itemprop="datePublished" content="2021-11-17T12:16:07+00:00"/>
+  <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Install Docker Machine","description":"How to install Docker Machine","url":"https://docs.docker.com/machine/install-machine/"}</script>
+  <!-- END SEO STUFF -->
+</head>
+<body class="colums">
+    <header>
+        <nav class="nav-secondary navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/">
+                <img class="logo" src="/images/docker-docs-logo.svg" alt="Docker Docs" title="Docker Docs" width="160" height="28" />
+            </a>
+        </div>
+        <div class="navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <div class="logo-mobile">
+    <a href="/">
+        <img src="/images/docker-icon.svg" alt="Docker Docs" title="Docker Docs" width="30" height="30" />
+    </a>
+</div>
+<div class="search-form" id="search-div">
+    <form class="search-form form-inline" id="searchForm" action="/search/" method="get">
+        <label for="st-search-input" class="sr-only">Search</label>
+        <input class="search-field form-control ds-input" id="st-search-input" name="q" placeholder="Search the docs" type="search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
+        <div id="autocompleteResults"></div>
+        <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
+    </form>
+</div>
+<div class="sidebar-toggle">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="nav-container hidden-sm hidden-xs">
+    <div>
+        <ul class="nav navbar-nav"><li><a href="/" id="home">Home</a></li><li><a href="/get-started/overview/" id="guides">Guides</a></li><li><a href="/desktop/" id="manuals">Manuals</a></li><li><a href="/reference/" id="reference">Reference</a></li><li><a href="/samples/" id="samples">Samples</a></li></ul>
+    </div>
+    <div class="ctrl-right">
+        <a href="javascript:void(0)" id="menu-toggle" aria-label="Current page's menu toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
+    </div>
+</div>
+<div class="row hidden-sm hidden-xs">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="/" title="Docker docs homepage"><i class="fa fa-home"></i></a></li>
+            <li><a href="/desktop/">Manuals</a></li><li><a>Superseded products and tools</a></li><li><a href="/machine/">Docker Machine</a></li><li><a href="/machine/install-machine/">Install Machine</a></li></ol>
+    </nav>
+</div></div>
+    </div>
+</nav>
+
+    </header>
+    <div class="wrapper right-open">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-body">
+                    <main class="col-content content">
+                        <section class="section"><h1>Install Docker Machine</h1><p><em class="reading-time">Estimated reading time: 3 minutes</em></p><p>Install Docker Machine binaries by following the instructions in the following section. You can find the latest
+versions of the binaries on the <a href="https://github.com/docker/machine/releases/" target="_blank" rel="noopener" class="_">docker/machine release
+page</a>
+on GitHub.</p>
+
+<h2 id="install-docker-machine">Install Docker Machine</h2>
+
+<ol>
+  <li>
+    <p>Install <a href="/engine/install/" target="_blank" rel="noopener" class="_">Docker</a>.</p>
+  </li>
+  <li>
+    <p>Download the Docker Machine binary and extract it to your PATH.</p>
+
+    <p>If you are running <strong>macOS</strong>:</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> <span class="nv">base</span><span class="o">=</span>https://github.com/docker/machine/releases/download/v0.16.0 <span class="se">\</span>
+  <span class="o">&amp;&amp;</span> curl <span class="nt">-L</span> <span class="nv">$base</span>/docker-machine-<span class="k">$(</span>uname <span class="nt">-s</span><span class="k">)</span>-<span class="k">$(</span>uname <span class="nt">-m</span><span class="k">)</span> <span class="o">&gt;</span>/usr/local/bin/docker-machine <span class="se">\</span>
+  <span class="o">&amp;&amp;</span> chmod +x /usr/local/bin/docker-machine
+</code></pre></div>    </div>
+
+    <p>If you are running <strong>Linux</strong>:</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> <span class="nv">base</span><span class="o">=</span>https://github.com/docker/machine/releases/download/v0.16.0 <span class="se">\</span>
+  <span class="o">&amp;&amp;</span> curl <span class="nt">-L</span> <span class="nv">$base</span>/docker-machine-<span class="k">$(</span>uname <span class="nt">-s</span><span class="k">)</span>-<span class="k">$(</span>uname <span class="nt">-m</span><span class="k">)</span> <span class="o">&gt;</span>/tmp/docker-machine <span class="se">\</span>
+  <span class="o">&amp;&amp;</span> <span class="nb">sudo </span>mv /tmp/docker-machine /usr/local/bin/docker-machine <span class="se">\</span>
+  <span class="o">&amp;&amp;</span> chmod +x /usr/local/bin/docker-machine
+</code></pre></div>    </div>
+
+    <p>If you are running <strong>Windows</strong> with <a href="https://git-for-windows.github.io/" target="_blank" rel="noopener" class="_">Git BASH</a>:</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> <span class="nv">base</span><span class="o">=</span>https://github.com/docker/machine/releases/download/v0.16.0 <span class="se">\</span>
+  <span class="o">&amp;&amp;</span> mkdir <span class="nt">-p</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/bin"</span> <span class="se">\</span>
+  <span class="o">&amp;&amp;</span> curl <span class="nt">-L</span> <span class="nv">$base</span>/docker-machine-Windows-x86_64.exe <span class="o">&gt;</span> <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/bin/docker-machine.exe"</span> <span class="se">\</span>
+  <span class="o">&amp;&amp;</span> chmod +x <span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/bin/docker-machine.exe"</span>
+</code></pre></div>    </div>
+
+    <blockquote class="important">
+      <p>The above command works on Windows only if you use a
+terminal emulator such as <a href="https://git-for-windows.github.io/" target="_blank" rel="noopener" class="_">Git BASH</a>, which supports Linux commands like <code class="highlighter-rouge">chmod</code>.</p>
+    </blockquote>
+
+    <p>Otherwise, download one of the releases from the <a href="https://github.com/docker/machine/releases/" target="_blank" rel="noopener" class="_">docker/machine release
+page</a> directly.</p>
+  </li>
+  <li>
+    <p>Check the installation by displaying the Machine version:</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span> docker-machine version
+<span class="go">docker-machine version 0.16.0, build 9371605
+</span></code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="install-bash-completion-scripts">Install bash completion scripts</h2>
+
+<p>The Machine repository supplies several <code class="highlighter-rouge">bash</code> scripts that add features such
+as:</p>
+
+<ul>
+  <li>command completion</li>
+  <li>a function that displays the active machine in your shell prompt</li>
+  <li>a function wrapper that adds a <code class="highlighter-rouge">docker-machine use</code> subcommand to switch the
+active machine</li>
+</ul>
+
+<p>Confirm the version and save scripts to <code class="highlighter-rouge">/etc/bash_completion.d</code> or
+<code class="highlighter-rouge">/usr/local/etc/bash_completion.d</code>:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">base</span><span class="o">=</span>https://raw.githubusercontent.com/docker/machine/v0.16.0
+<span class="k">for </span>i <span class="k">in </span>docker-machine-prompt.bash docker-machine-wrapper.bash docker-machine.bash
+<span class="k">do
+  </span><span class="nb">sudo </span>wget <span class="s2">"</span><span class="nv">$base</span><span class="s2">/contrib/completion/bash/</span><span class="k">${</span><span class="nv">i</span><span class="k">}</span><span class="s2">"</span> <span class="nt">-P</span> /etc/bash_completion.d
+<span class="k">done</span>
+</code></pre></div></div>
+
+<p>Then you need to run <code class="highlighter-rouge">source
+/etc/bash_completion.d/docker-machine-prompt.bash</code> in your bash
+terminal to tell your setup where it can find the file
+<code class="highlighter-rouge">docker-machine-prompt.bash</code> that you previously downloaded.</p>
+
+<p>To enable the <code class="highlighter-rouge">docker-machine</code> shell prompt, add
+<code class="highlighter-rouge">$(__docker_machine_ps1)</code> to your <code class="highlighter-rouge">PS1</code> setting in <code class="highlighter-rouge">~/.bashrc</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">PS1</span><span class="o">=</span><span class="s1">'[\u@\h \W$(__docker_machine_ps1)]\$ '</span>
+</code></pre></div></div>
+
+<p>You can find additional documentation in the comments at the <a href="https://github.com/docker/machine/tree/master/contrib/completion/bash" target="_blank" rel="noopener" class="_">top of
+each
+script</a>.</p>
+
+<h2 id="how-to-uninstall-docker-machine">How to uninstall Docker Machine</h2>
+
+<p>To uninstall Docker Machine:</p>
+
+<ul>
+  <li>
+    <p>Optionally, remove the machines you created.</p>
+
+    <p>To remove each machine individually: <code class="highlighter-rouge">docker-machine rm &lt;machine-name&gt;</code></p>
+
+    <p>To remove all machines: <code class="highlighter-rouge">docker-machine rm -f $(docker-machine ls
+-q)</code> (you might need to use <code class="highlighter-rouge">-force</code> on Windows).</p>
+
+    <p>Removing machines is an optional step because there are cases where
+you might want to save and migrate existing machines to a
+<a href="/desktop/mac/">Docker for Mac</a> or
+<a href="/desktop/windows/">Docker Desktop for Windows</a> environment,
+for example.</p>
+  </li>
+  <li>
+    <p>Remove the executable: <code class="highlighter-rouge">rm $(which docker-machine)</code></p>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>Note</strong></p>
+
+  <p>As a point of information, the <code class="highlighter-rouge">config.json</code>, certificates,
+and other data related to each virtual machine created by <code class="highlighter-rouge">docker-machine</code>
+is stored in <code class="highlighter-rouge">~/.docker/machine/machines/</code> on Mac and Linux and in
+<code class="highlighter-rouge">~\.docker\machine\machines\</code> on Windows. We recommend that you do not edit or
+remove those files directly as this only affects information for the Docker
+CLI, not the actual VMs, regardless of whether they are local or on remote
+servers.</p>
+</blockquote>
+
+<h2 id="where-to-go-next">Where to go next</h2>
+
+<ul>
+  <li><a href="/machine/">Docker Machine overview</a></li>
+  <li>Create and run a Docker host on your <a href="/machine/get-started/">local system using virtualization</a></li>
+  <li>Provision multiple Docker hosts <a href="/machine/get-started-cloud/">on your cloud provider</a></li>
+  <li><a href="/machine/drivers/">Docker Machine driver reference</a></li>
+  <li><a href="/machine/reference/">Docker Machine subcommand reference</a></li>
+</ul>
+<span class="glyphicon glyphicon-tags" style="padding-right: 10px"></span><span style="vertical-align: 2px"><a href="/search/?q=machine">machine</a>, <a href="/search/?q=orchestration">orchestration</a>, <a href="/search/?q=install">install</a>, <a href="/search/?q=installation">installation</a>, <a href="/search/?q=docker">docker</a>, <a href="/search/?q=documentation">documentation</a>, <a href="/search/?q=uninstall Docker Machine">uninstall Docker Machine</a>, <a href="/search/?q=uninstall">uninstall</a></span><div class="ratings-div"><div id="pd_rating_holder_8453675"></div></div></section>
+                    </main>
+                    <nav class="col-nav">
+                        <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+                            <div id="navbar" class="nav-sidebar">
+                                <ul class="nav hidden-md hidden-lg"></ul>
+                                <ul class="nav" id="jsTOCLeftNav"></ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="col-toc">
+                        <div class="sidebar hidden-xs hidden-sm">
+                            <div class="toc-nav">
+                                <div class="feedback-links">
+                                    <ul><li><a href="https://github.com/docker/docker.github.io/edit/master/machine/install-machine.md"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this page</a></li><li><a href="https://github.com/docker/docker.github.io/issues/new?body=File: [machine/install-machine.md](https://docs.docker.com/machine/install-machine/)" class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>
+                                        <li><div class="toggle-mode">
+  <div class="icon">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+  </div>
+  <div class="toggle-switch">
+      <label class="switch">
+          <input type="checkbox" id="switch-style">
+          <span class="slider round"></span>
+      </label>
+  </div>
+  <div class="icon">
+      <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </div>
+</div>
+</li>
+                                    </ul>
+                                </div><div id="side-toc-title">On this page:</div>
+<ul id="my_toc" class="inline_toc">
+  <li><a href="#install-docker-machine" class="nomunge">Install Docker Machine</a></li>
+  <li><a href="#install-bash-completion-scripts" class="nomunge">Install bash completion scripts</a></li>
+  <li><a href="#how-to-uninstall-docker-machine" class="nomunge">How to uninstall Docker Machine</a></li>
+  <li><a href="#where-to-go-next" class="nomunge">Where to go next</a></li>
+</ul>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+          
+    <div class="container">
+        <div class="top_footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/why-docker">Why Docker?</a></b></li>
+                        <li><a href="https://www.docker.com/what-container">What is a Container?</a></li>
+                        <li><a href="https://docker.events.cube365.net/dockercon/">DockerCon</a></li>
+                        <li><b><a href="https://www.docker.com/products/overview">Products</a></b></li>
+                        <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+                        <li><a href="https://www.docker.com/products/docker-hub">Docker Hub</a></li>
+                        <li><a href="https://www.docker.com/roadmap">Docker Product Roadmap</a></li>
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Features</a></b></li>
+                        <li><a href="https://www.docker.com/products/container-runtime">Container Runtime</a></li>
+                        <li><a href="https://www.docker.com/products/developer-tools">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Developers</a></b></li>
+                        <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+                        <li><a href="https://www.docker.com/docker-community">Community</a></li>
+                        <li><a href="https://www.docker.com/open-source">Open Source</a></li>
+                        <li><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Pricing</a></b></li>
+                        <li><a href="https://www.docker.com/pricing/faq">FAQs</a></li>
+                        <li><a href="https://www.docker.com/partners/programs">Docker Verified Publisher Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/company" target="_blank" rel="noopener">Company</a></b></li>
+                        <li><a href="https://www.docker.com/company">About Us</a></li>
+                        <li><a href="https://www.docker.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+                        <li><a href="https://www.docker.com/customers">Customers</a></li>
+                        <li><a href="https://www.docker.com/partners">Partners</a></li>
+                        <li><a href="https://www.docker.com/company/newsroom">Newsroom</a></li>
+                        <li><a href="https://www.docker.com/careers">Careers</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <nav class="footer_sub_nav">
+                    <ul class="menu">
+                        <li><a href="http://status.docker.com/">Status</a></li>
+                        <li><a href="https://www.docker.com/legal">Legal</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="bottom_footer">
+            <div class="footer-copyright col-xs-12 col-md-8">
+                <p class="copyright">
+                    Copyright &copy; 2013-2021 Docker Inc. All rights reserved. </p>
+            </div>
+            <div class="footer_social_nav">
+                <ul class="nav-social">
+                    <li class="fa fa-twitter"><a href="http://twitter.com/docker">Twitter</a></li>
+                    <li class="fa fa-youtube"><a href="http://www.youtube.com/user/dockerrun">Youtube</a></li>
+                    <li class="fa fa-github"><a href="https://github.com/docker">GitHub</a></li>
+                    <li class="fa fa-linkedin"><a href="https://www.linkedin.com/company/docker">Linkedin</a></li>
+                    <li class="fa fa-facebook"><a href="https://www.facebook.com/docker.run">Facebook</a></li>
+                    <li class="fa fa-slideshare"><a href="https://www.slideshare.net/docker">Slideshare</a></li>
+                    <li class="fa fa-reddit"><a href="https://www.reddit.com/r/docker">Reddit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </footer>
+    <script>const pageURL = "/machine/install-machine/";</script><script>
+    let PDRTJS_settings_8453675 = {
+        "id": "8453675",
+        "unique_id": "machine/install-machine.md",
+        "title": "Install Docker Machine",
+        "font_family": "Open Sans, sans serif",
+        "font_color": "b9c2cc",
+        "font_align": "center",
+        "permalink": "https://github.com/docker/docker.github.io/blob/master/machine/install-machine.md"
+    };
+    (function (d, c, j) {
+        if (!document.getElementById(j)) {
+            let pd=d.createElement(c),s;pd.id=j;pd.src='https://polldaddy.com/js/rating/rating.js';s=document.getElementsByTagName(c)[0];s.parentNode.insertBefore(pd, s);
+        }
+    }(document, 'script', 'pd-rating-js'));
+</script></body>
+</html>

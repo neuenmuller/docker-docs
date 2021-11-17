@@ -1,0 +1,384 @@
+<!-- Page generated 2021-11-17 12:16:07 +0000-->
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WL2QLG5');</script>
+<title>Docker development best practices | Docker Documentation</title>
+  <meta name="description" content="Rules of thumb for making your life easier as a Docker application developer" />
+  <meta name="keywords" content="application, development">
+  <link rel="canonical" href="https://docs.docker.com/develop/dev-best-practices/" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <meta name="msapplication-TileImage" content="/favicons/docs@2x.ico">
+  <meta property="og:image" content="/favicons/docs@2x.ico"/>
+  <meta name="theme-color" content="#2496ed" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- hide elements that are only shown without JavaScript enabled -->
+  <script>document.documentElement.classList.add('js')</script>
+  <style>html.js .no-js { display: none !important; }</style><script defer src="/js/theme-switcher.js"></script>
+  <script defer src="/js/anchorlinks.js"></script>
+  <script defer src="/js/jquery.js"></script>
+  <script defer src="/js/bootstrap.min.js"></script>
+  <script defer src="/js/docs.js"></script><script defer src="/js/search.js"></script><link rel="preload" as="font" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Book.woff2"    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/glyphicons-halflings-regular.woff2"       type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/fontawesome-webfont.woff2?v=4.7.0"        type="font/woff2" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css" id="pagestyle">
+
+  <!-- SEO stuff -->
+  <meta name="twitter:title" itemprop="title name" content="Docker development best practices"/>
+  <meta name="twitter:description" property="og:description" itemprop="description" content="" />
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:domain" content="docs.docker.com"/>
+  <meta name="twitter:site" content="@docker_docs"/>
+  <meta name="twitter:url" content="https://twitter.com/docker_docs"/>
+  <meta name="twitter:image:src" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta name="twitter:image:alt" content="Docker Documentation"/>
+  <meta property="og:title" content="Docker development best practices" />
+  <meta property="og:description" content="Rules of thumb for making your life easier as a Docker application developer" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:updated_time" itemprop="dateUpdated" content="2021-11-17T12:16:07+00:00"/>
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://docs.docker.com/develop/dev-best-practices/" />
+  <meta property="og:site_name" content="Docker Documentation" />
+  <meta property="article:published_time" itemprop="datePublished" content="2021-11-17T12:16:07+00:00"/>
+  <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Docker development best practices","description":"Rules of thumb for making your life easier as a Docker application developer","url":"https://docs.docker.com/develop/dev-best-practices/"}</script>
+  <!-- END SEO STUFF -->
+</head>
+<body class="colums">
+    <header>
+        <nav class="nav-secondary navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/">
+                <img class="logo" src="/images/docker-docs-logo.svg" alt="Docker Docs" title="Docker Docs" width="160" height="28" />
+            </a>
+        </div>
+        <div class="navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <div class="logo-mobile">
+    <a href="/">
+        <img src="/images/docker-icon.svg" alt="Docker Docs" title="Docker Docs" width="30" height="30" />
+    </a>
+</div>
+<div class="search-form" id="search-div">
+    <form class="search-form form-inline" id="searchForm" action="/search/" method="get">
+        <label for="st-search-input" class="sr-only">Search</label>
+        <input class="search-field form-control ds-input" id="st-search-input" name="q" placeholder="Search the docs" type="search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
+        <div id="autocompleteResults"></div>
+        <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
+    </form>
+</div>
+<div class="sidebar-toggle">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="nav-container hidden-sm hidden-xs">
+    <div>
+        <ul class="nav navbar-nav"><li><a href="/" id="home">Home</a></li><li><a href="/get-started/overview/" id="guides">Guides</a></li><li><a href="/desktop/" id="manuals">Manuals</a></li><li><a href="/reference/" id="reference">Reference</a></li><li><a href="/samples/" id="samples">Samples</a></li></ul>
+    </div>
+    <div class="ctrl-right">
+        <a href="javascript:void(0)" id="menu-toggle" aria-label="Current page's menu toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
+    </div>
+</div>
+<div class="row hidden-sm hidden-xs">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="/" title="Docker docs homepage"><i class="fa fa-home"></i></a></li>
+            <li><a href="/get-started/overview/">Guides</a></li><li><a href="/develop/">Develop with Docker</a></li><li><a href="/develop/dev-best-practices/">Best practices</a></li></ol>
+    </nav>
+</div></div>
+    </div>
+</nav>
+
+    </header>
+    <div class="wrapper right-open">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-body">
+                    <main class="col-content content">
+                        <section class="section"><h1>Docker development best practices</h1><p><em class="reading-time">Estimated reading time: 4 minutes</em></p><p>The following development patterns have proven to be helpful for people
+building applications with Docker. If you have discovered something we should
+add,
+<a href="https://github.com/docker/docker.github.io/issues/new" target="_blank" rel="noopener" class="_">let us know</a>.</p>
+
+<h2 id="how-to-keep-your-images-small">How to keep your images small</h2>
+
+<p>Small images are faster to pull over the network and faster to load into
+memory when starting containers or services. There are a few rules of thumb to
+keep image size small:</p>
+
+<ul>
+  <li>
+    <p>Start with an appropriate base image. For instance, if you need a JDK,
+consider basing your image on the official <code class="highlighter-rouge">openjdk</code> image, rather than
+starting with a generic <code class="highlighter-rouge">ubuntu</code> image and installing <code class="highlighter-rouge">openjdk</code> as part of the
+Dockerfile.</p>
+  </li>
+  <li>
+    <p><a href="/develop/develop-images/multistage-build/">Use multistage builds</a>. For
+instance, you can use the <code class="highlighter-rouge">maven</code> image to build your Java application, then
+reset to the <code class="highlighter-rouge">tomcat</code> image and copy the Java artifacts into the correct
+location to deploy your app, all in the same Dockerfile. This means that your
+final image doesn’t include all of the libraries and dependencies pulled in by
+the build, but only the artifacts and the environment needed to run them.</p>
+
+    <ul>
+      <li>
+        <p>If you need to use a version of Docker that does not include multistage
+builds, try to reduce the number of layers in your image by minimizing the
+number of separate <code class="highlighter-rouge">RUN</code> commands in your Dockerfile. You can do this by
+consolidating multiple commands into a single <code class="highlighter-rouge">RUN</code> line and using your
+shell’s mechanisms to combine them together. Consider the following two
+fragments. The first creates two layers in the image, while the second
+only creates one.</p>
+
+        <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">RUN </span>apt-get <span class="nt">-y</span> update
+<span class="k">RUN </span>apt-get install <span class="nt">-y</span> python
+</code></pre></div>        </div>
+
+        <div class="language-dockerfile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">RUN </span>apt-get <span class="nt">-y</span> update <span class="o">&amp;&amp;</span> apt-get install <span class="nt">-y</span> python
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>If you have multiple images with a lot in common, consider creating your own
+<a href="/develop/develop-images/baseimages/">base image</a> with the shared
+components, and basing your unique images on that. Docker only needs to load
+the common layers once, and they are cached. This means that your
+derivative images use memory on the Docker host more efficiently and load more
+quickly.</p>
+  </li>
+  <li>
+    <p>To keep your production image lean but allow for debugging, consider using the
+production image as the base image for the debug image. Additional testing or
+debugging tooling can be added on top of the production image.</p>
+  </li>
+  <li>
+    <p>When building images, always tag them with useful tags which codify version
+information, intended destination (<code class="highlighter-rouge">prod</code> or <code class="highlighter-rouge">test</code>, for instance), stability,
+or other information that is useful when deploying the application in
+different environments. Do not rely on the automatically-created <code class="highlighter-rouge">latest</code> tag.</p>
+  </li>
+</ul>
+
+<h2 id="where-and-how-to-persist-application-data">Where and how to persist application data</h2>
+
+<ul>
+  <li><strong>Avoid</strong> storing application data in your container’s writable layer using
+<a href="/storage/storagedriver/select-storage-driver/">storage drivers</a>. This increases the
+size of your container and is less efficient from an I/O perspective than
+using volumes or bind mounts.</li>
+  <li>Instead, store data using <a href="/storage/volumes/">volumes</a>.</li>
+  <li>One case where it is appropriate to use
+<a href="/storage/bind-mounts/">bind mounts</a> is during development,
+when you may want to mount your source directory or a binary you just built
+into your container. For production, use a volume instead, mounting it into
+the same location as you mounted a bind mount during development.</li>
+  <li>For production, use <a href="/engine/swarm/secrets/">secrets</a> to store sensitive
+application data used by services, and use <a href="/engine/swarm/configs/">configs</a>
+for non-sensitive data such as configuration files. If you currently use
+standalone containers, consider migrating to use single-replica services, so
+that you can take advantage of these service-only features.</li>
+</ul>
+
+<h2 id="use-cicd-for-testing-and-deployment">Use CI/CD for testing and deployment</h2>
+
+<ul>
+  <li>
+    <p>When you check in a change to source control or create a pull request, use
+<a href="/docker-hub/builds/">Docker Hub</a> or
+another CI/CD pipeline to automatically build and tag a Docker image and test
+it.</p>
+  </li>
+  <li>
+    <p>Take this even further by requiring your development, testing, and
+security teams to <a href="/engine/reference/commandline/trust/">sign images</a>
+before they are deployed into production. This way, before an image is
+deployed into production, it has been tested and signed off by, for instance,
+development, quality, and security teams.</p>
+  </li>
+</ul>
+
+<h2 id="differences-in-development-and-production-environments">Differences in development and production environments</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Development</th>
+      <th style="text-align: left">Production</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Use bind mounts to give your container access to your source code.</td>
+      <td style="text-align: left">Use volumes to store container data.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Use Docker Desktop for Mac or Docker Desktop for Windows.</td>
+      <td style="text-align: left">Use Docker Engine, if possible with <a href="/engine/security/userns-remap/">userns mapping</a> for greater isolation of Docker processes from host processes.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Don’t worry about time drift.</td>
+      <td style="text-align: left">Always run an NTP client on the Docker host and within each container process and sync them all to the same NTP server. If you use swarm services, also ensure that each Docker node syncs its clocks to the same time source as the containers.</td>
+    </tr>
+  </tbody>
+</table>
+<span class="glyphicon glyphicon-tags" style="padding-right: 10px"></span><span style="vertical-align: 2px"><a href="/search/?q=application">application</a>, <a href="/search/?q=development">development</a></span><div class="ratings-div"><div id="pd_rating_holder_8453675"></div></div></section>
+                    </main>
+                    <nav class="col-nav">
+                        <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+                            <div id="navbar" class="nav-sidebar">
+                                <ul class="nav hidden-md hidden-lg"></ul>
+                                <ul class="nav" id="jsTOCLeftNav"></ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="col-toc">
+                        <div class="sidebar hidden-xs hidden-sm">
+                            <div class="toc-nav">
+                                <div class="feedback-links">
+                                    <ul><li><a href="https://github.com/docker/docker.github.io/edit/master/develop/dev-best-practices.md"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this page</a></li><li><a href="https://github.com/docker/docker.github.io/issues/new?body=File: [develop/dev-best-practices.md](https://docs.docker.com/develop/dev-best-practices/)" class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>
+                                        <li><div class="toggle-mode">
+  <div class="icon">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+  </div>
+  <div class="toggle-switch">
+      <label class="switch">
+          <input type="checkbox" id="switch-style">
+          <span class="slider round"></span>
+      </label>
+  </div>
+  <div class="icon">
+      <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </div>
+</div>
+</li>
+                                    </ul>
+                                </div><div id="side-toc-title">On this page:</div>
+<ul id="my_toc" class="inline_toc">
+  <li><a href="#how-to-keep-your-images-small" class="nomunge">How to keep your images small</a></li>
+  <li><a href="#where-and-how-to-persist-application-data" class="nomunge">Where and how to persist application data</a></li>
+  <li><a href="#use-cicd-for-testing-and-deployment" class="nomunge">Use CI/CD for testing and deployment</a></li>
+  <li><a href="#differences-in-development-and-production-environments" class="nomunge">Differences in development and production environments</a></li>
+</ul>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+          
+    <div class="container">
+        <div class="top_footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/why-docker">Why Docker?</a></b></li>
+                        <li><a href="https://www.docker.com/what-container">What is a Container?</a></li>
+                        <li><a href="https://docker.events.cube365.net/dockercon/">DockerCon</a></li>
+                        <li><b><a href="https://www.docker.com/products/overview">Products</a></b></li>
+                        <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+                        <li><a href="https://www.docker.com/products/docker-hub">Docker Hub</a></li>
+                        <li><a href="https://www.docker.com/roadmap">Docker Product Roadmap</a></li>
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Features</a></b></li>
+                        <li><a href="https://www.docker.com/products/container-runtime">Container Runtime</a></li>
+                        <li><a href="https://www.docker.com/products/developer-tools">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Developers</a></b></li>
+                        <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+                        <li><a href="https://www.docker.com/docker-community">Community</a></li>
+                        <li><a href="https://www.docker.com/open-source">Open Source</a></li>
+                        <li><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Pricing</a></b></li>
+                        <li><a href="https://www.docker.com/pricing/faq">FAQs</a></li>
+                        <li><a href="https://www.docker.com/partners/programs">Docker Verified Publisher Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/company" target="_blank" rel="noopener">Company</a></b></li>
+                        <li><a href="https://www.docker.com/company">About Us</a></li>
+                        <li><a href="https://www.docker.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+                        <li><a href="https://www.docker.com/customers">Customers</a></li>
+                        <li><a href="https://www.docker.com/partners">Partners</a></li>
+                        <li><a href="https://www.docker.com/company/newsroom">Newsroom</a></li>
+                        <li><a href="https://www.docker.com/careers">Careers</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <nav class="footer_sub_nav">
+                    <ul class="menu">
+                        <li><a href="http://status.docker.com/">Status</a></li>
+                        <li><a href="https://www.docker.com/legal">Legal</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="bottom_footer">
+            <div class="footer-copyright col-xs-12 col-md-8">
+                <p class="copyright">
+                    Copyright &copy; 2013-2021 Docker Inc. All rights reserved. </p>
+            </div>
+            <div class="footer_social_nav">
+                <ul class="nav-social">
+                    <li class="fa fa-twitter"><a href="http://twitter.com/docker">Twitter</a></li>
+                    <li class="fa fa-youtube"><a href="http://www.youtube.com/user/dockerrun">Youtube</a></li>
+                    <li class="fa fa-github"><a href="https://github.com/docker">GitHub</a></li>
+                    <li class="fa fa-linkedin"><a href="https://www.linkedin.com/company/docker">Linkedin</a></li>
+                    <li class="fa fa-facebook"><a href="https://www.facebook.com/docker.run">Facebook</a></li>
+                    <li class="fa fa-slideshare"><a href="https://www.slideshare.net/docker">Slideshare</a></li>
+                    <li class="fa fa-reddit"><a href="https://www.reddit.com/r/docker">Reddit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </footer>
+    <script>const pageURL = "/develop/dev-best-practices/";</script><script>
+    let PDRTJS_settings_8453675 = {
+        "id": "8453675",
+        "unique_id": "develop/dev-best-practices.md",
+        "title": "Docker development best practices",
+        "font_family": "Open Sans, sans serif",
+        "font_color": "b9c2cc",
+        "font_align": "center",
+        "permalink": "https://github.com/docker/docker.github.io/blob/master/develop/dev-best-practices.md"
+    };
+    (function (d, c, j) {
+        if (!document.getElementById(j)) {
+            let pd=d.createElement(c),s;pd.id=j;pd.src='https://polldaddy.com/js/rating/rating.js';s=document.getElementsByTagName(c)[0];s.parentNode.insertBefore(pd, s);
+        }
+    }(document, 'script', 'pd-rating-js'));
+</script></body>
+</html>

@@ -1,0 +1,397 @@
+<!-- Page generated 2021-11-17 12:16:07 +0000-->
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WL2QLG5');</script>
+<title>Use bind mounts | Docker Documentation</title>
+  <meta name="description" content="Using bind mounts in our application" />
+  <meta name="keywords" content="get started, setup, orientation, quickstart, intro, concepts, containers, docker desktop">
+  <link rel="canonical" href="https://docs.docker.com/get-started/06_bind_mounts/" />
+
+  <!-- favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <link rel="apple-touch-icon" type="image/x-icon" href="/favicons/docs@2x.ico" sizes="129x128">
+  <meta name="msapplication-TileImage" content="/favicons/docs@2x.ico">
+  <meta property="og:image" content="/favicons/docs@2x.ico"/>
+  <meta name="theme-color" content="#2496ed" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- hide elements that are only shown without JavaScript enabled -->
+  <script>document.documentElement.classList.add('js')</script>
+  <style>html.js .no-js { display: none !important; }</style><script defer src="/js/theme-switcher.js"></script>
+  <script defer src="/js/anchorlinks.js"></script>
+  <script defer src="/js/jquery.js"></script>
+  <script defer src="/js/bootstrap.min.js"></script>
+  <script defer src="/js/docs.js"></script><script defer src="/js/search.js"></script><link rel="preload" as="font" href="https://fonts.gstatic.com/s/opensans/v18/mem8YaGs126MiZpBA-UFVZ0bf8pkAg.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Book.woff2"    type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/geomanist/hinted-Geomanist-Regular.woff2" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/glyphicons-halflings-regular.woff2"       type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" as="font" href="/fonts/fontawesome-webfont.woff2?v=4.7.0"        type="font/woff2" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css" id="pagestyle">
+
+  <!-- SEO stuff -->
+  <meta name="twitter:title" itemprop="title name" content="Use bind mounts"/>
+  <meta name="twitter:description" property="og:description" itemprop="description" content="" />
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:domain" content="docs.docker.com"/>
+  <meta name="twitter:site" content="@docker_docs"/>
+  <meta name="twitter:url" content="https://twitter.com/docker_docs"/>
+  <meta name="twitter:image:src" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta name="twitter:image:alt" content="Docker Documentation"/>
+  <meta property="og:title" content="Use bind mounts" />
+  <meta property="og:description" content="Using bind mounts in our application" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:updated_time" itemprop="dateUpdated" content="2021-11-17T12:16:07+00:00"/>
+  <meta property="og:image" itemprop="image primaryImageOfPage" content="https://docs.docker.com/images/docs@2x.png"/>
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="https://docs.docker.com/get-started/06_bind_mounts/" />
+  <meta property="og:site_name" content="Docker Documentation" />
+  <meta property="article:published_time" itemprop="datePublished" content="2021-11-17T12:16:07+00:00"/>
+  <script type="application/ld+json">{"@context":"http://schema.org","@type":"WebPage","headline":"Use bind mounts","description":"Using bind mounts in our application","url":"https://docs.docker.com/get-started/06_bind_mounts/"}</script>
+  <!-- END SEO STUFF -->
+</head>
+<body class="colums">
+    <header>
+        <nav class="nav-secondary navbar navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/">
+                <img class="logo" src="/images/docker-docs-logo.svg" alt="Docker Docs" title="Docker Docs" width="160" height="28" />
+            </a>
+        </div>
+        <div class="navbar-collapse" aria-expanded="false" style="height: 1px;">
+            <div class="logo-mobile">
+    <a href="/">
+        <img src="/images/docker-icon.svg" alt="Docker Docs" title="Docker Docs" width="30" height="30" />
+    </a>
+</div>
+<div class="search-form" id="search-div">
+    <form class="search-form form-inline" id="searchForm" action="/search/" method="get">
+        <label for="st-search-input" class="sr-only">Search</label>
+        <input class="search-field form-control ds-input" id="st-search-input" name="q" placeholder="Search the docs" type="search" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top;">
+        <div id="autocompleteResults"></div>
+        <!-- <button type="submit" class="search-submit btn btn-default">Search</button> -->
+    </form>
+</div>
+<div class="sidebar-toggle">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </button>
+</div>
+<div class="nav-container hidden-sm hidden-xs">
+    <div>
+        <ul class="nav navbar-nav"><li><a href="/" id="home">Home</a></li><li><a href="/get-started/overview/" id="guides">Guides</a></li><li><a href="/desktop/" id="manuals">Manuals</a></li><li><a href="/reference/" id="reference">Reference</a></li><li><a href="/samples/" id="samples">Samples</a></li></ul>
+    </div>
+    <div class="ctrl-right">
+        <a href="javascript:void(0)" id="menu-toggle" aria-label="Current page's menu toggle"><i class="fa fa-indent" aria-hidden="true"></i></a>
+    </div>
+</div>
+<div class="row hidden-sm hidden-xs">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li><a href="/" title="Docker docs homepage"><i class="fa fa-home"></i></a></li>
+            <li><a href="/get-started/overview/">Guides</a></li><li><a href="/get-started/">Get started</a></li><li><a href="/get-started/06_bind_mounts/">Part 6: Use bind mounts</a></li></ol>
+    </nav>
+</div></div>
+    </div>
+</nav>
+
+    </header>
+    <div class="wrapper right-open">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-body">
+                    <main class="col-content content">
+                        <section class="section"><h1>Use bind mounts</h1><p><em class="reading-time">Estimated reading time: 5 minutes</em></p><p>In the previous chapter, we talked about and used a <strong>named volume</strong> to persist the data in our database.
+Named volumes are great if we simply want to store data, as we don’t have to worry about <em>where</em> the data
+is stored.</p>
+
+<p>With <strong>bind mounts</strong>, we control the exact mountpoint on the host. We can use this to persist data, but it’s often
+used to provide additional data into containers. When working on an application, we can use a bind mount to
+mount our source code into the container to let it see code changes, respond, and let us see the changes right
+away.</p>
+
+<p>For Node-based applications, <a href="https://npmjs.com/package/nodemon" target="_blank" rel="noopener" class="_">nodemon</a> is a great tool to watch for file
+changes and then restart the application. There are equivalent tools in most other languages and frameworks.</p>
+
+<h2 id="quick-volume-type-comparisons">Quick volume type comparisons</h2>
+
+<p>Bind mounts and named volumes are the two main types of volumes that come with the Docker engine. However, additional
+volume drivers are available to support other uses cases (<a href="https://github.com/vieux/docker-volume-sshfs" target="_blank" rel="noopener" class="_">SFTP</a>, <a href="https://ceph.com/geen-categorie/getting-started-with-the-docker-rbd-volume-plugin/" target="_blank" rel="noopener" class="_">Ceph</a>, <a href="https://netappdvp.readthedocs.io/en/stable/" target="_blank" rel="noopener" class="_">NetApp</a>, <a href="https://github.com/elementar/docker-s3-volume" target="_blank" rel="noopener" class="_">S3</a>, and more).</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Named Volumes</th>
+      <th>Bind Mounts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Host Location</td>
+      <td>Docker chooses</td>
+      <td>You control</td>
+    </tr>
+    <tr>
+      <td>Mount Example (using <code class="highlighter-rouge">-v</code>)</td>
+      <td>my-volume:/usr/local/data</td>
+      <td>/path/to/data:/usr/local/data</td>
+    </tr>
+    <tr>
+      <td>Populates new volume with container contents</td>
+      <td>Yes</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Supports Volume Drivers</td>
+      <td>Yes</td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="start-a-dev-mode-container">Start a dev-mode container</h2>
+
+<p>To run our container to support a development workflow, we will do the following:</p>
+
+<ul>
+  <li>Mount our source code into the container</li>
+  <li>Install all dependencies, including the “dev” dependencies</li>
+  <li>Start nodemon to watch for filesystem changes</li>
+</ul>
+
+<p>So, let’s do it!</p>
+
+<ol>
+  <li>
+    <p>Make sure you don’t have any previous <code class="highlighter-rouge">getting-started</code> containers running.</p>
+  </li>
+  <li>
+    <p>Run the following command. We’ll explain what’s going on afterwards:</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp"> $</span> docker run <span class="nt">-dp</span> 3000:3000 <span class="se">\</span>
+     <span class="nt">-w</span> /app <span class="nt">-v</span> <span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">:/app"</span> <span class="se">\</span>
+     node:12-alpine <span class="se">\</span>
+     sh <span class="nt">-c</span> <span class="s2">"yarn install &amp;&amp; yarn run dev"</span>
+</code></pre></div>    </div>
+
+    <p>If you are using PowerShell then use this command:</p>
+
+    <div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code> docker run -dp 3000:3000 <span class="se">`</span>
+     -w /app -v <span class="s2">"</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">:/app"</span> <span class="se">`</span>
+     node:12-alpine <span class="se">`</span>
+     sh -c <span class="s2">"yarn install &amp;&amp; yarn run dev"</span>
+</code></pre></div>    </div>
+
+    <ul>
+      <li><code class="highlighter-rouge">-dp 3000:3000</code> - same as before. Run in detached (background) mode and create a port mapping</li>
+      <li><code class="highlighter-rouge">-w /app</code> - sets the “working directory” or the current directory that the command will run from</li>
+      <li><code class="highlighter-rouge">-v "$(pwd):/app"</code> - bind mount the current directory from the host in the container into the <code class="highlighter-rouge">/app</code> directory</li>
+      <li><code class="highlighter-rouge">node:12-alpine</code> - the image to use. Note that this is the base image for our app from the Dockerfile</li>
+      <li><code class="highlighter-rouge">sh -c "yarn install &amp;&amp; yarn run dev"</code> - the command. We’re starting a shell using <code class="highlighter-rouge">sh</code> (alpine doesn’t have <code class="highlighter-rouge">bash</code>) and
+running <code class="highlighter-rouge">yarn install</code> to install <em>all</em> dependencies and then running <code class="highlighter-rouge">yarn run dev</code>. If we look in the <code class="highlighter-rouge">package.json</code>,
+we’ll see that the <code class="highlighter-rouge">dev</code> script is starting <code class="highlighter-rouge">nodemon</code>.</li>
+    </ul>
+  </li>
+  <li>
+    <p>You can watch the logs using <code class="highlighter-rouge">docker logs -f &lt;container-id&gt;</code>. You’ll know you’re ready to go when you see this:</p>
+
+    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp"> $</span> docker logs <span class="nt">-f</span> &lt;container-id&gt;
+<span class="go"> nodemon src/index.js
+ [nodemon] 1.19.2
+ [nodemon] to restart at any time, enter `rs`
+ [nodemon] watching dir(s): *.*
+ [nodemon] starting `node src/index.js`
+ Using sqlite database at /etc/todos/todo.db
+ Listening on port 3000
+</span></code></pre></div>    </div>
+
+    <p>When you’re done watching the logs, exit out by hitting <code class="highlighter-rouge">Ctrl</code>+<code class="highlighter-rouge">C</code>.</p>
+  </li>
+  <li>
+    <p>Now, let’s make a change to the app. In the <code class="highlighter-rouge">src/static/js/app.js</code> file, let’s change the “Add Item” button to simply say
+“Add”. This change will be on line 109:</p>
+
+    <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code> -                         {submitting ? 'Adding...' : 'Add Item'}
+ +                         {submitting ? 'Adding...' : 'Add'}
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Simply refresh the page (or open it) and you should see the change reflected in the browser almost immediately. It might
+take a few seconds for the Node server to restart, so if you get an error, just try refreshing after a few seconds.</p>
+
+    <p class="text-center"><img src="/get-started/images/updated-add-button.png" alt="Screenshot of updated label for Add button" style="width:75%;" /></p>
+  </li>
+  <li>
+    <p>Feel free to make any other changes you’d like to make. When you’re done, stop the container and build your new image
+using <code class="highlighter-rouge">docker build -t getting-started .</code>.</p>
+  </li>
+</ol>
+
+<p>Using bind mounts is <em>very</em> common for local development setups. The advantage is that the dev machine doesn’t need to have
+all of the build tools and environments installed. With a single <code class="highlighter-rouge">docker run</code> command, the dev environment is pulled and ready
+to go. We’ll talk about Docker Compose in a future step, as this will help simplify our commands (we’re already getting a lot
+of flags).</p>
+
+<h2 id="recap">Recap</h2>
+
+<p>At this point, we can persist our database and respond rapidly to the needs and demands of our investors and founders. Hooray!
+But, guess what? We received great news!</p>
+
+<p><strong>Your project has been selected for future development!</strong></p>
+
+<p>In order to prepare for production, we need to migrate our database from working in SQLite to something that can scale a
+little better. For simplicity, we’ll keep with a relational database and switch our application to use MySQL. But, how 
+should we run MySQL? How do we allow the containers to talk to each other? We’ll talk about that next!</p>
+<span class="glyphicon glyphicon-tags" style="padding-right: 10px"></span><span style="vertical-align: 2px"><a href="/search/?q=get started">get started</a>, <a href="/search/?q=setup">setup</a>, <a href="/search/?q=orientation">orientation</a>, <a href="/search/?q=quickstart">quickstart</a>, <a href="/search/?q=intro">intro</a>, <a href="/search/?q=concepts">concepts</a>, <a href="/search/?q=containers">containers</a>, <a href="/search/?q=docker desktop">docker desktop</a></span><div class="ratings-div"><div id="pd_rating_holder_8453675"></div></div></section>
+                    </main>
+                    <nav class="col-nav">
+                        <div id="sidebar-nav" class="sidebar hidden-sm hidden-xs">
+                            <div id="navbar" class="nav-sidebar">
+                                <ul class="nav hidden-md hidden-lg"></ul>
+                                <ul class="nav" id="jsTOCLeftNav"></ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <div class="col-toc">
+                        <div class="sidebar hidden-xs hidden-sm">
+                            <div class="toc-nav">
+                                <div class="feedback-links">
+                                    <ul><li><a href="https://github.com/docker/docker.github.io/edit/master/get-started/06_bind_mounts.md"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit this page</a></li><li><a href="https://github.com/docker/docker.github.io/issues/new?body=File: [get-started/06_bind_mounts.md](https://docs.docker.com/get-started/06_bind_mounts/)" class="nomunge"><i class="fa fa-check" aria-hidden="true"></i> Request docs changes</a></li>
+                                        <li><div class="toggle-mode">
+  <div class="icon">
+      <i class="fa fa-sun-o" aria-hidden="true"></i>
+  </div>
+  <div class="toggle-switch">
+      <label class="switch">
+          <input type="checkbox" id="switch-style">
+          <span class="slider round"></span>
+      </label>
+  </div>
+  <div class="icon">
+      <i class="fa fa-moon-o" aria-hidden="true"></i>
+  </div>
+</div>
+</li>
+                                    </ul>
+                                </div><div id="side-toc-title">On this page:</div>
+<ul id="my_toc" class="inline_toc">
+  <li><a href="#quick-volume-type-comparisons" class="nomunge">Quick volume type comparisons</a></li>
+  <li><a href="#start-a-dev-mode-container" class="nomunge">Start a dev-mode container</a></li>
+  <li><a href="#recap" class="nomunge">Recap</a></li>
+</ul>
+
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+          
+    <div class="container">
+        <div class="top_footer">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/why-docker">Why Docker?</a></b></li>
+                        <li><a href="https://www.docker.com/what-container">What is a Container?</a></li>
+                        <li><a href="https://docker.events.cube365.net/dockercon/">DockerCon</a></li>
+                        <li><b><a href="https://www.docker.com/products/overview">Products</a></b></li>
+                        <li><a href="https://www.docker.com/products/docker-desktop">Docker Desktop</a></li>
+                        <li><a href="https://www.docker.com/products/docker-hub">Docker Hub</a></li>
+                        <li><a href="https://www.docker.com/roadmap">Docker Product Roadmap</a></li>
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Features</a></b></li>
+                        <li><a href="https://www.docker.com/products/container-runtime">Container Runtime</a></li>
+                        <li><a href="https://www.docker.com/products/developer-tools">Developer Tools</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Developers</a></b></li>
+                        <li><a href="https://www.docker.com/use-cases">Use Cases</a></li>
+                        <li><a href="https://www.docker.com/docker-community">Community</a></li>
+                        <li><a href="https://www.docker.com/open-source">Open Source</a></li>
+                        <li><a href="https://www.docker.com/community/docker-captains">Docker Captains</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/products/docker-desktop">Pricing</a></b></li>
+                        <li><a href="https://www.docker.com/pricing/faq">FAQs</a></li>
+                        <li><a href="https://www.docker.com/partners/programs">Docker Verified Publisher Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <ul class="footer_links">
+                        <li><b><a href="https://www.docker.com/company" target="_blank" rel="noopener">Company</a></b></li>
+                        <li><a href="https://www.docker.com/company">About Us</a></li>
+                        <li><a href="https://www.docker.com/blog/" target="_blank" rel="noopener">Blog</a></li>
+                        <li><a href="https://www.docker.com/customers">Customers</a></li>
+                        <li><a href="https://www.docker.com/partners">Partners</a></li>
+                        <li><a href="https://www.docker.com/company/newsroom">Newsroom</a></li>
+                        <li><a href="https://www.docker.com/careers">Careers</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-nav">
+                <nav class="footer_sub_nav">
+                    <ul class="menu">
+                        <li><a href="http://status.docker.com/">Status</a></li>
+                        <li><a href="https://www.docker.com/legal">Legal</a></li>
+                        <li><a href="https://www.docker.com/company/contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="bottom_footer">
+            <div class="footer-copyright col-xs-12 col-md-8">
+                <p class="copyright">
+                    Copyright &copy; 2013-2021 Docker Inc. All rights reserved. </p>
+            </div>
+            <div class="footer_social_nav">
+                <ul class="nav-social">
+                    <li class="fa fa-twitter"><a href="http://twitter.com/docker">Twitter</a></li>
+                    <li class="fa fa-youtube"><a href="http://www.youtube.com/user/dockerrun">Youtube</a></li>
+                    <li class="fa fa-github"><a href="https://github.com/docker">GitHub</a></li>
+                    <li class="fa fa-linkedin"><a href="https://www.linkedin.com/company/docker">Linkedin</a></li>
+                    <li class="fa fa-facebook"><a href="https://www.facebook.com/docker.run">Facebook</a></li>
+                    <li class="fa fa-slideshare"><a href="https://www.slideshare.net/docker">Slideshare</a></li>
+                    <li class="fa fa-reddit"><a href="https://www.reddit.com/r/docker">Reddit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </footer>
+    <script>const pageURL = "/get-started/06_bind_mounts/";</script><script>
+    let PDRTJS_settings_8453675 = {
+        "id": "8453675",
+        "unique_id": "get-started/06_bind_mounts.md",
+        "title": "Use bind mounts",
+        "font_family": "Open Sans, sans serif",
+        "font_color": "b9c2cc",
+        "font_align": "center",
+        "permalink": "https://github.com/docker/docker.github.io/blob/master/get-started/06_bind_mounts.md"
+    };
+    (function (d, c, j) {
+        if (!document.getElementById(j)) {
+            let pd=d.createElement(c),s;pd.id=j;pd.src='https://polldaddy.com/js/rating/rating.js';s=document.getElementsByTagName(c)[0];s.parentNode.insertBefore(pd, s);
+        }
+    }(document, 'script', 'pd-rating-js'));
+</script></body>
+</html>
