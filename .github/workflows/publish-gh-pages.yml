@@ -13,9 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: docker build --build-arg JEKYLL_ENV=production --target=deploy-source --output=./_site .
-      - uses: peaceiris/actions-gh-pages@v3
         env:
           DOCKER_BUILDKIT: '1'
+      - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ github.token }}
           publish_dir: ./_site
