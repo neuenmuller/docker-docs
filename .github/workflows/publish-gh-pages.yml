@@ -14,9 +14,12 @@ jobs:
       - uses: actions/checkout@v2
       - run: docker build --build-arg JEKYLL_ENV=production --target=deploy-source --output=./_site .
       - uses: peaceiris/actions-gh-pages@v3
+        env:
+          DOCKER_BUILDKIT: '1'
         with:
           github_token: ${{ github.token }}
           publish_dir: ./_site
+          publish_branch: '00gh-pages'
           cname: aqua.sarisia.cc
           user_name: 'Minato Aqua'
           user_email: '91774192+mntaqua@users.noreply.github.com'
