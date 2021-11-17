@@ -20,7 +20,7 @@ jobs:
           github_token: ${{ github.token }}
           publish_dir: ./_site
           publish_branch: '00gh-pages'
-          cname: aqua.sarisia.cc
+          cname: docker-docs.aqua.sarisia.cc
           user_name: 'Minato Aqua'
           user_email: '91774192+mntaqua@users.noreply.github.com'
       - uses: sarisia/actions-status-discord@v1
